@@ -1,2 +1,34 @@
 [23-May-2014 12:32:55 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in C:\php\www\FinanceiroPessoal\module\CentroCusto\view\centrocusto\index\index.phtml on line 4
 [23-May-2014 13:14:41 America/Sao_Paulo] PHP Fatal error:  Call to undefined method CentroCusto\Entity\FCentrocusto::getId() in C:\php\www\FinanceiroPessoal\module\CentroCusto\view\centrocusto\index\index.phtml on line 13
+[23-May-2014 18:35:06 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Zend\Mvc\Router\Exception\RuntimeException' with message 'Route with name "CentroCusto" not found' in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php:317
+Stack trace:
+#0 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Helper\Url.php(100): Zend\Mvc\Router\Http\TreeRouteStack->assemble(Array, Array)
+#1 [internal function]: Zend\View\Helper\Url->__invoke('CentroCusto')
+#2 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Renderer\PhpRenderer.php(399): call_user_func_array(Object(Zend\View\Helper\Url), Array)
+#3 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(41): Zend\View\Renderer\PhpRenderer->__call('url', Array)
+#4 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(41): Zend\View\Renderer\PhpRenderer->url('CentroCusto')
+#5 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Renderer\Php in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php on line 317
+[23-May-2014 18:38:31 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Zend\Mvc\Router\Exception\RuntimeException' with message 'Route with name "CentroCusto" not found' in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php:317
+Stack trace:
+#0 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Helper\Url.php(100): Zend\Mvc\Router\Http\TreeRouteStack->assemble(Array, Array)
+#1 [internal function]: Zend\View\Helper\Url->__invoke('CentroCusto')
+#2 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Renderer\PhpRenderer.php(399): call_user_func_array(Object(Zend\View\Helper\Url), Array)
+#3 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(41): Zend\View\Renderer\PhpRenderer->__call('url', Array)
+#4 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(41): Zend\View\Renderer\PhpRenderer->url('CentroCusto')
+#5 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Renderer\Php in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php on line 317
+[23-May-2014 18:39:11 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Zend\Mvc\Router\Exception\RuntimeException' with message 'Route with name "admin" not found' in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php:317
+Stack trace:
+#0 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Helper\Url.php(100): Zend\Mvc\Router\Http\TreeRouteStack->assemble(Array, Array)
+#1 [internal function]: Zend\View\Helper\Url->__invoke('admin/centrocus...')
+#2 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Renderer\PhpRenderer.php(399): call_user_func_array(Object(Zend\View\Helper\Url), Array)
+#3 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(41): Zend\View\Renderer\PhpRenderer->__call('url', Array)
+#4 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(41): Zend\View\Renderer\PhpRenderer->url('admin/centrocus...')
+#5 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Rend in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php on line 317
+[23-May-2014 18:39:47 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Zend\Mvc\Router\Exception\RuntimeException' with message 'Route with name "admin" not found' in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php:317
+Stack trace:
+#0 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Helper\Url.php(100): Zend\Mvc\Router\Http\TreeRouteStack->assemble(Array, Array)
+#1 [internal function]: Zend\View\Helper\Url->__invoke('admin/centrocus...')
+#2 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Renderer\PhpRenderer.php(399): call_user_func_array(Object(Zend\View\Helper\Url), Array)
+#3 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(41): Zend\View\Renderer\PhpRenderer->__call('url', Array)
+#4 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(41): Zend\View\Renderer\PhpRenderer->url('admin/centrocus...')
+#5 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Rend in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php on line 317

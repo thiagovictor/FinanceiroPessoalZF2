@@ -5,12 +5,12 @@ return array(
     'router' => array(
         'routes' => array(
             'CentroCusto' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'segment',
                 'options' => array(
-                    'route'    => '/CentroCusto',
+                    'route'    => '/admin/[:controller[/:action][/page/:page]]',
                     'defaults' => array(
-                        'controller' => 'CentroCusto\Controller\Index',
                         'action'     => 'index',
+                        'page' => 1
                     ),
                 ),
             ),
@@ -18,7 +18,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'CentroCusto\Controller\Index' => 'CentroCusto\Controller\IndexController'
+            'centrocusto' => 'CentroCusto\Controller\IndexController'
         ),
     ),
     'view_manager' => array(
@@ -29,7 +29,7 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'centro-custo/index/index' => __DIR__ . '/../view/centrocusto/index/index.phtml',
+            'centro-custo/index/index' => __DIR__ . '/../view/centro-custo/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
