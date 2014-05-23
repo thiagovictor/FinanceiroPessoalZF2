@@ -1,0 +1,19 @@
+
+    <h3>Centros de custo</h3>
+
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Descrição</td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->centrosdecusto as $centroDeCusto):?>
+            <tr>
+                <td><?php echo $centroDeCusto->getIdfCentrocusto();?></td>
+                <td><?php echo $centroDeCusto->getDescricao();?></td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>

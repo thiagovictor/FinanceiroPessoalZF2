@@ -1,0 +1,2 @@
+[23-May-2014 12:32:55 America/Sao_Paulo] PHP Warning:  Invalid argument supplied for foreach() in C:\php\www\FinanceiroPessoal\module\CentroCusto\view\centrocusto\index\index.phtml on line 4
+[23-May-2014 13:14:41 America/Sao_Paulo] PHP Fatal error:  Call to undefined method CentroCusto\Entity\FCentrocusto::getId() in C:\php\www\FinanceiroPessoal\module\CentroCusto\view\centrocusto\index\index.phtml on line 13
