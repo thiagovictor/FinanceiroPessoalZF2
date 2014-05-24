@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
+use CentroCusto\Form\CentroCustoForm;
 
 class IndexController extends AbstractActionController
 {
@@ -28,6 +29,23 @@ class IndexController extends AbstractActionController
         $paginator->setDefaultItemCountPerPage($count);
         return new ViewModel(array('centrosdecusto' => $paginator, 'page'=>$page));
     }
+    
+    public function newAction()
+    {   
+        $form = new CentroCustoForm('CentroCusto');
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $form->setData($request->getPost());
+            if($form->isValid()){
+                //rotina de inserção
+                
+                return $this->redirect()->toRoute('CentroCusto', array('controller'=>'centrocusto'));
+            }
+        }
+        
+        return new ViewModel(array('form'=> $form));
+    }
+
     public function getEM()
     {
         if (null === $this->entityManager){
