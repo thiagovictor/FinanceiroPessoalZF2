@@ -8,7 +8,7 @@ use Zend\InputFilter\InputFilter;
 class CentroCustoFilter extends InputFilter{
     public function __construct() {
         $this->add(array(
-           'name' => 'nome',
+           'name' => 'descricao',
             'required' => true,
             'filters' => array(
                 array('name'=>'StripTags'),

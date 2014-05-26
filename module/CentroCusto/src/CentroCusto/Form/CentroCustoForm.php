@@ -20,13 +20,13 @@ class CentroCustoForm extends Form{
         ));
         
         $this->add(array(
-           'name' => 'nome',
+           'name' => 'descricao',
             'options' => array(
                 'type' => 'text',
-                'label' => 'Nome'
+                'label' => 'Nome:'
             ),
             'attributes' => array(
-                'id' => 'nome',
+                'id' => 'descricao',
                // 'class' => 'input-block-level',
                 'placeholder' => 'Entre com o nome'
             )

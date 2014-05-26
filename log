@@ -40,3 +40,26 @@ Stack trace:
 #3 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(42): Zend\View\Renderer\PhpRenderer->__call('url', Array)
 #4 C:\php\www\FinanceiroPessoal\module\CentroCusto\view\layout\layout.phtml(42): Zend\View\Renderer\PhpRenderer->url('admin/CentroCus...')
 #5 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\View\Rend in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\Mvc\Router\Http\TreeRouteStack.php on line 317
+[26-May-2014 18:06:37 America/Sao_Paulo] PHP Notice:  Undefined property: Zend\Http\PhpEnvironment\Request::$getPost in C:\php\www\FinanceiroPessoal\module\CentroCusto\src\CentroCusto\Controller\IndexController.php on line 41
+[26-May-2014 18:06:37 America/Sao_Paulo] PHP Fatal error:  Call to a member function toArray() on a non-object in C:\php\www\FinanceiroPessoal\module\CentroCusto\src\CentroCusto\Controller\IndexController.php on line 41
+[26-May-2014 18:33:36 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (CentroCusto) could not be initialized.' in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php:189
+Stack trace:
+#0 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php(163): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php(90): Zend\ModuleManager\ModuleManager->loadModule('CentroCusto')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\EventManager\EventManager.php(468): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\EventManag in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php on line 189
+[26-May-2014 18:34:34 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (Financeiro) could not be initialized.' in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php:189
+Stack trace:
+#0 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php(163): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php(90): Zend\ModuleManager\ModuleManager->loadModule('Financeiro')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\EventManager\EventManager.php(468): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\EventManager in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php on line 189
+[26-May-2014 18:35:03 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Zend\ModuleManager\Exception\RuntimeException' with message 'Module (Financeiro) could not be initialized.' in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php:189
+Stack trace:
+#0 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php(163): Zend\ModuleManager\ModuleManager->loadModuleByName(Object(Zend\ModuleManager\ModuleEvent))
+#1 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php(90): Zend\ModuleManager\ModuleManager->loadModule('Financeiro')
+#2 [internal function]: Zend\ModuleManager\ModuleManager->onLoadModules(Object(Zend\ModuleManager\ModuleEvent))
+#3 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\EventManager\EventManager.php(468): call_user_func(Array, Object(Zend\ModuleManager\ModuleEvent))
+#4 C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\EventManager in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ModuleManager\ModuleManager.php on line 189

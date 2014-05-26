@@ -10,7 +10,7 @@ return array(
                     'route'    => '/admin/[:controller[/:action][/page/:page]]',
                     'defaults' => array(
                         'action'     => 'index',
-                        'controller' => 'centrocusto',
+                        //'controller' => 'centrocusto',
                         'page' => 1
                     ),
                 ),

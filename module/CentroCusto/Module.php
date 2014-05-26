@@ -11,6 +11,7 @@ namespace CentroCusto;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use CentroCusto\Services\CentroCusto;
 
 class Module
 {
@@ -34,6 +35,16 @@ class Module
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
+        );
+    }
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'CentroCusto\Services\CentroCusto' => function($service){
+                    return new CentroCusto($service->get('Doctrine\ORM\EntityManager'));
+                }
+            )
         );
     }
 }

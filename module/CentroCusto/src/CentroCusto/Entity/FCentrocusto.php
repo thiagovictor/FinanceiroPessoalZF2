@@ -27,6 +27,9 @@ class FCentrocusto
      */
     protected $descricao;
     
+    public function __construct($options = null) {
+        Configurator::configure($this, $options);
+    }
     public function getIdfCentrocusto() {
         return $this->idfCentrocusto;
     }
@@ -40,7 +43,7 @@ class FCentrocusto
     }
 
     public function setDescricao($descricao) {
-        $this->descricao = $descricao;
+        $this->descricao = $this->convertMaisculo($descricao);
     }
 
     public function __toString() {
@@ -53,6 +56,12 @@ class FCentrocusto
           'descricao' => $this->getDescricao()
         );
     }
+    private function convertMaisculo($string) {
+        return strtr(strtoupper($string),"àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ","ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß");
+    }
+    private function convertMinusculo($string) {
+        return strtr(strtolower($string),"ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß","àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ");
+    } 
 
 
 }

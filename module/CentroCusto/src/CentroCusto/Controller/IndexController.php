@@ -22,7 +22,7 @@ class IndexController extends AbstractActionController
         $repo = $this->getEM()->getRepository('CentroCusto\Entity\FCentrocusto');
         $listaCentroCusto = $repo->findAll();
         
-        $count = 10;
+        $count = 30;
         $page = $this->params()->fromRoute('page');
         $paginator = new Paginator(new ArrayAdapter($listaCentroCusto));
         $paginator->setCurrentPageNumber($page);
@@ -37,9 +37,9 @@ class IndexController extends AbstractActionController
         if($request->isPost()){
             $form->setData($request->getPost());
             if($form->isValid()){
-                //rotina de inserção
-                
-                return $this->redirect()->toRoute('CentroCusto', array('controller'=>'centrocusto'));
+               $service = $this->getServiceLocator()->get('CentroCusto\Services\CentroCusto');
+               $service->inserir($request->getPost()->toArray());
+               return $this->redirect()->toRoute('CentroCusto', array('controller'=>'centrocusto'));
             }
         }
         
