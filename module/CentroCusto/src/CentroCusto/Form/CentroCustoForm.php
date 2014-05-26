@@ -27,6 +27,7 @@ class CentroCustoForm extends Form{
             ),
             'attributes' => array(
                 'id' => 'nome',
+               // 'class' => 'input-block-level',
                 'placeholder' => 'Entre com o nome'
             )
         ));
