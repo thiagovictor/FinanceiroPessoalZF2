@@ -4,6 +4,15 @@ namespace Financeiro;
 return array(
     'router' => array(
         'routes' => array(
+            'Financeiro-edit' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route'    => '/admin/[:controller[/:action][/:id]]',
+                    'constraints' => array (
+                        'id' =>'[0-9]+'
+                    ),
+                ),
+            ),
             'Financeiro' => array(
                 'type' => 'segment',
                 'options' => array(

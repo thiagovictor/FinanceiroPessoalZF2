@@ -13,10 +13,11 @@ class CentroCustoForm extends Form{
         $this->setInputFilter(new CentroCustoFilter);
         
         $this->add(array(
-           'name' =>'id',
-            'attibutes' => array(
-                'type' => 'hidden'
-            )
+           'name' =>'idf_centrocusto',
+            'options' => array(
+                'type' => 'hidden',
+            ),
+           
         ));
         
         $this->add(array(

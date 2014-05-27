@@ -42,10 +42,28 @@ class CentroCustoController extends AbstractActionController
                return $this->redirect()->toRoute('Financeiro', array('controller'=>'centrocusto'));
             }
         }
-        
         return new ViewModel(array('form'=> $form));
     }
-
+    public function editAction() 
+    {
+        $form = new CentroCustoForm('CentroCusto');
+        $request = $this->getRequest();
+        $repository = $this->getEM()->getRepository('Financeiro\Entity\FCentrocusto');
+        $entity = $repository->find($this->params()->fromRoute('id', 0));
+        if($this->params()->fromRoute('id', 0)){
+            $form->setData($entity->toArray());
+        }
+        if($request->isPost()){
+            $form->setData($request->getPost());
+            if($form->isValid()){
+               $service = $this->getServiceLocator()->get('Financeiro\Services\CentroCusto');
+               $service->update($request->getPost()->toArray());
+               return $this->redirect()->toRoute('Financeiro', array('controller'=>'centrocusto')); 
+            }
+        }
+        return new ViewModel(array('form'=> $form));
+    }
+    
     public function getEM()
     {
         if (null === $this->entityManager){

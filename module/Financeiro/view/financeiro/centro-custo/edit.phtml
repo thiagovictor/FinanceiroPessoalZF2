@@ -1,9 +1,10 @@
-<h3>Novo Centro de custo</h3>
+<h3>Editar Centro de custo</h3>
 <br />
 <?php
+
 $form = $this->form;
 
-$form->setAttribute('action', $this->url('Financeiro',array('controller'=>'centrocusto','action' => 'new')));
+$form->setAttribute('action', $this->url('Financeiro-edit',array('controller'=>'centrocusto','action' => 'edit')));
 
 $form->prepare();
 
@@ -12,5 +13,4 @@ echo $this->formHidden($form->get('idf_centrocusto'));
 echo $this->formRow($form->get('descricao'))."<br /><br />";
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();
-
 

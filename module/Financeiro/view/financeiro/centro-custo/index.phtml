@@ -1,11 +1,12 @@
 
     <h3>Centros de custo</h3>
-
+    <a href="<?php echo $this->url('Financeiro',array('controller' => 'centrocusto', 'action' => 'new')); ?>"><img src="<?php echo $this->basePath('img/add.png') ?>" alt="Adicionar novo Centro de custo"/>&nbsp;Adicionar</a><br><br>
     <table class="table table-condensed table-hover">
         <thead>
             <tr>
                 <td>ID</td>
                 <td>Descrição</td>
+                <td>Ação</td>
             </tr>
         </thead>
         <tbody>
@@ -13,6 +14,7 @@
             <tr>
                 <td><?php echo $centroDeCusto->getIdfCentrocusto();?></td>
                 <td><?php echo $centroDeCusto->getDescricao();?></td>
+                <td><a href="<?php echo $this->url('Financeiro-edit',array ('controller' => 'centrocusto', 'action' => 'edit', 'id' => $centroDeCusto->getIdfCentrocusto()));?>"><img src="<?php echo $this->basePath('img/alterar.png') ?>" alt="Editar Centro de Custo"/></a></td>
             </tr>
             <?php endforeach;?>
         </tbody>

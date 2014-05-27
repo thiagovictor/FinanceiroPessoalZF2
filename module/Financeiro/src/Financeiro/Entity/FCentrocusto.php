@@ -52,7 +52,7 @@ class FCentrocusto
     
     public function toArray(){
         return array(
-          'idfCentrocusto' => $this->getIdfCentrocusto(),
+          'idf_centrocusto' => $this->getIdfCentrocusto(),
           'descricao' => $this->getDescricao()
         );
     }

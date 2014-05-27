@@ -4,6 +4,8 @@ namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
 use Financeiro\Entity\FCentrocusto;
+use Financeiro\Entity\Configurator;
+
 class CentroCusto {
     /**
     * @var EntityManager
@@ -16,6 +18,13 @@ class CentroCusto {
     }
     public function inserir(array $data){       
         $entity = new FCentrocusto($data); 
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
+        return $entity;
+    }
+    public function update(array $data){
+        $reference = $this->entityManager->getReference('Financeiro\Entity\FCentrocusto', $data['idf_centrocusto']);
+        $entity = Configurator::configure($reference, $data);
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
         return $entity;
