@@ -1,14 +1,14 @@
 <?php
 
-namespace CentroCusto\Controller;
+namespace Financeiro\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
-use CentroCusto\Form\CentroCustoForm;
+use Financeiro\Form\CentroCustoForm;
 
-class IndexController extends AbstractActionController
+class CentroCustoController extends AbstractActionController
 {
     /**
      * 
@@ -19,10 +19,10 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         
-        $repo = $this->getEM()->getRepository('CentroCusto\Entity\FCentrocusto');
+        $repo = $this->getEM()->getRepository('Financeiro\Entity\FCentrocusto');
         $listaCentroCusto = $repo->findAll();
         
-        $count = 30;
+        $count = 15;
         $page = $this->params()->fromRoute('page');
         $paginator = new Paginator(new ArrayAdapter($listaCentroCusto));
         $paginator->setCurrentPageNumber($page);
@@ -37,9 +37,9 @@ class IndexController extends AbstractActionController
         if($request->isPost()){
             $form->setData($request->getPost());
             if($form->isValid()){
-               $service = $this->getServiceLocator()->get('CentroCusto\Services\CentroCusto');
+               $service = $this->getServiceLocator()->get('Financeiro\Services\CentroCusto');
                $service->inserir($request->getPost()->toArray());
-               return $this->redirect()->toRoute('CentroCusto', array('controller'=>'centrocusto'));
+               return $this->redirect()->toRoute('Financeiro', array('controller'=>'centrocusto'));
             }
         }
         

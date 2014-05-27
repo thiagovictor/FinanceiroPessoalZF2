@@ -1,16 +1,15 @@
 <?php
-namespace CentroCusto;
+namespace Financeiro;
 
 return array(
     'router' => array(
         'routes' => array(
-            'CentroCusto' => array(
+            'Financeiro' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route'    => '/admin/[:controller[/:action][/page/:page]]',
                     'defaults' => array(
                         'action'     => 'index',
-                        //'controller' => 'centrocusto',
                         'page' => 1
                     ),
                 ),
@@ -19,7 +18,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'centrocusto' => 'CentroCusto\Controller\IndexController'
+            'centrocusto' => 'Financeiro\Controller\CentroCustoController'
         ),
     ),
     'view_manager' => array(
@@ -30,7 +29,7 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'centro-custo/index/index' => __DIR__ . '/../view/centro-custo/index/index.phtml',
+            'financeiro/centro-custo/index' => __DIR__ . '/../view/financeiro/centro-custo/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),

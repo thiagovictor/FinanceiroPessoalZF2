@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CentroCusto\Form;
+namespace Financeiro\Form;
 
 use Zend\Form\Form;
 
@@ -27,7 +27,6 @@ class CentroCustoForm extends Form{
             ),
             'attributes' => array(
                 'id' => 'descricao',
-               // 'class' => 'input-block-level',
                 'placeholder' => 'Entre com o nome'
             )
         ));

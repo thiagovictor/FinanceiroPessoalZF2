@@ -1,13 +1,13 @@
 <?php
 
-namespace CentroCusto\Entity;
+namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="f_centrocusto")
- * @ORM\Entity(repositoryClass="CentroCusto\Entity\CentroCustoRepository")
+ * @ORM\Entity(repositoryClass="Financeiro\Entity\CentroCustoRepository")
  */
 class FCentrocusto
 {

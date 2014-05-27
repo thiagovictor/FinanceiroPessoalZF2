@@ -7,11 +7,11 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace CentroCusto;
+namespace Financeiro;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use CentroCusto\Services\CentroCusto;
+use Financeiro\Services\CentroCusto;
 
 class Module
 {
@@ -41,7 +41,7 @@ class Module
     {
         return array(
             'factories' => array(
-                'CentroCusto\Services\CentroCusto' => function($service){
+                'Financeiro\Services\CentroCusto' => function($service){
                     return new CentroCusto($service->get('Doctrine\ORM\EntityManager'));
                 }
             )

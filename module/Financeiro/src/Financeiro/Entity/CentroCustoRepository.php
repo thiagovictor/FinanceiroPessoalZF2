@@ -1,6 +1,6 @@
 <?php
 
-namespace CentroCusto\Entity;
+namespace Financeiro\Entity;
 
 use Doctrine\ORM\EntityRepository;
 class CentroCustoRepository extends EntityRepository{

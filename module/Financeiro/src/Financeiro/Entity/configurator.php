@@ -1,6 +1,6 @@
 <?php
 
-namespace CentroCusto\Entity;
+namespace Financeiro\Entity;
 
 class Configurator {
     /** Configure a target object with the provided options.

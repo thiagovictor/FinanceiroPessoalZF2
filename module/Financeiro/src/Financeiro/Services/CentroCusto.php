@@ -1,9 +1,9 @@
 <?php
 
-namespace CentroCusto\Services;
+namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
-use CentroCusto\Entity\FCentrocusto;
+use Financeiro\Entity\FCentrocusto;
 class CentroCusto {
     /**
     * @var EntityManager

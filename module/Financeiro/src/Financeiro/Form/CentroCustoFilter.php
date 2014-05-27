@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CentroCusto\Form;
+namespace Financeiro\Form;
 
 use Zend\InputFilter\InputFilter;
 
