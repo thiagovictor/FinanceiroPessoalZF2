@@ -22,7 +22,7 @@ class CentroCustoController extends AbstractActionController
         $repo = $this->getEM()->getRepository('Financeiro\Entity\FCentrocusto');
         $listaCentroCusto = $repo->findAll();
         
-        $count = 15;
+        $count = 12;
         $page = $this->params()->fromRoute('page');
         $paginator = new Paginator(new ArrayAdapter($listaCentroCusto));
         $paginator->setCurrentPageNumber($page);

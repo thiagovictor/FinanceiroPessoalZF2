@@ -288,12 +288,34 @@ a:hover {
   margin-left: 20px;
 }
 
-.container,
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-  width: 940px;
+
+@media (min-width: 768px) {
+    .container,
+    .navbar-static-top .container,
+    .navbar-fixed-top .container,
+    .navbar-fixed-bottom .container {
+      width: 900px;
+    }
 }
+
+@media (min-width: 992px) {
+  .container,
+    .navbar-static-top .container,
+    .navbar-fixed-top .container,
+    .navbar-fixed-bottom .container {
+      width: 1024px;
+    }
+}
+
+@media (min-width: 1200px) {
+  .container,
+    .navbar-static-top .container,
+    .navbar-fixed-top .container,
+    .navbar-fixed-bottom .container {
+      width: 1250px;
+    }
+}
+
 
 .span12 {
   width: 940px;

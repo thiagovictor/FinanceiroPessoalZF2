@@ -18,41 +18,34 @@ $formatUrl= function ($page) use ($urlPattern) {
 
             <!-- First page link -->
     <?php if (isset($this->previous)): ?>
-                <a href="<?php echo $formatUrl($this->previous) ?>">
-                    Primeira
-                </a> |
+                <a href="<?php echo $formatUrl($this->first) ?>"><img src="<?php echo $this->basePath('img/primeira.png'); ?>"></a>
     <?php else: ?>
-                <span class="disabled">Primeira</span> |
+                
+                <span class="disabled"> <img src="<?php echo $this->basePath('img/primeiraDisabled.png') ?>"></span>
             <?php endif; ?>
 
 
             <!-- Previous page link -->
     <?php if (isset($this->previous)): ?>
-                <a href="<?php echo $formatUrl($this->previous) ?>">
-                    < Anterior
-                </a> |
+                <a href="<?php echo $formatUrl($this->previous) ?>"><img src="<?php echo $this->basePath('img/anterior.png'); ?>"></a>
     <?php else: ?>
-                <span class="disabled">< Anterior</span> |
+                <span class="disabled"><img src="<?php echo $this->basePath('img/anteriorDisabled.png') ?>"></span>
             <?php endif; ?>
 
 
             <!-- Next page link -->
     <?php if (isset($this->next)): ?>
-                <a href="<?php echo $formatUrl($this->next); ?>">
-                    Próximo >
-                </a> |
+                <a href="<?php echo $formatUrl($this->next); ?>"><img src="<?php echo $this->basePath('img/proximo.png'); ?>"></a>
     <?php else: ?>
-                <span class="disabled">Próximo ></span> |
+                <span class="disabled"><img src="<?php echo $this->basePath('img/proximoDisabled.png') ?>"></span>
             <?php endif; ?>
 
 
             <!-- Last page link -->
     <?php if (isset($this->next)): ?>
-                <a href="<?php echo $formatUrl($this->next); ?>">
-                    Último
-                </a>
+                <a href="<?php echo $formatUrl($this->last); ?>"><img src="<?php echo $this->basePath('img/ultima.png'); ?>"></a>
     <?php else: ?>
-                <span class="disabled">Último</span>
+                <span class="disabled"><img src="<?php echo $this->basePath('img/ultimaDisabled.png') ?>"></span>
             <?php endif; ?>
 
         </div>

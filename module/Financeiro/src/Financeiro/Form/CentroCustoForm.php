@@ -24,11 +24,11 @@ class CentroCustoForm extends Form{
            'name' => 'descricao',
             'options' => array(
                 'type' => 'text',
-                'label' => 'Nome:'
             ),
             'attributes' => array(
                 'id' => 'descricao',
                 'placeholder' => 'Entre com o nome'
+                //'class' => 'input-lg'
             )
         ));
         
@@ -37,7 +37,7 @@ class CentroCustoForm extends Form{
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
                 'value' => 'Salvar',
-                'class' => 'btn-success'
+                'class' => 'btn btn-success'
             )
         ));
     }
