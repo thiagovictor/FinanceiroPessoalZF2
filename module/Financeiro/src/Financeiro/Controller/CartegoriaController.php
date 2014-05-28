@@ -1,7 +1,7 @@
 <?php
 
 namespace Financeiro\Controller;
-
+use Zend\View\Model\ViewModel;
 
 
 class CartegoriaController extends AbstractCrudController

@@ -41,8 +41,7 @@ class CartegoriaForm extends Form{
         
                 
         $centrosdecusto = new Select();
-        $centrosdecusto->setLabel('Centro de Custo')
-                       ->setName('centrocusto')
+        $centrosdecusto->setName('centrocusto')
                        ->setOptions(array('value_options'=>$this->arraycentrocusto));
         $this->add($centrosdecusto);
         

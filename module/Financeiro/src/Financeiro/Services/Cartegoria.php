@@ -5,6 +5,7 @@ namespace Financeiro\Services;
 use Doctrine\ORM\EntityManager;
 use Financeiro\Entity\Configurator;
 
+
 class Cartegoria extends AbstractService{
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);
@@ -13,20 +14,20 @@ class Cartegoria extends AbstractService{
     }
     
     public function inserir(array $data) {
-        $entity = new $this->entity($data);                                                 //id do centro de custo na tabela cartegoria
-        
         $centrocusto = $this->entityManager->getReference('Financeiro\Entity\FCentrocusto', $data['centrocusto']);
-        $entity->setCentrocusto($centrocusto);
+        $data['centrocusto'] = $centrocusto;
+        //Valor do id do centro de custo deve ser substituido pela entidade antes de popular
+        $entity = new $this->entity($data);                                                 
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
         return $entity;
     }
     public function update(array $data) {
        $reference = $this->entityManager->getReference($this->entity, $data['idf_cartegoria']);
-       $entity = Configurator::configure($reference, $data);
-       
        $centrocusto = $this->entityManager->getReference('Financeiro\Entity\FCentrocusto', $data['centrocusto']);
-       $entity->setCentrocusto($centrocusto);
+       $data['centrocusto'] = $centrocusto;
+       $entity = Configurator::configure($reference, $data);
+       //Valor do id do centro de custo deve ser substituido pela entidade antes de popular
        $this->entityManager->persist($entity);
        $this->entityManager->flush();
        return $entity;

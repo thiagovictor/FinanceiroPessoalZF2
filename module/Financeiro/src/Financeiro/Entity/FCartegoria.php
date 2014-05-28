@@ -21,14 +21,14 @@ class FCartegoria
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idfCartegoria;
+    protected $idfCartegoria;
 
     /**
      * @var string
      *
      * @ORM\Column(name="descricao", type="string", length=255, nullable=false)
      */
-    private $descricao;
+    protected $descricao;
 
     /**
      * @var FCentrocusto
@@ -38,10 +38,10 @@ class FCartegoria
      *   @ORM\JoinColumn(name="centrocusto", referencedColumnName="idf_centrocusto")
      * })
      */
-    private $centrocusto;
+    protected $centrocusto;
     
     public function __construct($options = null) {
-        Configurator::configure($this, $options);
+        Configurator::configure($this, $options);       
     }
     
     public function getIdfCartegoria() {
@@ -64,7 +64,7 @@ class FCartegoria
         $this->descricao = $descricao;
     }
 
-    public function setCentrocusto(FCentrocusto $centrocusto) {
+    public function setCentroCusto(FCentrocusto $centrocusto) {
         $this->centrocusto = $centrocusto;
     }
     

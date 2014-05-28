@@ -25,14 +25,14 @@ abstract class AbstractCrudController extends AbstractActionController
     {
         
         $repo = $this->getEM()->getRepository($this->entity);
-        $listaCentroCusto = $repo->findAll();
+        $lista = $repo->findAll();
         
         $count = 12;
         $page = $this->params()->fromRoute('page');
-        $paginator = new Paginator(new ArrayAdapter($listaCentroCusto));
+        $paginator = new Paginator(new ArrayAdapter($lista));
         $paginator->setCurrentPageNumber($page);
         $paginator->setDefaultItemCountPerPage($count);
-        return new ViewModel(array('centrosdecusto' => $paginator, 'page'=>$page));
+        return new ViewModel(array('lista' => $paginator, 'page'=>$page));
     }
     
     public function newAction()

@@ -1,17 +1,21 @@
-<h3>Novo Centro de custo</h3>
+<h3>Novo Cartegoria</h3>
 <br />
 
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('Financeiro',array('controller'=>'centrocusto','action' => 'new')));
+$form->setAttribute('action', $this->url('Financeiro',array('controller'=>'cartegoria','action' => 'new')));
 $form->prepare();
 ?>
 
 <?php echo $this->form()->openTag($form);?>
-<?php echo $this->formHidden($form->get('idf_centrocusto'));?>
+<?php echo $this->formHidden($form->get('idf_cartegoria'));?>
 <div class="input-prepend input-append">
-    <span class="add-on">Nome</span>
+    <span class="add-on">Cartegoria</span>
     <?php echo $this->formRow($form->get('descricao'))."<br /><br />";?>
+</div>
+<div class="input-prepend input-append">
+    <span class="add-on">Centro de Custo</span>
+    <?php echo $this->formRow($form->get('centrocusto'))."<br /><br />";?>
 </div>
 <?php echo $this->formSubmit($form->get('submit'));?>
 <?php echo $this->form()->closeTag();?>
