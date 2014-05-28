@@ -3,30 +3,11 @@
 namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
-use Financeiro\Entity\FCentrocusto;
-use Financeiro\Entity\Configurator;
 
-class CentroCusto {
-    /**
-    * @var EntityManager
-    */
-    protected $entityManager;
-
-
+class CentroCusto extends AbstractService{
     public function __construct(EntityManager $entityManager) {
-        $this->entityManager = $entityManager;
-    }
-    public function inserir(array $data){       
-        $entity = new FCentrocusto($data); 
-        $this->entityManager->persist($entity);
-        $this->entityManager->flush();
-        return $entity;
-    }
-    public function update(array $data){
-        $reference = $this->entityManager->getReference('Financeiro\Entity\FCentrocusto', $data['idf_centrocusto']);
-        $entity = Configurator::configure($reference, $data);
-        $this->entityManager->persist($entity);
-        $this->entityManager->flush();
-        return $entity;
+        parent::__construct($entityManager);
+        $this->entity = 'Financeiro\Entity\FCentrocusto';
+        $this->nameId = 'idf_centrocusto';
     }
 }

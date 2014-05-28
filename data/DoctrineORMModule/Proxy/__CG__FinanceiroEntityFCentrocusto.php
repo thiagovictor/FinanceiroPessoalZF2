@@ -64,10 +64,10 @@ class FCentrocusto extends \Financeiro\Entity\FCentrocusto implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'idfCentrocusto', 'descricao');
+            return array('__isInitialized__', 'idfCentrocusto', 'cartegorias', 'descricao');
         }
 
-        return array('__isInitialized__', 'idfCentrocusto', 'descricao');
+        return array('__isInitialized__', 'idfCentrocusto', 'cartegorias', 'descricao');
     }
 
     /**
@@ -230,6 +230,17 @@ class FCentrocusto extends \Financeiro\Entity\FCentrocusto implements \Doctrine\
         $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', array());
 
         return parent::__toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCartegorias()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartegorias', array());
+
+        return parent::getCartegorias();
     }
 
     /**

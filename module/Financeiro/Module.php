@@ -12,6 +12,8 @@ namespace Financeiro;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Financeiro\Services\CentroCusto;
+use Financeiro\Services\Cartegoria;
+use Financeiro\Form\CartegoriaForm;
 
 class Module
 {
@@ -43,8 +45,19 @@ class Module
             'factories' => array(
                 'Financeiro\Services\CentroCusto' => function($service){
                     return new CentroCusto($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Services\Cartegoria' => function($service){
+                    return new Cartegoria($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Form\CartegoriaForm' => function($service){
+                    $entityManager = $service->get('Doctrine\ORM\EntityManager');
+                    $repository = $entityManager->getRepository('Financeiro\Entity\FCentroCusto');
+                    $arraycentrocusto = $repository->fatchPairs();
+                    return new CartegoriaForm($arraycentrocusto);
                 }
             )
         );
     }
 }
+
+

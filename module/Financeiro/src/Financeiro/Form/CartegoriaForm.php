@@ -4,20 +4,24 @@
 namespace Financeiro\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element\Select;
 
-class CentroCustoForm extends Form{
-   
-    public function __construct($name = null) {
+class CartegoriaForm extends Form{
+    
+    protected $arraycentrocusto;
+    
+    public function __construct(array $arraycentrocusto = null, $name = null) {
         parent::__construct($name);
+        $this->arraycentrocusto = $arraycentrocusto;
         $this->params();
     }
     public function params(){
         $this->setAttribute('method', 'post');
-        $this->setInputFilter(new CentroCustoFilter);
-        $this->setName('CentroCusto');
+        //$this->setInputFilter(new CentroCustoFilter);
+        $this->setName('Cartegoria');
         
         $this->add(array(
-           'name' =>'idf_centrocusto',
+           'name' =>'idf_cartegoria',
             'options' => array(
                 'type' => 'hidden',
             ),
@@ -34,6 +38,14 @@ class CentroCustoForm extends Form{
                 'placeholder' => 'Entre com o nome'
             )
         ));
+        
+                
+        $centrosdecusto = new Select();
+        $centrosdecusto->setLabel('Centro de Custo')
+                       ->setName('centrocusto')
+                       ->setOptions(array('value_options'=>$this->arraycentrocusto));
+        $this->add($centrosdecusto);
+        
         
         $this->add(array(
            'name' => 'submit',

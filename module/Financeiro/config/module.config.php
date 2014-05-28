@@ -27,7 +27,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'centrocusto' => 'Financeiro\Controller\CentroCustoController'
+            'centrocusto' => 'Financeiro\Controller\CentroCustoController',
+            'cartegoria' =>  'Financeiro\Controller\CartegoriaController',
         ),
     ),
     'view_manager' => array(

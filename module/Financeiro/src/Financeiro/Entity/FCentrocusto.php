@@ -3,6 +3,7 @@
 namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -19,7 +20,12 @@ class FCentrocusto
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $idfCentrocusto;
-
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Financeiro\Entity\FCartegoria", mappedBy="f_centrocusto")
+     */
+    protected $cartegorias;
     /**
      * @var string
      *
@@ -29,6 +35,7 @@ class FCentrocusto
     
     public function __construct($options = null) {
         Configurator::configure($this, $options);
+        $this->cartegorias = new ArrayCollection();
     }
     public function getIdfCentrocusto() {
         return $this->idfCentrocusto;
@@ -49,19 +56,23 @@ class FCentrocusto
     public function __toString() {
         return $this->descricao;
     }
-    
-    public function toArray(){
-        return array(
-          'idf_centrocusto' => $this->getIdfCentrocusto(),
-          'descricao' => $this->getDescricao()
-        );
-    }
     private function convertMaisculo($string) {
         return strtr(strtoupper($string),"àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ","ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß");
     }
     private function convertMinusculo($string) {
         return strtr(strtolower($string),"ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß","àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ");
     } 
+    public function getCartegorias() {
+      return $this->cartegorias;
+    }
+    public function toArray(){
+        return array(
+          'idf_centrocusto' => $this->getIdfCentrocusto(),
+          'descricao' => $this->getDescricao()
+        );
+    }
+    
+
 
 
 }
