@@ -27,8 +27,10 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'centrocusto' => 'Financeiro\Controller\CentroCustoController',
+            'centrocusto' => 'Financeiro\Controller\CentrocustoController',
             'cartegoria' =>  'Financeiro\Controller\CartegoriaController',
+            'ativo' =>  'Financeiro\Controller\AtivoController',
+            'user' =>  'Financeiro\Controller\UserController',
         ),
     ),
     'view_manager' => array(
@@ -39,7 +41,7 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'financeiro/centro-custo/index' => __DIR__ . '/../view/financeiro/centro-custo/index.phtml',
+            'financeiro/centrocusto/index' => __DIR__ . '/../view/financeiro/centrocusto/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),

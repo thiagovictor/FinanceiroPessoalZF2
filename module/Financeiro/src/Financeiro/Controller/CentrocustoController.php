@@ -4,13 +4,13 @@ namespace Financeiro\Controller;
 
 
 
-class CentroCustoController extends AbstractCrudController
+class CentrocustoController extends AbstractCrudController
 {
     public function __construct() {
-        $this->entity = 'Financeiro\Entity\FCentrocusto';
+        $this->entity = 'Financeiro\Entity\Centrocusto';
         $this->route = 'Financeiro';
-        $this->service = 'Financeiro\Services\CentroCusto';
+        $this->service = 'Financeiro\Services\Centrocusto';
         $this->controller = 'centrocusto';
-        $this->form = 'Financeiro\Form\CentroCustoForm';
+        $this->form = 'Financeiro\Form\CentrocustoForm';
     }
 }

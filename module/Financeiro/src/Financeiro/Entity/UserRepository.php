@@ -3,6 +3,6 @@
 namespace Financeiro\Entity;
 
 use Doctrine\ORM\EntityRepository;
-class CartegoriaRepository extends EntityRepository{
+class UserRepository extends EntityRepository{
    
 }

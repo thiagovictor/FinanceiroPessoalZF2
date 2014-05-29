@@ -7,7 +7,7 @@ use Zend\View\Model\ViewModel;
 class CartegoriaController extends AbstractCrudController
 {
     public function __construct() {
-        $this->entity = 'Financeiro\Entity\FCartegoria';
+        $this->entity = 'Financeiro\Entity\Cartegoria';
         $this->route = 'Financeiro';
         $this->service = 'Financeiro\Services\Cartegoria';
         $this->controller = 'cartegoria';

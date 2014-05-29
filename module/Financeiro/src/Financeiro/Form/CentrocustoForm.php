@@ -5,25 +5,25 @@ namespace Financeiro\Form;
 
 use Zend\Form\Form;
 
-class CentroCustoForm extends Form{
-   
-    public function __construct($name = null) {
+class CentrocustoForm extends Form{
+
+
+    public function __construct( $name = null) {
         parent::__construct($name);
         $this->params();
     }
     public function params(){
         $this->setAttribute('method', 'post');
-        $this->setInputFilter(new CentroCustoFilter);
+        $this->setInputFilter(new CentrocustoFilter);
         $this->setName('CentroCusto');
         
         $this->add(array(
-           'name' =>'idf_centrocusto',
+           'name' =>'id',
             'options' => array(
                 'type' => 'hidden',
-            ),
-           
+            ),  
         ));
-        
+                
         $this->add(array(
            'name' => 'descricao',
             'options' => array(

@@ -11,9 +11,13 @@ namespace Financeiro;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use Financeiro\Services\CentroCusto;
+use Financeiro\Services\Centrocusto;
 use Financeiro\Services\Cartegoria;
+use Financeiro\Services\Ativo;
+use Financeiro\Services\User;
 use Financeiro\Form\CartegoriaForm;
+use Financeiro\Form\UserForm;
+use Financeiro\Form\CentrocustoForm;
 
 class Module
 {
@@ -43,17 +47,29 @@ class Module
     {
         return array(
             'factories' => array(
-                'Financeiro\Services\CentroCusto' => function($service){
-                    return new CentroCusto($service->get('Doctrine\ORM\EntityManager'));
+                'Financeiro\Services\Centrocusto' => function($service){
+                    return new Centrocusto($service->get('Doctrine\ORM\EntityManager'));
                 },
                 'Financeiro\Services\Cartegoria' => function($service){
                     return new Cartegoria($service->get('Doctrine\ORM\EntityManager'));
                 },
+                'Financeiro\Services\Ativo' => function($service){
+                    return new Ativo($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Services\User' => function($service){
+                    return new User($service->get('Doctrine\ORM\EntityManager'));
+                },
                 'Financeiro\Form\CartegoriaForm' => function($service){
                     $entityManager = $service->get('Doctrine\ORM\EntityManager');
-                    $repository = $entityManager->getRepository('Financeiro\Entity\FCentroCusto');
+                    $repository = $entityManager->getRepository('Financeiro\Entity\Centrocusto');
                     $arraycentrocusto = $repository->fatchPairs();
                     return new CartegoriaForm($arraycentrocusto);
+                },
+                'Financeiro\Form\UserForm' => function($service){
+                    $entityManager = $service->get('Doctrine\ORM\EntityManager');
+                    $repository = $entityManager->getRepository('Financeiro\Entity\Ativo');
+                    $arrayativo = $repository->fatchPairs();
+                    return new UserForm($arrayativo);
                 }
             )
         );

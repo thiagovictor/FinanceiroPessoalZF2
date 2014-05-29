@@ -9,25 +9,25 @@ use Financeiro\Entity\Configurator;
 class Cartegoria extends AbstractService{
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);
-        $this->entity = 'Financeiro\Entity\FCartegoria';
-        $this->nameId = 'idf_cartegoria';
+        $this->entity = 'Financeiro\Entity\Cartegoria';
+        $this->nameId = 'id';
     }
     
     public function inserir(array $data) {
-        $centrocusto = $this->entityManager->getReference('Financeiro\Entity\FCentrocusto', $data['centrocusto']);
+        $centrocusto = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
         $data['centrocusto'] = $centrocusto;
-        //Valor do id do centro de custo deve ser substituido pela entidade antes de popular
+        $user = $this->entityManager->getReference('Financeiro\Entity\User', 1);//VALOR 1 SOMENTE PARA TESTES
+        $data['user'] = $user;
         $entity = new $this->entity($data);                                                 
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
         return $entity;
     }
     public function update(array $data) {
-       $reference = $this->entityManager->getReference($this->entity, $data['idf_cartegoria']);
-       $centrocusto = $this->entityManager->getReference('Financeiro\Entity\FCentrocusto', $data['centrocusto']);
+       $reference = $this->entityManager->getReference($this->entity, $data['id']);
+       $centrocusto = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
        $data['centrocusto'] = $centrocusto;
        $entity = Configurator::configure($reference, $data);
-       //Valor do id do centro de custo deve ser substituido pela entidade antes de popular
        $this->entityManager->persist($entity);
        $this->entityManager->flush();
        return $entity;

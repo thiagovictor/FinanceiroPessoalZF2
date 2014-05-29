@@ -4,14 +4,14 @@ namespace Financeiro\Controller;
 use Zend\View\Model\ViewModel;
 
 
-class CartegoriaController extends AbstractCrudController
+class UserController extends AbstractCrudController
 {
     public function __construct() {
-        $this->entity = 'Financeiro\Entity\FCartegoria';
+        $this->entity = 'Financeiro\Entity\User';
         $this->route = 'Financeiro';
-        $this->service = 'Financeiro\Services\Cartegoria';
-        $this->controller = 'cartegoria';
-        $this->form = 'Financeiro\Form\CartegoriaForm';
+        $this->service = 'Financeiro\Services\User';
+        $this->controller = 'user';
+        $this->form = 'Financeiro\Form\UserForm';
     }
     public function newAction()
     {   

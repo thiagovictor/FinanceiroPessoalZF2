@@ -13,12 +13,12 @@
         <tbody>
             <?php foreach ($this->lista as $lista):?>
             <tr>
-                <td><?php echo $lista->getIdfCartegoria();?></td>
+                <td><?php echo $lista->getId();?></td>
                 <td><?php echo $lista->getDescricao();?></td>
                 <td><?php echo $lista->getCentrocusto()->getDescricao();?></td>
                 <td>
-                    <a href="<?php echo $this->url('Financeiro-edit',array ('controller' => 'cartegoria', 'action' => 'edit', 'id' => $lista->getIdfCartegoria()));?>"><img src="<?php echo $this->basePath('img/alterar.png') ?>" alt="Editar Cartegoria"/></a>&nbsp;&nbsp;&nbsp;
-                    <a href="<?php echo $this->url('Financeiro-edit',array ('controller' => 'cartegoria', 'action' => 'delete', 'id' => $lista->getIdfCartegoria()));?>"><img src="<?php echo $this->basePath('img/excluir.png') ?>" alt="Remover Cartegoria"/></a>
+                    <a href="<?php echo $this->url('Financeiro-edit',array ('controller' => 'cartegoria', 'action' => 'edit', 'id' => $lista->getId()));?>"><img src="<?php echo $this->basePath('img/alterar.png') ?>" alt="Editar Cartegoria"/></a>&nbsp;&nbsp;&nbsp;
+                    <a href="<?php echo $this->url('Financeiro-edit',array ('controller' => 'cartegoria', 'action' => 'delete', 'id' => $lista->getId()));?>"><img src="<?php echo $this->basePath('img/excluir.png') ?>" alt="Remover Cartegoria"/></a>
                 </td>
             </tr>
             <?php endforeach;?>

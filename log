@@ -73,3 +73,9 @@ Stack trace:
 [27-May-2014 22:28:10 America/Sao_Paulo] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 126353408 bytes) in C:\php\www\FinanceiroPessoal\module\Financeiro\view\financeiro\cartegoria\index.phtml on line 3
 [27-May-2014 22:29:15 America/Sao_Paulo] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 126353408 bytes) in C:\php\www\FinanceiroPessoal\module\Financeiro\view\financeiro\cartegoria\index.phtml on line 3
 [27-May-2014 22:29:15 America/Sao_Paulo] PHP Fatal error:  Call to undefined method Financeiro\Entity\FCartegoria::getIdfCentrocusto() in C:\php\www\FinanceiroPessoal\module\Financeiro\view\financeiro\cartegoria\index.phtml on line 8
+[29-May-2014 12:35:49 America/Sao_Paulo] PHP Fatal error:  Cannot redeclare class Ativo in C:\php\www\FinanceiroPessoal\module\Financeiro\src\Financeiro\Entity\Ativo.php on line 14
+[29-May-2014 12:50:03 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\Form\AtivoForm' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\src\Financeiro\Controller\AbstractCrudController.php on line 54
+[29-May-2014 12:51:00 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\Form\AtivoForm' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\src\Financeiro\Controller\AbstractCrudController.php on line 54
+[29-May-2014 13:34:08 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\Controller\UserController' not found in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ServiceManager\AbstractPluginManager.php on line 170
+[29-May-2014 13:36:28 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\UserForm' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 66
+[29-May-2014 13:37:09 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\UserForm' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 66

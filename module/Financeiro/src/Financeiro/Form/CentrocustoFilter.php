@@ -5,7 +5,7 @@ namespace Financeiro\Form;
 
 use Zend\InputFilter\InputFilter;
 
-class CentroCustoFilter extends InputFilter{
+class CentrocustoFilter extends InputFilter{
     public function __construct() {
         $this->add(array(
            'name' => 'descricao',

@@ -1,24 +1,42 @@
-<h3>Editar Cartegoria</h3>
+<h3>Editando Usuário</h3>
 <br />
+
 <?php
-
 $form = $this->form;
-
-$form->setAttribute('action', $this->url('Financeiro-edit',array('controller'=>'cartegoria','action' => 'edit')));
-
+$form->setAttribute('action', $this->url('Financeiro',array('controller'=>'user','action' => 'edit')));
 $form->prepare();
 ?>
 
 <?php echo $this->form()->openTag($form);?>
-<?php echo $this->formHidden($form->get('idf_cartegoria'));?>
+<?php echo $this->formHidden($form->get('id'));?>
 <div class="input-prepend input-append">
-    <span class="add-on">Cartegoria</span>
-    <?php echo $this->formRow($form->get('descricao'))."<br /><br />";?>
+    <span class="add-on">Username</span>
+    <?php echo $this->formRow($form->get('username'))."<br /><br />";?>
 </div>
 <div class="input-prepend input-append">
-    <span class="add-on">Centro de Custo</span>
-    <?php echo $this->formRow($form->get('centrocusto'))."<br /><br />";?>
+    <span class="add-on">Senha</span>
+    <?php echo $this->formRow($form->get('password'))."<br /><br />";?>
 </div>
+<div class="input-prepend input-append">
+    <span class="add-on">Salt</span>
+    <?php echo $this->formRow($form->get('salt'))."<br /><br />";?>
+</div><div class="input-prepend input-append">
+    <span class="add-on">Email</span>
+    <?php echo $this->formRow($form->get('email'))."<br /><br />";?>
+</div><div class="input-prepend input-append">
+    <span class="add-on">Celular</span>
+    <?php echo $this->formRow($form->get('celular'))."<br /><br />";?>
+</div><div class="input-prepend input-append">
+    <span class="add-on">Telefone</span>
+    <?php echo $this->formRow($form->get('telefone'))."<br /><br />";?>
+</div><div class="input-prepend input-append">
+    <span class="add-on">Status</span>
+    <?php echo $this->formRow($form->get('ativo'))."<br /><br />";?>
+</div>
+
 <?php echo $this->formSubmit($form->get('submit'));?>
 <?php echo $this->form()->closeTag();?>
 
+
+
+        

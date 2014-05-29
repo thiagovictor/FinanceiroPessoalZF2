@@ -17,11 +17,19 @@ class CartegoriaForm extends Form{
     }
     public function params(){
         $this->setAttribute('method', 'post');
-        //$this->setInputFilter(new CentroCustoFilter);
+        //$this->setInputFilter(new CartegoriaFilter);
         $this->setName('Cartegoria');
         
         $this->add(array(
-           'name' =>'idf_cartegoria',
+           'name' =>'id',
+            'options' => array(
+                'type' => 'hidden',
+            ),
+           
+        ));
+        
+        $this->add(array(
+           'name' =>'user_id',
             'options' => array(
                 'type' => 'hidden',
             ),

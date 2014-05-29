@@ -4,10 +4,10 @@ namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
 
-class CentroCusto extends AbstractService{
+class Ativo extends AbstractService{
     public function __construct(EntityManager $entityManager) {
         parent::__construct($entityManager);
-        $this->entity = 'Financeiro\Entity\FCentrocusto';
-        $this->nameId = 'idf_centrocusto';
+        $this->entity = 'Financeiro\Entity\Ativo';
+        $this->nameId = 'id';
     }
 }
