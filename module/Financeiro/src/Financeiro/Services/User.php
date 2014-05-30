@@ -16,8 +16,7 @@ class User extends AbstractService{
     public function inserir(array $data) {
         $ativo = $this->entityManager->getReference('Financeiro\Entity\Ativo', $data['ativo']);
         $data['ativo'] = $ativo;
-        //Valor do id do ativo deve ser substituido pela entidade antes de popular
-        $entity = new $this->entity($data);                                                 
+        $entity = new $this->entity($data); 
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
         return $entity;
@@ -26,8 +25,10 @@ class User extends AbstractService{
        $reference = $this->entityManager->getReference($this->entity, $data['id']);
        $ativo = $this->entityManager->getReference('Financeiro\Entity\Ativo', $data['ativo']);
        $data['ativo'] = $ativo;
+       if(empty($data['password'])){
+           unset ($data['password']);
+       }
        $entity = Configurator::configure($reference, $data);
-       //Valor do id do ativo deve ser substituido pela entidade antes de popular
        $this->entityManager->persist($entity);
        $this->entityManager->flush();
        return $entity;

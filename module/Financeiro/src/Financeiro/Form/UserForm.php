@@ -42,7 +42,7 @@ class UserForm extends Form{
          $this->add(array(
            'name' => 'email',
             'options' => array(
-                'type' => 'text',
+                'type' => 'email',
             ),
             'attributes' => array(
                 'id' => 'email',
@@ -57,6 +57,7 @@ class UserForm extends Form{
             ),
             'attributes' => array(
                 'id' => 'password',
+                'type' => 'password',
                 'placeholder' => 'Entre com o a senha'
             )
         ));

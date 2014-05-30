@@ -79,3 +79,4 @@ Stack trace:
 [29-May-2014 13:34:08 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\Controller\UserController' not found in C:\php\www\FinanceiroPessoal\vendor\zendframework\zendframework\library\Zend\ServiceManager\AbstractPluginManager.php on line 170
 [29-May-2014 13:36:28 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\UserForm' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 66
 [29-May-2014 13:37:09 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\UserForm' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 66
+[30-May-2014 17:27:13 America/Sao_Paulo] PHP Fatal error:  Call to a member function getPassword() on a non-object in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\src\Financeiro\Entity\UserRepository.php on line 11

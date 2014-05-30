@@ -15,9 +15,9 @@ use Financeiro\Services\Centrocusto;
 use Financeiro\Services\Cartegoria;
 use Financeiro\Services\Ativo;
 use Financeiro\Services\User;
+use Financeiro\Auth\Adapter;
 use Financeiro\Form\CartegoriaForm;
 use Financeiro\Form\UserForm;
-use Financeiro\Form\CentrocustoForm;
 
 class Module
 {
@@ -58,6 +58,9 @@ class Module
                 },
                 'Financeiro\Services\User' => function($service){
                     return new User($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Auth\Adapter' => function($service){
+                    return new Adapter($service->get('Doctrine\ORM\EntityManager'));
                 },
                 'Financeiro\Form\CartegoriaForm' => function($service){
                     $entityManager = $service->get('Doctrine\ORM\EntityManager');

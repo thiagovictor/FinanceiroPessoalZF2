@@ -34,7 +34,9 @@ class UserController extends AbstractCrudController
         $repository = $this->getEM()->getRepository($this->entity);
         $entity = $repository->find($this->params()->fromRoute('id', 0));
         if($this->params()->fromRoute('id', 0)){
-            $form->setData($entity->toArray());
+            $array = $entity->toArray();
+            unset($array['password']);
+            $form->setData($array);
         }
         if($request->isPost()){
             $form->setData($request->getPost());

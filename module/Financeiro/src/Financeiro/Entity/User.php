@@ -8,10 +8,9 @@ use Financeiro\Entity\Ativo;
 
 /**
  * User
- *
+ * @ORM\Entity
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="username_UNIQUE", columns={"username"})}, indexes={@ORM\Index(name="fk_user_restricao1_idx", columns={"ativo_id"})})
  * @ORM\Entity(repositoryClass="Financeiro\Entity\UserRepository")
- * @ORM\Entity
  */
 class User
 {
@@ -22,49 +21,49 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=16, nullable=false)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=32, nullable=false)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="salt", type="string", length=255, nullable=false)
      */
-    private $salt;
+    protected $salt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telefone", type="string", length=11, nullable=true)
      */
-    private $telefone;
+    protected $telefone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="celular", type="string", length=11, nullable=true)
      */
-    private $celular;
+    protected $celular;
 
     /**
      * @var Ativo
@@ -74,10 +73,10 @@ class User
      *   @ORM\JoinColumn(name="ativo_id", referencedColumnName="id")
      * })
      */
-    private $ativo;
+    protected $ativo;
 
     public function __construct($options = null) {
-        Configurator::configure($this, $options);       
+        Configurator::configure($this, $options);
     }
     
     public function getId() {
@@ -118,32 +117,49 @@ class User
 
     public function setUsername($username) {
         $this->username = $username;
+        return $this;
     }
 
     public function setEmail($email) {
         $this->email = $email;
+        return $this;
     }
 
     public function setPassword($password) {
-        $this->password = $password;
+        if ($this->salt == NULL){
+            $this->salt = base_convert(sha1(uniqid(mt_rand(),true)), 16, 36);
+        }
+        $this->password = $this->encryptedPassword($password);
+        return $this;
     }
-
-    public function setSalt($salt) {
-        $this->salt = $salt;
+    
+    public function encryptedPassword($password){
+        $hashSenha = hash('sha512', $password.$this->salt);
+        for($i=0;$i<64000;$i++){
+            $hashSenha = hash ('sha512', $hashSenha);
+        }
+        return $hashSenha;
     }
 
     public function setTelefone($telefone) {
         $this->telefone = $telefone;
+        return $this;
     }
 
     public function setCelular($celular) {
         $this->celular = $celular;
+        return $this;
     }
 
     public function setAtivo(Ativo $ativo) {
         $this->ativo = $ativo;
+        return $this;
     }
-
+    public function setSalt($salt) {
+        $this->salt = $salt;
+        return $this;
+    }
+    
     public function toArray(){
         return array(
             'id'=>$this->getId(),

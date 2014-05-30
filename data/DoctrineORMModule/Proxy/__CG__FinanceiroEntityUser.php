@@ -64,10 +64,10 @@ class User extends \Financeiro\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'salt', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'telefone', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'celular', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'ativo');
+            return array('__isInitialized__', 'id', 'username', 'email', 'password', 'salt', 'telefone', 'celular', 'ativo');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'salt', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'telefone', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'celular', '' . "\0" . 'Financeiro\\Entity\\User' . "\0" . 'ativo');
+        return array('__isInitialized__', 'id', 'username', 'email', 'password', 'salt', 'telefone', 'celular', 'ativo');
     }
 
     /**
@@ -312,12 +312,12 @@ class User extends \Financeiro\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setSalt($salt)
+    public function encryptedPassword($password)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSalt', array($salt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'encryptedPassword', array($password));
 
-        return parent::setSalt($salt);
+        return parent::encryptedPassword($password);
     }
 
     /**
@@ -351,6 +351,17 @@ class User extends \Financeiro\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAtivo', array($ativo));
 
         return parent::setAtivo($ativo);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSalt($salt)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSalt', array($salt));
+
+        return parent::setSalt($salt);
     }
 
     /**

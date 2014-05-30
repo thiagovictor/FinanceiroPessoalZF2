@@ -1,0 +1,26 @@
+<h3>Autenticação</h3>
+<br />
+<?php if($this->error):?>
+    Usuário ou senha invalido
+<?php endif;?>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('Financeiro',array('controller'=>'auth','action' => 'index')));
+$form->prepare();
+?>
+
+<?php echo $this->form()->openTag($form);?>
+<div class="input-prepend input-append">
+    <span class="add-on">Email</span>
+    <?php echo $this->formRow($form->get('email'))."<br /><br />";?>
+</div>
+<div class="input-prepend input-append">
+    <span class="add-on">Senha</span>
+    <?php echo $this->formRow($form->get('password'))."<br /><br />";?>
+</div>
+<?php echo $this->formSubmit($form->get('submit'));?>
+<?php echo $this->form()->closeTag();?>
+
+
+
+        

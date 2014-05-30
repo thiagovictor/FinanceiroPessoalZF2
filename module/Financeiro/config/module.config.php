@@ -31,6 +31,7 @@ return array(
             'cartegoria' =>  'Financeiro\Controller\CartegoriaController',
             'ativo' =>  'Financeiro\Controller\AtivoController',
             'user' =>  'Financeiro\Controller\UserController',
+            'auth' => 'Financeiro\Controller\AuthController',
         ),
     ),
     'view_manager' => array(
