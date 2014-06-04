@@ -6,9 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Acoes
- *
- * @ORM\Table(name="acoes", indexes={@ORM\Index(name="fk_acoes_controlador1_idx", columns={"controlador_id"})})
+ * 
  * @ORM\Entity
+ * @ORM\Table(name="acoes", indexes={@ORM\Index(name="fk_acoes_controlador1_idx", columns={"controlador_id"})})
+ * @ORM\Entity(repositoryClass="Financeiro\Entity\AcoesRepository")
  */
 class Acoes
 {
@@ -36,14 +37,63 @@ class Acoes
     private $descricao;
 
     /**
-     * @var \Controlador
+     * @var Controlador
      *
-     * @ORM\ManyToOne(targetEntity="Controlador")
+     * @ORM\ManyToOne(targetEntity="Controlador", inversedBy="Acoes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="controlador_id", referencedColumnName="id")
      * })
      */
     private $controlador;
+
+    public function __construct($options = null) {
+        Configurator::configure($this, $options);
+    }
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function getDescricao() {
+        return $this->descricao;
+    }
+
+    public function getControlador() {
+        return $this->controlador;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function setNome($nome) {
+        $this->nome = $nome;
+        return $this;
+    }
+
+    public function setDescricao($descricao) {
+        $this->descricao = $descricao;
+        return $this;
+    }
+
+    public function setControlador(Controlador $controlador) {
+        $this->controlador = $controlador;
+        return $this;
+    }
+    
+    public function toArray(){
+        return array(
+            'id' => $this->getId(),
+            'nome' => $this->getNome(),
+            'descricao' => $this->getDescricao(),
+            'controlador' => $this->getControlador(),
+        );
+    }
 
 
 }

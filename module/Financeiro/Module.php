@@ -8,9 +8,11 @@ use Financeiro\Services\Centrocusto;
 use Financeiro\Services\Cartegoria;
 use Financeiro\Services\Ativo;
 use Financeiro\Services\User;
+use Financeiro\Services\Acoes;
 use Financeiro\Auth\Adapter;
 use Financeiro\Form\CartegoriaForm;
 use Financeiro\Form\UserForm;
+use Financeiro\Form\AcoesForm;
 use Financeiro\Services\Controlador;
 use Zend\ModuleManager\ModuleManager;
 
@@ -66,6 +68,9 @@ class Module
                 'Financeiro\Services\User' => function($service){
                     return new User($service->get('Doctrine\ORM\EntityManager'));
                 },
+                'Financeiro\Services\Acoes' => function($service){
+                    return new Acoes($service->get('Doctrine\ORM\EntityManager'));
+                },
                 'Financeiro\Auth\Adapter' => function($service){
                     return new Adapter($service->get('Doctrine\ORM\EntityManager'));
                 },
@@ -83,6 +88,12 @@ class Module
                     $repository = $entityManager->getRepository('Financeiro\Entity\Ativo');
                     $arrayativo = $repository->fatchPairs();
                     return new UserForm($arrayativo);
+                },
+                'Financeiro\Form\AcoesForm' => function($service){
+                    $entityManager = $service->get('Doctrine\ORM\EntityManager');
+                    $repository = $entityManager->getRepository('Financeiro\Entity\Controlador');
+                    $arraycontrollers = $repository->fatchPairs();
+                    return new AcoesForm($arraycontrollers);
                 }
             )
         );

@@ -52,6 +52,7 @@ return array(
             'user' =>  'Financeiro\Controller\UserController',
             'auth' => 'Financeiro\Controller\AuthController',
             'modulos' => 'Financeiro\Controller\ControladorController',
+            'acoes' => 'Financeiro\Controller\AcoesController',
         ),
     ),
     'view_manager' => array(

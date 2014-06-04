@@ -3,8 +3,6 @@
 namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Financeiro\Entity\Ativo;
-
 
 /**
  * User
