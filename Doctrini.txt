@@ -1,3 +1,1 @@
-c:\php\www\FinanceiroPessoal>vendor\bin\doctrine-module orm:convert:mapping --fi
-lter "FCentrocusto" --from-database annotation module/CentroCusto/src/CentroCust
-o/Entity/
+c:\php\www\FinanceiroPessoal>vendor\bin\doctrine-module orm:convert:mapping --filter "Controlador" --from-database annotation module/Financeiro/src/FinanceiroAdmin/Entity/

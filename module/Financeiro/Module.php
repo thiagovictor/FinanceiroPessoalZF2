@@ -1,11 +1,4 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Financeiro;
 
@@ -18,6 +11,8 @@ use Financeiro\Services\User;
 use Financeiro\Auth\Adapter;
 use Financeiro\Form\CartegoriaForm;
 use Financeiro\Form\UserForm;
+use Financeiro\Services\Controlador;
+use Zend\ModuleManager\ModuleManager;
 
 class Module
 {
@@ -43,6 +38,18 @@ class Module
             ),
         );
     }
+    
+    public function init(ModuleManager $moduleManager) {
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
+        $sharedEvents->attach("Financeiro", 'dispatch', function($e) {
+           $controller = $e->getTarget();
+           //=> echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getParams()['controller']."<br>";
+           //=> echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getParams()['action'];
+            //echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getMatchedRouteName();
+            //var_dump($controller->getEvent()->getRouteMatch());
+               // return $controller->redirect()->toRoute('livraria-admin-auth');
+        }, 99);
+    }
     public function getServiceConfig()
     {
         return array(
@@ -61,6 +68,9 @@ class Module
                 },
                 'Financeiro\Auth\Adapter' => function($service){
                     return new Adapter($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Services\Controlador' => function($service){
+                    return new Controlador($service->get('Doctrine\ORM\EntityManager'));
                 },
                 'Financeiro\Form\CartegoriaForm' => function($service){
                     $entityManager = $service->get('Doctrine\ORM\EntityManager');

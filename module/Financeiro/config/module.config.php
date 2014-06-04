@@ -7,6 +7,15 @@ return array(
             'Financeiro-edit' => array(
                 'type' => 'segment',
                 'options' => array(
+                    'route'    => '/user/[:controller[/:action][/:id]]',
+                    'constraints' => array (
+                        'id' =>'[0-9]+'
+                    ),
+                ),
+            ),
+            'FinanceiroAdmin-edit' => array(
+                'type' => 'segment',
+                'options' => array(
                     'route'    => '/admin/[:controller[/:action][/:id]]',
                     'constraints' => array (
                         'id' =>'[0-9]+'
@@ -14,6 +23,16 @@ return array(
                 ),
             ),
             'Financeiro' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route'    => '/user/[:controller[/:action][/page/:page]]',
+                    'defaults' => array(
+                        'action'     => 'index',
+                        'page' => 1
+                    ),
+                ),
+            ),
+            'FinanceiroAdmin' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route'    => '/admin/[:controller[/:action][/page/:page]]',
@@ -32,6 +51,7 @@ return array(
             'ativo' =>  'Financeiro\Controller\AtivoController',
             'user' =>  'Financeiro\Controller\UserController',
             'auth' => 'Financeiro\Controller\AuthController',
+            'modulos' => 'Financeiro\Controller\ControladorController',
         ),
     ),
     'view_manager' => array(
