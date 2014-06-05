@@ -16,6 +16,10 @@ use Financeiro\Form\AcoesForm;
 use Financeiro\Services\Controlador;
 use Zend\ModuleManager\ModuleManager;
 
+use Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Storage\Session;
+
+
 class Module
 {
     public function onBootstrap(MvcEvent $e)
@@ -45,11 +49,21 @@ class Module
         $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
         $sharedEvents->attach("Financeiro", 'dispatch', function($e) {
            $controller = $e->getTarget();
+           $auth = new AuthenticationService;
+           $auth->setStorage(new Session("Financeiro"));
+                if(!$auth->hasIdentity())
+                {
+                    if($controller->getEvent()->getRouteMatch()->getParams()['controller'] !== 'auth'){
+                         return $controller->redirect()->toRoute('FinanceiroAdmin' , array('controller'=>'auth'));
+                    }
+                }else
+                {
+                //echo $auth->getIdentity()->getId();
+                }
+           
            //=> echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getParams()['controller']."<br>";
            //=> echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getParams()['action'];
-            //echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getMatchedRouteName();
-            //var_dump($controller->getEvent()->getRouteMatch());
-               // return $controller->redirect()->toRoute('livraria-admin-auth');
+          
         }, 99);
     }
     public function getServiceConfig()

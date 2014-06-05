@@ -3,8 +3,6 @@
 namespace Financeiro\Controller;
 
 use Zend\View\Model\ViewModel;
-use Zend\Paginator\Paginator;
-use Zend\Paginator\Adapter\ArrayAdapter;
 
 class AcoesController extends AbstractCrudController
 {
@@ -14,21 +12,8 @@ class AcoesController extends AbstractCrudController
         $this->service = 'Financeiro\Services\Acoes';
         $this->controller = 'acoes';
         $this->form = 'Financeiro\Form\AcoesForm';
-    }
-     public function indexAction()
-    {
-        
-        $repo = $this->getEM()->getRepository($this->entity);
-        $lista = $repo->findBy( array(), array('controlador' => 'ASC') );
-        
-        $count = 12;
-        $page = $this->params()->fromRoute('page');
-        $paginator = new Paginator(new ArrayAdapter($lista));
-        $paginator->setCurrentPageNumber($page);
-        $paginator->setDefaultItemCountPerPage($count);
-        return new ViewModel(array('lista' => $paginator, 'page'=>$page));
-    }
-    
+        $this->orderby = array('controlador' => 'ASC');
+    }  
     public function newAction()
     {   
         $form = $this->getServiceLocator()->get($this->form);

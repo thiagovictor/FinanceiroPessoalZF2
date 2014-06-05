@@ -20,13 +20,23 @@ abstract class AbstractCrudController extends AbstractActionController
     protected $form;
     protected $controller;
     protected $route;
-    
+    protected $where = null;
+    protected $orderby = null;
+
+
     public function indexAction()
     {
         
         $repo = $this->getEM()->getRepository($this->entity);
-        $lista = $repo->findAll();
-        
+        if(null != $this->where and null != $this->orderby){
+            $lista = $repo->findBy($this->where,$this->orderby);
+        }elseif(null != $this->where){
+            $lista = $repo->findBy($this->where,array());
+        }elseif(null != $this->orderby){
+            $lista = $repo->findBy(array(),$this->orderby);
+        }else{
+            $lista = $repo->findAll();
+        }
         $count = 12;
         $page = $this->params()->fromRoute('page');
         $paginator = new Paginator(new ArrayAdapter($lista));

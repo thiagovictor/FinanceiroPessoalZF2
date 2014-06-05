@@ -2,17 +2,23 @@
 
 namespace Financeiro\Controller;
 use Zend\View\Model\ViewModel;
+use Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Storage\Session;
 
 
 class CartegoriaController extends AbstractCrudController
 {
     public function __construct() {
+        $auth = new AuthenticationService;
+        $auth->setStorage(new Session("Financeiro")); 
         $this->entity = 'Financeiro\Entity\Cartegoria';
         $this->route = 'Financeiro';
         $this->service = 'Financeiro\Services\Cartegoria';
         $this->controller = 'cartegoria';
         $this->form = 'Financeiro\Form\CartegoriaForm';
+        $this->where = array('user'=>$auth->getIdentity()->getId());
     }
+    
     public function newAction()
     {   
         $form = $this->getServiceLocator()->get($this->form);

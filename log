@@ -85,3 +85,13 @@ Stack trace:
 [04-Jun-2014 18:09:27 America/Sao_Paulo] PHP Catchable fatal error:  Argument 1 passed to Financeiro\Entity\Acoes::setControlador() must be an instance of Financeiro\Entity\Controlador, instance of DoctrineORMModule\Proxy\__CG__\Financeiro\Entity\Acoes given in C:\php\www\FinanceiroPessoal\module\Financeiro\src\Financeiro\Entity\Acoes.php on line 84
 [04-Jun-2014 18:28:15 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\Controller\Paginator' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\src\Financeiro\Controller\AcoesController.php on line 24
 [04-Jun-2014 18:29:05 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\Controller\ArrayAdapter' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\src\Financeiro\Controller\AcoesController.php on line 25
+[05-Jun-2014 14:52:46 America/Sao_Paulo] PHP Catchable fatal error:  Object of class Financeiro\Entity\User could not be converted to string in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 54
+[05-Jun-2014 15:23:48 America/Sao_Paulo] PHP Fatal error:  Call to a member function getId() on a non-object in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 54
+[05-Jun-2014 15:24:04 America/Sao_Paulo] PHP Fatal error:  Call to a member function getUsername() on a non-object in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 54
+[05-Jun-2014 15:24:53 America/Sao_Paulo] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 54
+[05-Jun-2014 15:25:30 America/Sao_Paulo] PHP Fatal error:  Call to a member function getUsername() on a non-object in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 54
+[05-Jun-2014 15:26:03 America/Sao_Paulo] PHP Fatal error:  Call to a member function getUsername() on a non-object in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 55
+[05-Jun-2014 15:26:05 America/Sao_Paulo] PHP Fatal error:  Call to a member function getUsername() on a non-object in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 55
+[05-Jun-2014 15:26:24 America/Sao_Paulo] PHP Fatal error:  Call to a member function getUsername() on a non-object in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 55
+[05-Jun-2014 15:37:55 America/Sao_Paulo] PHP Fatal error:  Call to undefined method Financeiro\Module::redirect() in C:\php\www\FinanceiroPessoal\module\Financeiro\Module.php on line 55
+[05-Jun-2014 16:27:59 America/Sao_Paulo] PHP Fatal error:  Class 'Financeiro\Controller\SessionStorage' not found in C:\php\www\FinanceiroPessoal\module\Financeiro\src\Financeiro\Controller\AuthController.php on line 43

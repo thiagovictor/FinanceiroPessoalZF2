@@ -3,6 +3,8 @@
 namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
+use Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Storage\Session;
 
 class Centrocusto extends AbstractService{
     public function __construct(EntityManager $entityManager) {
@@ -12,7 +14,9 @@ class Centrocusto extends AbstractService{
     }
     
     public function inserir(array $data) {
-        $user = $this->entityManager->getReference('Financeiro\Entity\User', 1);//VALOR 1 SOMENTE PARA TESTES
+        $auth = new AuthenticationService;
+        $auth->setStorage(new Session("Financeiro")); 
+        $user = $this->entityManager->getReference('Financeiro\Entity\User', $auth->getIdentity()->getId());
         $data['user'] = $user;
         $entity = new $this->entity($data);                                                 
         $this->entityManager->persist($entity);
