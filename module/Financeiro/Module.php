@@ -9,11 +9,13 @@ use Financeiro\Services\Cartegoria;
 use Financeiro\Services\Ativo;
 use Financeiro\Services\User;
 use Financeiro\Services\Acoes;
+use Financeiro\Services\Permissao;
+use Financeiro\Services\Controlador;
 use Financeiro\Auth\Adapter;
 use Financeiro\Form\CartegoriaForm;
 use Financeiro\Form\UserForm;
 use Financeiro\Form\AcoesForm;
-use Financeiro\Services\Controlador;
+use Financeiro\Form\PermissaoForm;
 use Zend\ModuleManager\ModuleManager;
 
 use Zend\Authentication\AuthenticationService,
@@ -58,12 +60,10 @@ class Module
                     }
                 }else
                 {
-                //echo $auth->getIdentity()->getId();
+                    //echo $auth->getIdentity()->getId();
+                    //=> echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getParams()['controller']."<br>";
+                    //=> echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getParams()['action'];
                 }
-           
-           //=> echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getParams()['controller']."<br>";
-           //=> echo $matchedRoute = $controller->getEvent()->getRouteMatch()->getParams()['action'];
-          
         }, 99);
     }
     public function getServiceConfig()
@@ -91,6 +91,9 @@ class Module
                 'Financeiro\Services\Controlador' => function($service){
                     return new Controlador($service->get('Doctrine\ORM\EntityManager'));
                 },
+                'Financeiro\Services\Permissao' => function($service){
+                    return new Permissao($service->get('Doctrine\ORM\EntityManager'));
+                },
                 'Financeiro\Form\CartegoriaForm' => function($service){
                     $entityManager = $service->get('Doctrine\ORM\EntityManager');
                     $repository = $entityManager->getRepository('Financeiro\Entity\Centrocusto');
@@ -108,6 +111,20 @@ class Module
                     $repository = $entityManager->getRepository('Financeiro\Entity\Controlador');
                     $arraycontrollers = $repository->fatchPairs();
                     return new AcoesForm($arraycontrollers);
+                },
+                'Financeiro\Form\PermissaoForm' => function($service){
+                    $entityManager = $service->get('Doctrine\ORM\EntityManager');
+                    
+                    $controllers = $entityManager->getRepository('Financeiro\Entity\Controlador');
+                    $arraycontrollers = $controllers->fatchPairs();
+                    
+                    $users = $entityManager->getRepository('Financeiro\Entity\User');
+                    $arrayusers = $users->fatchPairs();
+                    
+                    $acoes = $entityManager->getRepository('Financeiro\Entity\Acoes');
+                    $arrayacoes = $acoes->fatchPairs();
+                    
+                    return new PermissaoForm($arrayusers, $arraycontrollers, $arrayacoes);
                 }
             )
         );

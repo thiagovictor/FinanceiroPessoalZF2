@@ -1,1 +1,1 @@
-c:\php\www\FinanceiroPessoal>vendor\bin\doctrine-module orm:convert:mapping --filter "Controlador" --from-database annotation module/Financeiro/src/FinanceiroAdmin/Entity/
+c:\php\www\FinanceiroPessoal>vendor\bin\doctrine-module orm:convert:mapping --filter "Permissao" --from-database annotation module/Financeiro/src/Financeiro/Entity/
