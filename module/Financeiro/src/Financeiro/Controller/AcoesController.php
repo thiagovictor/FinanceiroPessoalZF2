@@ -14,6 +14,23 @@ class AcoesController extends AbstractCrudController
         $this->form = 'Financeiro\Form\AcoesForm';
         $this->orderby = array('controlador' => 'ASC');
     }  
+    
+    public function listacoesAction()
+    {
+        $repo = $this->getEM()->getRepository($this->entity);
+        $request = $this->getRequest();
+        if($request->isPost()){
+           $id = $request->getPost()["controlador"];
+        }else{
+            $id = 0;
+        }
+        $lista = $repo->findBy(array('controlador'=>$id),array('descricao'=>'ASC'));
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(true);
+        $viewModel->setVariables(array('lista' => $lista));
+        return $viewModel;
+    }
+    
     public function newAction()
     {   
         $form = $this->getServiceLocator()->get($this->form);

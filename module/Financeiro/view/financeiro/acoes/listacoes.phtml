@@ -1,0 +1,6 @@
+<option value=""><?php echo htmlentities('Selecione a cartegoria')?></option> 
+<?php foreach ($this->lista as $lista):?>
+    
+    <option value="<?php echo $lista->getId()?>"><?php echo htmlentities($lista->getNome())?></option>
+
+  <?php endforeach;

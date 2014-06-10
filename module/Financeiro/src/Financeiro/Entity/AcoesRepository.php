@@ -14,5 +14,13 @@ class AcoesRepository extends EntityRepository {
         }
         return $array;
     }
+    /*public function fatchCombo(array $arrayControlador) {
+        $entities = $this->findBy($arrayControlador,array());
+        $array = array();
+        foreach ($entities as $entity) {
+            $array[$entity->getId()] = $entity->getNome();
+        }
+        return $array;
+    }*/
 
 }

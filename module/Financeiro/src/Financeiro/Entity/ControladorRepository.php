@@ -13,4 +13,13 @@ class ControladorRepository extends EntityRepository{
         }
         return $array;
     }
+    public function fatchCombo() {
+        $entities = $this->findAll();
+        $array = array();
+        $array[0] ='Selecione o módulo';
+        foreach ($entities as $entity ){
+            $array[$entity->getId()] = $entity->getNome();
+        }
+        return $array;
+    }
 }

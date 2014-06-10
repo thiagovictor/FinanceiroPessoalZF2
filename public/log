@@ -1,0 +1,2 @@
+[10-Jun-2014 19:21:22 America/Sao_Paulo] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\php\www\FinanceiroPessoalZF2\vendor\zendframework\zendframework\library\Zend\Session\SessionManager.php on line 163
+[10-Jun-2014 19:23:07 America/Sao_Paulo] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\php\www\FinanceiroPessoalZF2\vendor\zendframework\zendframework\library\Zend\Session\SessionManager.php on line 163
