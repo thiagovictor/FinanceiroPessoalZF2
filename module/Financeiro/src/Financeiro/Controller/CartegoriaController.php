@@ -11,12 +11,17 @@ class CartegoriaController extends AbstractCrudController
     public function __construct() {
         $auth = new AuthenticationService;
         $auth->setStorage(new Session("Financeiro")); 
+        if ($auth->hasIdentity()){
+            $this->where = array('user'=>$auth->getIdentity()->getId());
+        }else{
+            $this->where = array('user'=>0);
+        }
         $this->entity = 'Financeiro\Entity\Cartegoria';
         $this->route = 'Financeiro';
         $this->service = 'Financeiro\Services\Cartegoria';
         $this->controller = 'cartegoria';
         $this->form = 'Financeiro\Form\CartegoriaForm';
-        $this->where = array('user'=>$auth->getIdentity()->getId());
+        
     }
     
     public function newAction()
