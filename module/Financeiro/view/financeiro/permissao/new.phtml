@@ -13,6 +13,17 @@ $protocolo = (strpos(strtolower(filter_input(INPUT_SERVER, 'SERVER_PROTOCOL')), 
             );
         });
     });
+    $(document).ready(function() {
+        $("select[name=controlador]").after(function() {
+            $("select[name=acoes]").html('<option value="">Carregando...</option>');
+            $.post("<?php echo $protocolo . '://' . filter_input(INPUT_SERVER, 'HTTP_HOST') . $this->url('FinanceiroAdmin', array('controller' => 'acoes', 'action' => 'listacoes')) ?>",
+                    {controlador: $(this).val()},
+            function(valor) {
+                $("select[name=acoes]").html(valor);
+            }
+            );
+        });
+    });
 </script>
 <h3>Permissões</h3>
 <br />

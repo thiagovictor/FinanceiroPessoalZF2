@@ -1,7 +1,13 @@
-<option value=""><?php echo htmlentities('Selecione a cartegoria') ?></option> 
+<?php if($idAcoes === false) :?>
+<option value=""><?php echo htmlentities('Selecione a ação') ?></option> 
+<?php endif;?>
+
 <?php foreach ($this->lista as $lista): ?>
-
-    <option value="<?php echo $lista->getId() ?>"><?php echo htmlentities($lista->getNome()) ?></option>
-
-<?php
-endforeach;
+    
+    <?php if($idAcoes == $lista->getId()) :?>
+        <option value="<?php echo $lista->getId() ?>" selected="selected"><?php echo htmlentities($lista->getNome()) ?></option>
+    <?php else :?>
+        <option value="<?php echo $lista->getId() ?>"><?php echo htmlentities($lista->getNome()) ?></option>
+    <?php endif;?>
+        
+<?php endforeach;

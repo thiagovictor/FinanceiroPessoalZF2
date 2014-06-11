@@ -34,13 +34,15 @@ class AcoesController extends AbstractCrudController {
         $request = $this->getRequest();
         if ($request->isPost()) {
             $id = $request->getPost()["controlador"];
+            $idAcoes = $request->getPost()["acoes"];
         } else {
             $id = 0;
+            $idAcoes = 0;
         }
         $lista = $repo->findBy(array('controlador' => $id), array('descricao' => 'ASC'));
         $viewModel = new ViewModel();
         $viewModel->setTerminal(true);
-        $viewModel->setVariables(array('lista' => $lista));
+        $viewModel->setVariables(array('lista' => $lista,'idAcoes'=>$idAcoes));
         return $viewModel;
     }
 

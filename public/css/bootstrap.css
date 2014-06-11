@@ -1681,6 +1681,7 @@ select:focus:invalid:focus {
 .input-prepend input,
 .input-append select,
 .input-prepend select,
+.input-prepend li,
 .input-append .uneditable-input,
 .input-prepend .uneditable-input,
 .input-append .dropdown-menu,
