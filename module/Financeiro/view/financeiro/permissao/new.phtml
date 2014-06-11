@@ -5,7 +5,7 @@ $protocolo = (strpos(strtolower(filter_input(INPUT_SERVER, 'SERVER_PROTOCOL')), 
     $(document).ready(function() {
         $("select[name=controlador]").change(function() {
             $("select[name=acoes]").html('<option value="">Carregando...</option>');
-            $.post("<?php echo $protocolo.'://'.filter_input(INPUT_SERVER, 'HTTP_HOST').$this->url('FinanceiroAdmin',array('controller'=>'acoes','action' => 'listacoes'))?>",
+            $.post("<?php echo $protocolo . '://' . filter_input(INPUT_SERVER, 'HTTP_HOST') . $this->url('FinanceiroAdmin', array('controller' => 'acoes', 'action' => 'listacoes')) ?>",
                     {controlador: $(this).val()},
             function(valor) {
                 $("select[name=acoes]").html(valor);
@@ -19,26 +19,29 @@ $protocolo = (strpos(strtolower(filter_input(INPUT_SERVER, 'SERVER_PROTOCOL')), 
 
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('FinanceiroAdmin',array('controller'=>'permissoes','action' => 'new')));
+$form->setAttribute('action', $this->url('FinanceiroAdmin', array('controller' => 'permissoes', 'action' => 'new')));
 $form->prepare();
 ?>
 
-<?php echo $this->form()->openTag($form);?>
-<?php echo $this->formHidden($form->get('id'));?>
+<?php echo $this->form()->openTag($form); ?>
+<?php echo $this->formHidden($form->get('id')); ?>
 
 <div class="input-prepend input-append">
     <span class="add-on">Usuários</span>
-    <?php echo $this->formRow($form->get('user'))."<br /><br />";?>
+    <?php echo $this->formRow($form->get('user')) . "<br /><br />"; ?>
 </div>
 <div class="input-prepend input-append">
     <span class="add-on">Módulos</span>
-    <?php echo $this->formRow($form->get('controlador'))."<br /><br />";?>
+    <?php echo $this->formRow($form->get('controlador')) . "<br /><br />"; ?>
 </div>
 <div class="input-prepend input-append">
     <span class="add-on">Ações</span>
-    <?php echo $this->formRow($form->get('acoes'))."<br /><br />";?>
+    <?php echo $this->formRow($form->get('acoes')) . "<br /><br />"; ?>
 </div>
 
 
-<?php echo $this->formSubmit($form->get('submit'));?>
-<?php echo $this->form()->closeTag();?>
+<?php echo $this->formSubmit($form->get('submit')); ?>
+<?php echo $this->form()->closeTag(); ?>
+
+
+

@@ -116,7 +116,7 @@ class Module
                     $entityManager = $service->get('Doctrine\ORM\EntityManager');
                     
                     $controllers = $entityManager->getRepository('Financeiro\Entity\Controlador');
-                    $arraycontrollers = $controllers->fatchCombo();
+                    $arraycontrollers = $controllers->fatchPairs();
                     
                     $users = $entityManager->getRepository('Financeiro\Entity\User');
                     $arrayusers = $users->fatchPairs();
@@ -124,7 +124,6 @@ class Module
                     $acoes = $entityManager->getRepository('Financeiro\Entity\Acoes');
                     $arrayacoes = $acoes->fatchPairs();
                     
-                    //$arrayacoes = array('0'=>'Aguardando o módulo');
                     return new PermissaoForm($arrayusers, $arraycontrollers, $arrayacoes);
                 }
             )
