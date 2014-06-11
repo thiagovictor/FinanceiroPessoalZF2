@@ -2,4 +2,6 @@
 .composer
 composer
 zendframework
+symfony
+doctrine
 autoload.php
