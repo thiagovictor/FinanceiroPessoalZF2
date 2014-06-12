@@ -17,7 +17,7 @@ class UserForm extends Form{
     }
     public function params(){
         $this->setAttribute('method', 'post');
-        //$this->setInputFilter(new CartegoriaFilter);
+        $this->setInputFilter(new UserFilter);
         $this->setName('user');
         
         $this->add(array(

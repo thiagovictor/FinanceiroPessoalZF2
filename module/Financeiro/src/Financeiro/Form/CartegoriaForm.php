@@ -17,7 +17,7 @@ class CartegoriaForm extends Form{
     }
     public function params(){
         $this->setAttribute('method', 'post');
-        //$this->setInputFilter(new CartegoriaFilter);
+        $this->setInputFilter(new CartegoriaFilter);
         $this->setName('Cartegoria');
         
         $this->add(array(

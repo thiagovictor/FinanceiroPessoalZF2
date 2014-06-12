@@ -5,10 +5,10 @@ namespace Financeiro\Form;
 
 use Zend\InputFilter\InputFilter;
 
-class CentrocustoFilter extends InputFilter{
+class UserFilter extends InputFilter{
     public function __construct() {
         $this->add(array(
-           'name' => 'descricao',
+           'name' => 'username',
             'required' => true,
             'filters' => array(
                 array('name'=>'StripTags'),
@@ -18,11 +18,10 @@ class CentrocustoFilter extends InputFilter{
                 array(
                     'name' => 'NotEmpty',
                     'options'=>array(
-                        'messages' => array('isEmpty'=>'Nome do Centro de Custo não pode estar em branco'),
+                        'messages' => array('isEmpty'=>'Nome do usuário não pode estar em branco'),
                     )
                 )
             )
         ));
-    }
-    
+    }  
 }

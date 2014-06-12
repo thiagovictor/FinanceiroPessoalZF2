@@ -5,7 +5,7 @@ namespace Financeiro\Form;
 
 use Zend\InputFilter\InputFilter;
 
-class CentrocustoFilter extends InputFilter{
+class CartegoriaFilter extends InputFilter{
     public function __construct() {
         $this->add(array(
            'name' => 'descricao',
@@ -18,7 +18,7 @@ class CentrocustoFilter extends InputFilter{
                 array(
                     'name' => 'NotEmpty',
                     'options'=>array(
-                        'messages' => array('isEmpty'=>'Nome do Centro de Custo não pode estar em branco'),
+                        'messages' => array('isEmpty'=>'Nome da cartegoria não pode estar em branco'),
                     )
                 )
             )

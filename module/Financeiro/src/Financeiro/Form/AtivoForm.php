@@ -17,7 +17,7 @@ class AtivoForm extends Form{
     }
     public function params(){
         $this->setAttribute('method', 'post');
-        //$this->setInputFilter(new AtivoFilter);
+        $this->setInputFilter(new AtivoFilter);
         $this->setName('Ativo');
         
         $this->add(array(
@@ -36,7 +36,7 @@ class AtivoForm extends Form{
             ),
             'attributes' => array(
                 'id' => 'nome',
-                'placeholder' => 'Entre com o nome'
+                'placeholder' => 'Entre com o nome do status'
             )
         ));
         
