@@ -9,6 +9,7 @@ use Financeiro\Services\Cartegoria;
 use Financeiro\Services\Ativo;
 use Financeiro\Services\User;
 use Financeiro\Services\Acoes;
+use Financeiro\Services\Conta;
 use Financeiro\Services\Permissao;
 use Financeiro\Services\Controlador;
 use Financeiro\Auth\Adapter;
@@ -25,7 +26,7 @@ use Zend\Authentication\AuthenticationService,
 class Module
 {
     public function onBootstrap(MvcEvent $e)
-    {
+    {    
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
@@ -84,6 +85,9 @@ class Module
                 },
                 'Financeiro\Services\Acoes' => function($service){
                     return new Acoes($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Services\Conta' => function($service){
+                    return new Conta($service->get('Doctrine\ORM\EntityManager'));
                 },
                 'Financeiro\Auth\Adapter' => function($service){
                     return new Adapter($service->get('Doctrine\ORM\EntityManager'));

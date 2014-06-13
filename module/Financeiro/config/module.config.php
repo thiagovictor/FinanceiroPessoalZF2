@@ -54,6 +54,7 @@ return array(
             'modulos' => 'Financeiro\Controller\ControladorController',
             'acoes' => 'Financeiro\Controller\AcoesController',
             'permissoes' => 'Financeiro\Controller\PermissaoController',
+            'contas'=> 'Financeiro\Controller\ContaController',
         ),
     ),
     'view_manager' => array(
