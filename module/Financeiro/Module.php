@@ -11,6 +11,7 @@ use Financeiro\Services\User;
 use Financeiro\Services\Acoes;
 use Financeiro\Services\Conta;
 use Financeiro\Services\Favorecido;
+use Financeiro\Services\Cartao;
 use Financeiro\Services\Permissao;
 use Financeiro\Services\Controlador;
 use Financeiro\Auth\Adapter;
@@ -92,6 +93,9 @@ class Module
                 },
                 'Financeiro\Services\Favorecido' => function($service){
                     return new Favorecido($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Services\Cartao' => function($service){
+                    return new Cartao($service->get('Doctrine\ORM\EntityManager'));
                 },
                 'Financeiro\Auth\Adapter' => function($service){
                     return new Adapter($service->get('Doctrine\ORM\EntityManager'));
