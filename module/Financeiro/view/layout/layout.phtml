@@ -44,7 +44,9 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-
+                                    <li>
+                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'auth')); ?>">Autenticar</a>
+                                    </li>
                                     <li>
                                         <a href="<?php echo $this->url('Financeiro', array('controller' => 'centrocusto')); ?>">Centro de Custo</a>
                                     </li>
@@ -55,7 +57,7 @@
                                         <a href="<?php echo $this->url('Financeiro', array('controller' => 'contas')); ?>">Conta</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'auth')); ?>">Autenticar</a>
+                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'favorecido')); ?>">Favorecido/Pagador</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo $this->url('Financeiro', array('controller' => 'ativo')); ?>">Status (Admin)</a>
