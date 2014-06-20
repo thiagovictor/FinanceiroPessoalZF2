@@ -1,11 +1,9 @@
-<h3>Editar Cartão</h3>
+<h3>Novo período</h3>
 <br />
+
 <?php
-
 $form = $this->form;
-
-$form->setAttribute('action', $this->url('Financeiro-edit',array('controller'=>'cartoes','action' => 'edit')));
-
+$form->setAttribute('action', $this->url('FinanceiroAdmin',array('controller'=>'periodos','action' => 'new')));
 $form->prepare();
 ?>
 
@@ -15,10 +13,9 @@ $form->prepare();
     <span class="add-on">Nome</span>
     <?php echo $this->formRow($form->get('descricao'))."<br /><br />";?>
 </div>
-<div class="input-prepend input-append">
-    <span class="add-on">Vencimento</span>
-    <?php echo $this->formRow($form->get('vencimento'))."<br /><br />";?>
-</div>
 <?php echo $this->formSubmit($form->get('submit'));?>
 <?php echo $this->form()->closeTag();?>
 
+
+
+        

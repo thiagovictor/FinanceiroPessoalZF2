@@ -1,0 +1,27 @@
+
+    <h3>Períodos</h3>
+    <a href="<?php echo $this->url('FinanceiroAdmin',array('controller' => 'periodos', 'action' => 'new')); ?>"><img src="<?php echo $this->basePath('img/add.png') ?>" alt="Adicionar novo período"/>&nbsp;Adicionar</a><br><br>
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Descrição</td>
+                <td>Ações</td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->lista as $lista):?>
+            <tr>
+                <td><?php echo $lista->getId();?></td>
+                <td><?php echo $lista->getDescricao();?></td>
+                <td>
+                    <a href="<?php echo $this->url('FinanceiroAdmin-edit',array ('controller' => 'periodos', 'action' => 'edit', 'id' => $lista->getId()));?>"><img src="<?php echo $this->basePath('img/alterar.png') ?>" alt="Editar período"/></a>&nbsp;&nbsp;&nbsp;
+                    <a href="<?php echo $this->url('FinanceiroAdmin-edit',array ('controller' => 'periodos', 'action' => 'delete', 'id' => $lista->getId()));?>"><img src="<?php echo $this->basePath('img/excluir.png') ?>" alt="Remover período"/></a>
+                </td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+    <br />
+    <?php 
+    echo $this->paginationControl($this->lista,'Sliding','paginator');
