@@ -58,6 +58,7 @@ return array(
             'favorecido'=> 'Financeiro\Controller\FavorecidoController',
             'cartoes'=>'Financeiro\Controller\CartaoController',
             'periodos'=>'Financeiro\Controller\PeriodoController',
+            'tipos'=>'Financeiro\Controller\TipoController',
         ),
     ),
     'view_manager' => array(

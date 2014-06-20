@@ -1,0 +1,25 @@
+<h3>Novo tipo</h3>
+<br />
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('FinanceiroAdmin',array('controller'=>'tipos','action' => 'new')));
+$form->prepare();
+?>
+
+<?php echo $this->form()->openTag($form);?>
+<?php echo $this->formHidden($form->get('id'));?>
+<div class="input-prepend input-append">
+    <span class="add-on">Nome</span>
+    <?php echo $this->formRow($form->get('descricao'))."<br /><br />";?>
+</div>
+<div class="input-prepend input-append">
+    <span class="add-on">Script</span>
+    <?php echo $this->formRow($form->get('javascript'))."<br /><br />";?>
+</div>
+<?php echo $this->formSubmit($form->get('submit'));?>
+<?php echo $this->form()->closeTag();?>
+
+
+
+        
