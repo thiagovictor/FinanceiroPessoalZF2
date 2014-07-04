@@ -1,6 +1,6 @@
 <?php
 
-
+namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

@@ -1,0 +1,27 @@
+
+    <h3>Lancamentos</h3>
+    <a href="<?php echo $this->url('Financeiro',array('controller' => 'lancamentos', 'action' => 'new')); ?>"><img src="<?php echo $this->basePath('img/add.png') ?>" alt="Adicionar novo lancamento"/>&nbsp;Adicionar</a><br><br>
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Cartegoria</td>
+                <td>Centro de custo</td>
+                <td>Ações</td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->lista as $lista):?>
+            <tr>
+                <td><?php echo $lista->getId();?></td>
+                <td><?php echo $lista->getDescricao();?></td>
+                <td><?php echo $lista->getCentrocusto()->getDescricao();?></td>
+                <td>
+                </td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+    <br />
+    <?php 
+    echo $this->paginationControl($this->lista,'Sliding','paginator');

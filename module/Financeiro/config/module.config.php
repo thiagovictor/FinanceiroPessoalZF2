@@ -59,6 +59,7 @@ return array(
             'cartoes'=>'Financeiro\Controller\CartaoController',
             'periodos'=>'Financeiro\Controller\PeriodoController',
             'tipos'=>'Financeiro\Controller\TipoController',
+            'lancamentos'=>'Financeiro\Controller\LancamentosController',
         ),
     ),
     'view_manager' => array(
