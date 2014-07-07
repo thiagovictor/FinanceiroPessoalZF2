@@ -3,6 +3,7 @@
 namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
  * Lancamentos
@@ -36,14 +37,14 @@ class Lancamentos
     private $descricao;
 
     /**
-     * @var string
+     * @var \DateTime
      *
      * @ORM\Column(name="pagamento", type="date", nullable=false)
      */
     private $pagamento;
     
     /**
-     * @var string
+     * @var \DateTime
      *
      * @ORM\Column(name="vencimento", type="date", nullable=false)
      */
@@ -186,7 +187,7 @@ class Lancamentos
     private $cartao;
     
     public function __construct($options=null) {
-        Configurator::configure($this, $options);
+        (new ClassMethods())->hydrate($options, $this);
     }
     
     public function getId() {

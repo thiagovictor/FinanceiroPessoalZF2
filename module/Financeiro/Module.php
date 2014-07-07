@@ -16,6 +16,7 @@ use Financeiro\Services\Permissao;
 use Financeiro\Services\Controlador;
 use Financeiro\Services\Periodo;
 use Financeiro\Services\Tipo;
+use Financeiro\Services\Lancamentos;
 use Financeiro\Auth\Adapter;
 use Financeiro\Form\CartegoriaForm;
 use Financeiro\Form\UserForm;
@@ -114,6 +115,9 @@ class Module
                 },
                 'Financeiro\Services\Tipo' => function($service){
                     return new Tipo($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Services\Lancamentos' => function($service){
+                    return new Lancamentos($service->get('Doctrine\ORM\EntityManager'));
                 },
                 'Financeiro\Form\CartegoriaForm' => function($service){
                     $entityManager = $service->get('Doctrine\ORM\EntityManager');

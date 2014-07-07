@@ -1,23 +1,139 @@
-<h3>Editar Cartegoria</h3>
+<h3>Editar Despesa | Receita</h3>
 <br />
+
 <?php
-
 $form = $this->form;
-
-$form->setAttribute('action', $this->url('Financeiro-edit',array('controller'=>'cartegoria','action' => 'edit')));
-
+$form->setAttribute('action', $this->url('Financeiro-edit', array('controller' => 'lancamentos', 'action' => 'new')));
 $form->prepare();
 ?>
 
-<?php echo $this->form()->openTag($form);?>
-<?php echo $this->formHidden($form->get('id'));?>
-<div class="input-prepend input-append">
-    <span class="add-on">Cartegoria</span>
-    <?php echo $this->formRow($form->get('descricao'))."<br /><br />";?>
-</div>
-<div class="input-prepend input-append">
-    <span class="add-on">Centro de Custo</span>
-    <?php echo $this->formRow($form->get('centrocusto'))."<br /><br />";?>
-</div>
-<?php echo $this->formSubmit($form->get('submit'));?>
-<?php echo $this->form()->closeTag();?>
+<?php echo $this->form()->openTag($form); ?>
+<?php echo $this->formHidden($form->get('id')); ?>
+<table>
+    <tbody><tr>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">Tipo de registro</span>
+                    <?php echo $this->formRow($form->get('tipo')); ?>			
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">Valor R$</span>
+                    <?php echo $this->formRow($form->get('valor')); ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="input-prepend input-append">
+                    <span class="add-on">Descrição</span>
+                    <?php echo $this->formRow($form->get('descricao')); ?>
+                    <span class="add-on">Nº Doc</span>
+                    <?php echo $this->formRow($form->get('documento')); ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">Vencimento</span>
+                    <?php echo $this->formRow($form->get('vencimento')); ?>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">Lancar como</span>
+                    <select class="span2" name="tipo_registro" id="lancamentos">
+                        <option value="on">DEBITO</option>
+                        <option value="off">RECEITA</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-prepend input-append" id="RID1" style="display:none">
+                    <span class="add-on">Período</span>
+                    <?php echo $this->formRow($form->get('periodo')); ?>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div class="input-prepend input-append" id="PID1" style="display:none">
+                    <span class="add-on">Parcelas</span>
+                    <?php echo $this->formRow($form->get('parcelas')); ?>
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">C.custo</span>
+                    <?php echo $this->formRow($form->get('centrocusto')); ?>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">Cartegoria</span>
+                    <?php echo $this->formRow($form->get('cartegoria')); ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">Favorecido/Pagador</span>
+                    <?php echo $this->formRow($form->get('favorecido')); ?>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">Debitar/Creditar</span>
+                    <?php echo $this->formRow($form->get('conta')); ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="input-prepend input-append">
+                    <span class="add-on">Cartão de credito</span>
+                    <?php echo $this->formRow($form->get('cartao')); ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="input-prepend input-append">
+                    <input name="boleto" id="boleto" type="file">
+                    <span class="add-on">boleto</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="input-prepend input-append">
+                    <input name="comp" id="comp" type="file">
+                    <span class="add-on">Comprovante</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-prepend input-append">
+                    <label>Registro pago? <input name="pgto" type="checkbox"></label>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+
+<?php echo $this->formSubmit($form->get('submit')); ?>
+<?php echo $this->form()->closeTag(); ?>
+
+
+

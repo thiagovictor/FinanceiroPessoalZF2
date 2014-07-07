@@ -5,6 +5,7 @@ namespace Financeiro\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Financeiro\Entity\Centrocusto;
 use Financeiro\Entity\User;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
  * Cartegoria
@@ -52,7 +53,7 @@ class Cartegoria
     private $user;
 
     public function __construct($options = null) {
-        Configurator::configure($this, $options);       
+        (new ClassMethods())->hydrate($options,$this);
     }
     
     public function getId() {
