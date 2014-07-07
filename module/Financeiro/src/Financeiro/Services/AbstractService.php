@@ -2,7 +2,7 @@
 namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
-use Financeiro\Entity\Configurator;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 abstract class AbstractService {
     /**
@@ -23,7 +23,7 @@ abstract class AbstractService {
     }
     public function update(array $data){
         $reference = $this->entityManager->getReference($this->entity, $data[$this->nameId]);
-        $entity = Configurator::configure($reference, $data);
+        $entity = (new ClassMethods)->hydrate($data, $reference);
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
         return $entity;

@@ -3,9 +3,9 @@
 namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
-use Financeiro\Entity\Configurator;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 
 class Cartegoria extends AbstractService{
@@ -31,7 +31,7 @@ class Cartegoria extends AbstractService{
        $reference = $this->entityManager->getReference($this->entity, $data['id']);
        $centrocusto = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
        $data['centrocusto'] = $centrocusto;
-       $entity = Configurator::configure($reference, $data);
+       $entity = (new ClassMethods())->hydrate($data, $reference);
        $this->entityManager->persist($entity);
        $this->entityManager->flush();
        return $entity;

@@ -3,9 +3,9 @@
 namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
-use Financeiro\Entity\Configurator;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class Lancamentos extends AbstractService {
 
@@ -44,7 +44,7 @@ class Lancamentos extends AbstractService {
         $data['cartao'] = $this->entityManager->getReference('Financeiro\Entity\Cartao', $data['cartao']);
         $data['tipo'] = $this->entityManager->getReference('Financeiro\Entity\Tipo', $data['tipo']);
         
-        $entity = Configurator::configure($reference, $data);
+        $entity = (new ClassMethods())->hydrate($data, $reference);
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
         return $entity;

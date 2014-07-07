@@ -84,15 +84,4 @@ class Conta
         $this->user = $user;
         return $this;
     }
-    
-    public function toArray(){
-        return array(
-            'id'=>  $this->getId(),
-            'descricao'=>  $this->getDescricao(),
-            'saldo'=>  $this->getSaldo(),
-            'user'=>  $this->getUser(),
-        );
-    }
-
-
 }

@@ -221,15 +221,4 @@ class Periodo extends \Financeiro\Entity\Periodo implements \Doctrine\ORM\Proxy\
         return parent::setDescricao($descricao);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function toArray()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', array());
-
-        return parent::toArray();
-    }
-
 }

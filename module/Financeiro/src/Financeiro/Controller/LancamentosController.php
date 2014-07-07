@@ -4,6 +4,7 @@ namespace Financeiro\Controller;
 use Zend\View\Model\ViewModel;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 
 class LancamentosController extends AbstractCrudController
@@ -45,7 +46,7 @@ class LancamentosController extends AbstractCrudController
         $repository = $this->getEM()->getRepository($this->entity);
         $entity = $repository->find($this->params()->fromRoute('id', 0));
         if($this->params()->fromRoute('id', 0)){
-            $form->setData($entity->toArray());
+            $form->setData((new ClassMethods())->extract($entity));
         }
         if($request->isPost()){
             $form->setData($request->getPost());

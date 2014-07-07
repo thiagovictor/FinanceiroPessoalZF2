@@ -3,7 +3,7 @@
 namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
-use Financeiro\Entity\Configurator;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class Permissao extends AbstractService {
 
@@ -36,7 +36,7 @@ class Permissao extends AbstractService {
         $acoes = $this->entityManager->getReference('Financeiro\Entity\Acoes', $data['acoes']);
         $data['acoes'] = $acoes;
 
-        $entity = Configurator::configure($reference, $data);
+        $entity = (new ClassMethods())->hydrate($data, $reference);
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
         return $entity;

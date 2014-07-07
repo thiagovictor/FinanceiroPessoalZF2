@@ -265,15 +265,4 @@ class Permissao extends \Financeiro\Entity\Permissao implements \Doctrine\ORM\Pr
         return parent::setAcoes($acoes);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function toArray()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', array());
-
-        return parent::toArray();
-    }
-
 }

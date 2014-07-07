@@ -2,7 +2,7 @@
 
 namespace Financeiro\Controller;
 use Zend\View\Model\ViewModel;
-
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class PermissaoController extends AbstractCrudController
 {
@@ -34,8 +34,7 @@ class PermissaoController extends AbstractCrudController
         $repository = $this->getEM()->getRepository($this->entity);
         $entity = $repository->find($this->params()->fromRoute('id', 0));
         if($this->params()->fromRoute('id', 0)){
-            $array = $entity->toArray();
-            $form->setData($array);
+            $form->setData((new ClassMethods())->extract($entity));
         }
         if($request->isPost()){
             $form->setData($request->getPost());

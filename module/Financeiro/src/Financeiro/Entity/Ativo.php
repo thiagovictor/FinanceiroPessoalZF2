@@ -64,11 +64,4 @@ class Ativo
         $this->usuarios = $usuarios;
     }
 
-    public function toArray(){
-        return array(
-            'id' => $this->getId(),
-            'nome' => $this->getNome()
-        );
-    }
-    
 }

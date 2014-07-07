@@ -377,32 +377,4 @@ class Lancamentos
         $this->cartao = $cartao;
         return $this;
     }
-
-    public function toArray() {
-        return array(
-            'id'=>  $this->getId(),
-            'descricao'=>  $this->getDescricao(),
-            'valor'=>  $this->getValor(),
-            'vencimento'=>  $this->getVencimento(),
-            'pagamento'=>  $this->getPagamento(),
-            'parcelas'=>  $this->getParcelas(),
-            'arquivo_boleto'=>  $this->getArquivoBoleto(),
-            'arquivo_comprovante'=>  $this->getArquivoComprovante(),
-            'status'=>  $this->getStatus(),
-            'idparcela'=>  $this->getIdparcela(),
-            'idrecorrente'=>  $this->getIdrecorrente(),
-            'transf'=>  $this->getTransf(),
-            'documento'=>  $this->getDocumento(),
-            'tipo'=>  $this->getTipo(),
-            'user'=>  $this->getUser(),
-            'periodo'=>  $this->getPeriodo(),
-            'cartegoria'=>  $this->getCartegoria(),
-            'conta'=>  $this->getConta(),
-            'favorecido'=>  $this->getFavorecido(),
-            'centrocusto'=>  $this->getCentrocusto(),
-            'cartao'=>  $this->getCartao()
-        );
-    }
-    
-
 }

@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 
 abstract class AbstractCrudController extends AbstractActionController
@@ -66,7 +67,7 @@ abstract class AbstractCrudController extends AbstractActionController
         $repository = $this->getEM()->getRepository($this->entity);
         $entity = $repository->find($this->params()->fromRoute('id', 0));
         if($this->params()->fromRoute('id', 0)){
-            $form->setData($entity->toArray());
+            $form->setData((new ClassMethods())->extract($entity));
         }
         if($request->isPost()){
             $form->setData($request->getPost());

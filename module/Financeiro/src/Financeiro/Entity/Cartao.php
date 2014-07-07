@@ -85,18 +85,4 @@ class Cartao
         return $this;
     }
 
-    public function toArray(){
-        return array(
-            'id'=>  $this->getId(),
-            'descricao'=>  $this->getDescricao(),
-            'vencimento'=> $this->getVencimento(),
-            'user'=>  $this->getUser(),
-        );
-    }
-    
-    
-    
-    
-
-
 }

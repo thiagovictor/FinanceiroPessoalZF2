@@ -2,6 +2,7 @@
 
 namespace Financeiro\Controller;
 use Zend\View\Model\ViewModel;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 
 class UserController extends AbstractCrudController
@@ -34,7 +35,7 @@ class UserController extends AbstractCrudController
         $repository = $this->getEM()->getRepository($this->entity);
         $entity = $repository->find($this->params()->fromRoute('id', 0));
         if($this->params()->fromRoute('id', 0)){
-            $array = $entity->toArray();
+            $array = (new ClassMethods())->extract($entity);
             unset($array['password']);
             $form->setData($array);
         }

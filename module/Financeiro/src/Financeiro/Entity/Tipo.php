@@ -66,12 +66,4 @@ class Tipo
         return $this;
     }
 
-    public function toArray() {
-        return array(
-            'id'=>  $this->getId(),
-            'descricao'=>  $this->getDescricao(),
-            'javascript'=> $this->getJavascript(),
-        );
-    }
-    
 }

@@ -90,15 +90,4 @@ class Centrocusto
     private function convertMinusculo($string) {
         return strtr(strtolower($string),"ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß","àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ");
     }
-    
-    public function toArray(){
-        return array(
-          'id'=> $this->getId(),
-          'descricao' => $this->getDescricao(),
-          'user' => $this->getUser()
-        );
-    }
-    
-
-
 }

@@ -158,16 +158,4 @@ class User
         return $this;
     }
     
-    public function toArray(){
-        return array(
-            'id'=>$this->getId(),
-            'username'=>$this->getUsername(),
-            'password'=>$this->getPassword(),
-            'salt'=>$this->getSalt(),
-            'email'=>$this->getEmail(),
-            'celular'=>$this->getCelular(),
-            'telefone'=>$this->getTelefone(),
-            'ativo'=>$this->getAtivo(),
-        );
-    }
 }

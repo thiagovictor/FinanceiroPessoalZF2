@@ -243,15 +243,4 @@ class Ativo extends \Financeiro\Entity\Ativo implements \Doctrine\ORM\Proxy\Prox
         return parent::setUsuarios($usuarios);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function toArray()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', array());
-
-        return parent::toArray();
-    }
-
 }

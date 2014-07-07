@@ -21,6 +21,7 @@ use Financeiro\Form\CartegoriaForm;
 use Financeiro\Form\UserForm;
 use Financeiro\Form\AcoesForm;
 use Financeiro\Form\PermissaoForm;
+use Financeiro\Form\LancamentosForm;
 use Zend\ModuleManager\ModuleManager;
 
 use Zend\Authentication\AuthenticationService,

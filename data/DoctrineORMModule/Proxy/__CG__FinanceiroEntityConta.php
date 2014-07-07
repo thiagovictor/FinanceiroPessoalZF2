@@ -265,15 +265,4 @@ class Conta extends \Financeiro\Entity\Conta implements \Doctrine\ORM\Proxy\Prox
         return parent::setUser($user);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function toArray()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', array());
-
-        return parent::toArray();
-    }
-
 }

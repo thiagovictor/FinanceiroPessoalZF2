@@ -49,12 +49,4 @@ class Periodo {
         $this->descricao = $descricao;
         return $this;
     }
-    
-    public function toArray() {
-        return array(
-            'id'=>  $this->getId(),
-            'descricao'=>  $this->getDescricao(),
-        );
-    }
-
 }

@@ -83,15 +83,5 @@ class Controlador
     public function setAcoes($acoes) {
         $this->acoes = $acoes;
         return $this;
-    }
-    
-    public function toArray(){
-        return array(
-            'id' => $this->getId(),
-            'nome' => $this->getNome(),
-            'descricao' => $this->getDescricao()
-        );
-    }
-
-    
+    }  
 }

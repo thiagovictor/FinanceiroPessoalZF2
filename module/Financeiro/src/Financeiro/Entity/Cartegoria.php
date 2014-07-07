@@ -85,15 +85,5 @@ class Cartegoria
 
     public function setUser(User $user) {
         $this->user = $user;
-    }
-
-    public function toArray(){
-        return array(
-            'id' => $this->getId(),
-            'descricao' => $this->getDescricao(),
-            'centrocusto' => $this->getCentrocusto(),
-            'user' => $this->getUser()
-        );
-    }
-    
+    }    
 }

@@ -3,6 +3,7 @@
 namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
  * Acoes
@@ -47,7 +48,7 @@ class Acoes
     private $controlador;
 
     public function __construct($options = null) {
-        Configurator::configure($this, $options);
+        (new ClassMethods)->hydrate($options, $this);
     }
     
     public function getId() {
@@ -85,15 +86,4 @@ class Acoes
         $this->controlador = $controlador;
         return $this;
     }
-    
-    public function toArray(){
-        return array(
-            'id' => $this->getId(),
-            'nome' => $this->getNome(),
-            'descricao' => $this->getDescricao(),
-            'controlador' => $this->getControlador(),
-        );
-    }
-
-
 }

@@ -243,15 +243,4 @@ class Favorecido extends \Financeiro\Entity\Favorecido implements \Doctrine\ORM\
         return parent::setUser($user);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function toArray()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', array());
-
-        return parent::toArray();
-    }
-
 }

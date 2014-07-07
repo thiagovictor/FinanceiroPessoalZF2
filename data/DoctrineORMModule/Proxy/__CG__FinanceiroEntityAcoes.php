@@ -265,15 +265,4 @@ class Acoes extends \Financeiro\Entity\Acoes implements \Doctrine\ORM\Proxy\Prox
         return parent::setControlador($controlador);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function toArray()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', array());
-
-        return parent::toArray();
-    }
-
 }

@@ -364,15 +364,4 @@ class User extends \Financeiro\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         return parent::setSalt($salt);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function toArray()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', array());
-
-        return parent::toArray();
-    }
-
 }

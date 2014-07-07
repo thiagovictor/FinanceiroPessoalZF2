@@ -91,15 +91,5 @@ class Permissao
         $this->acoes = $acoes;
         return $this;
     }
-    
-    public function toArray(){
-        return array(
-            'id'=>  $this->getId(),
-            'controlador'=> $this->getControlador(),
-            'acoes'=>  $this->getAcoes(),
-            'user'=> $this->getUser(),
-        );
-    }
-
 
 }
