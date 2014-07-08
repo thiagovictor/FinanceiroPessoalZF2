@@ -4,6 +4,7 @@ namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Zend\Stdlib\Hydrator\ClassMethods;
 use Financeiro\Entity\Acoes;
 
 /**
@@ -44,8 +45,8 @@ class Controlador
     */
     protected $acoes;
 
-    public function __construct($options = null) {
-        Configurator::configure($this, $options);
+    public function __construct(array $options = array()) {
+        (new ClassMethods())->hydrate($options, $this);
         $this->acoes = new ArrayCollection();
     }
     

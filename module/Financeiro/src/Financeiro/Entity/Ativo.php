@@ -4,6 +4,7 @@ namespace Financeiro\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Financeiro\Entity\User;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
  * Ativo
@@ -36,8 +37,8 @@ class Ativo
     */
     protected $usuarios;
 
-    public function __construct($options = null) {
-        Configurator::configure($this, $options);
+    public function __construct(array $options = array()) {
+        (new ClassMethods())->hydrate($options, $this);
         $this->usuarios = new ArrayCollection();
     }
     public function getId() {

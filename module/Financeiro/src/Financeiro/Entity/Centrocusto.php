@@ -5,6 +5,7 @@ namespace Financeiro\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Financeiro\Entity\User;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
  * Centrocusto
@@ -46,8 +47,8 @@ class Centrocusto
      */
     protected $cartegorias;
     
-    public function __construct($options = null) {
-        Configurator::configure($this, $options);
+    public function __construct(array $options = array()) {
+        (new ClassMethods())->hydrate($options, $this);
         $this->cartegorias = new ArrayCollection();
     }
     
@@ -73,14 +74,17 @@ class Centrocusto
 
     public function setDescricao($descricao) {
         $this->descricao = $descricao;
+        return $this;
     }
 
     public function setUser(User $user) {
         $this->user = $user;
+        return $this;
     }
 
     public function setCartegorias($cartegorias) {
         $this->cartegorias = $cartegorias;
+        return $this;
     }
     
     private function convertMaisculo($string) {

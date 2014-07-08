@@ -1,1 +1,2 @@
 c:\php\www\FinanceiroPessoal>vendor\bin\doctrine-module orm:convert:mapping --filter "Permissao" --from-database annotation module/Financeiro/src/Financeiro/Entity/
+c:\php\www\FinanceiroPessoal>vendor\bin\doctrine-module data-fixture:import

@@ -47,7 +47,7 @@ class Acoes
      */
     private $controlador;
 
-    public function __construct($options = null) {
+    public function __construct(array $options = array()) {
         (new ClassMethods)->hydrate($options, $this);
     }
     

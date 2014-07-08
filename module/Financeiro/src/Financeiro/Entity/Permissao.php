@@ -3,6 +3,7 @@
 namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
  * Permissao
@@ -11,8 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="permissao", indexes={@ORM\Index(name="fk_permissao_user1_idx", columns={"user_id"}), @ORM\Index(name="fk_permissao_controlador1_idx", columns={"controlador_id"}), @ORM\Index(name="fk_permissao_acoes1_idx", columns={"acoes_id"})})
  * @ORM\Entity(repositoryClass="Financeiro\Entity\PermissaoRepository")
  */
-class Permissao
-{
+class Permissao {
+
     /**
      * @var integer
      *
@@ -51,11 +52,11 @@ class Permissao
      * })
      */
     private $acoes;
-    
-    public function __construct($options=null) {
-        Configurator::configure($this, $options);
+
+    public function __construct(array $options = array()) {
+        (new ClassMethods())->hydrate($options, $this);
     }
-    
+
     public function getId() {
         return $this->id;
     }

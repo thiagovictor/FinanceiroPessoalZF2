@@ -52,7 +52,7 @@ class Cartegoria
      */
     private $user;
 
-    public function __construct($options = null) {
+    public function __construct(array $options = array()) {
         (new ClassMethods())->hydrate($options,$this);
     }
     
@@ -78,13 +78,16 @@ class Cartegoria
 
     public function setDescricao($descricao) {
         $this->descricao = $descricao;
+        return $this;
     }
 
     public function setCentrocusto(Centrocusto $centrocusto) {
         $this->centrocusto = $centrocusto;
+        return $this;
     }
 
     public function setUser(User $user) {
         $this->user = $user;
+        return $this;
     }    
 }

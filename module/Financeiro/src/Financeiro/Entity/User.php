@@ -3,6 +3,7 @@
 namespace Financeiro\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
  * User
@@ -73,8 +74,8 @@ class User
      */
     protected $ativo;
 
-    public function __construct($options = null) {
-        Configurator::configure($this, $options);
+    public function __construct(array $options = array()) {
+        (new ClassMethods())->hydrate($options, $this);
     }
     
     public function getId() {
