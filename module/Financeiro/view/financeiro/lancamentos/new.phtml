@@ -1,3 +1,25 @@
+<script type="text/javascript">
+
+    function exibeCartao() {
+        if (document.getElementById('CAR1').style.display === 'none'){
+            document.getElementById('CAR1').style.display = '';
+        }else{
+            document.getElementById('CAR1').style.display = 'none';
+        }
+    }
+    function exibeTipo() {
+        if(document.getElementById('tipo_id').value === '2'){
+            document.getElementById('PER1').style.display = '';
+            document.getElementById('PAR1').style.display = 'none';
+        }else if(document.getElementById('tipo_id').value === '3'){
+            document.getElementById('PER1').style.display = 'none';
+            document.getElementById('PAR1').style.display = '';
+        }else if(document.getElementById('tipo_id').value === '1'){
+            document.getElementById('PER1').style.display = 'none';
+            document.getElementById('PAR1').style.display = 'none';
+        }
+    }
+</script>
 <h3>Nova Despesa | Receita</h3>
 <br />
 
@@ -46,7 +68,7 @@ $form->prepare();
             <td>
                 <div class="input-prepend input-append">
                     <span class="add-on">Lancar como</span>
-                    <select class="span2" name="tipo_registro" id="lancamentos">
+                    <select class="span2" name="tipo_registro" id="tipo_registro1">
                         <option value="on">DEBITO</option>
                         <option value="off">RECEITA</option>
                     </select>
@@ -55,14 +77,14 @@ $form->prepare();
         </tr>
         <tr>
             <td>
-                <div class="input-prepend input-append" id="RID1" style="display:none">
+                <div class="input-prepend input-append" id="PER1" style="display:none">
                     <span class="add-on">Período</span>
                     <?php echo $this->formRow($form->get('periodo')); ?>
                 </div>
             </td>
             <td></td>
             <td>
-                <div class="input-prepend input-append" id="PID1" style="display:none">
+                <div class="input-prepend input-append" id="PAR1" style="display:none">
                     <span class="add-on">Parcelas</span>
                     <?php echo $this->formRow($form->get('parcelas')); ?>
                 </div>
@@ -102,8 +124,10 @@ $form->prepare();
         <tr>
             <td colspan="3">
                 <div class="input-prepend input-append">
-                    <span class="add-on">Cartão de credito</span>
-                    <?php echo $this->formRow($form->get('cartao')); ?>
+                    <span class="add-on">Lançar no Cartão de credito?&nbsp;<input type="checkbox" onchange='exibeCartao()' name="checa_cartao"></span>
+                    <a id="CAR1" style="display:none">
+                        <?php echo $this->formRow($form->get('cartao')); ?>
+                    </a>
                 </div>
             </td>
         </tr>
@@ -126,14 +150,13 @@ $form->prepare();
         <tr>
             <td>
                 <div class="input-prepend input-append">
-                    <label>Registro pago? <input name="pgto" type="checkbox"></label>
+                    <?php echo $this->formRow($form->get('status')); ?>
                 </div>
             </td>
         </tr>
     </tbody></table>
 
 <?php echo $this->formSubmit($form->get('submit')); ?>
-<?php echo $this->form()->closeTag(); ?>
-
+<?php echo $this->form()->closeTag(); 
 
 

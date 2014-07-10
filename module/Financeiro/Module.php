@@ -128,12 +128,12 @@ class Module
                 'Financeiro\Form\LancamentosForm' => function($service){
                     $options = array();
                     $entityManager = $service->get('Doctrine\ORM\EntityManager');
-                    $options["centrocusto"] = $entityManager->getRepository('Financeiro\Entity\Centrocusto')->fatchPairs();
+                    $options["centrocusto"] = $entityManager->getRepository('Financeiro\Entity\Centrocusto')->selecao();
                     $options["cartegoria"] = $entityManager->getRepository('Financeiro\Entity\Cartegoria')->fatchPairs();
                     $options["periodo"] = $entityManager->getRepository('Financeiro\Entity\Periodo')->fatchPairs();
-                    $options["conta"] = $entityManager->getRepository('Financeiro\Entity\Conta')->fatchPairs();
-                    $options["favorecido"] = $entityManager->getRepository('Financeiro\Entity\Favorecido')->fatchPairs();
-                    $options["cartao"] = $entityManager->getRepository('Financeiro\Entity\Cartao')->fatchPairs();
+                    $options["conta"] = $entityManager->getRepository('Financeiro\Entity\Conta')->selecao();
+                    $options["favorecido"] = $entityManager->getRepository('Financeiro\Entity\Favorecido')->selecao();
+                    $options["cartao"] = $entityManager->getRepository('Financeiro\Entity\Cartao')->selecao();
                     $options["tipo"] = $entityManager->getRepository('Financeiro\Entity\Tipo')->fatchPairs();
                     return new LancamentosForm($options);
                 },

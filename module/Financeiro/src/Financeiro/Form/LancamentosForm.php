@@ -106,6 +106,17 @@ class LancamentosForm extends Form{
         ));
         
         $this->add(array(
+            'type' => 'Zend\Form\Element\Checkbox',
+            'name' => 'status',
+            'options' => array(
+                'label' => 'Registro Pago?',
+                'use_hidden_element' => true,
+                'checked_value' => '1',
+                'unchecked_value' => '0'
+            )
+        ));
+        
+        $this->add(array(
            'name' => 'documento',
             'options' => array(
                 'type' => 'text',
@@ -141,7 +152,9 @@ class LancamentosForm extends Form{
         $this->add($this->cartao);
         
         $this->tipo->setName('tipo')
-                       ->setOptions(array('value_options'=>$this->options['tipo']));
+                       ->setOptions(array('value_options'=>$this->options['tipo']))
+                        ->setAttribute("onchange", 'exibeTipo()')
+                ->setAttribute("id","tipo_id");
         $this->add($this->tipo);
         
         

@@ -17,4 +17,15 @@ class CentrocustoRepository extends EntityRepository{
         }
         return $array;
     }
+     public function selecao() {
+        $auth = new AuthenticationService;
+        $auth->setStorage(new Session("Financeiro"));
+        $entities = $this->findBy(array('user'=>$auth->getIdentity()->getId()),array());
+        $array = array();
+        $array[""] = "Selecione um item";
+        foreach ($entities as $entity ){
+            $array[$entity->getId()] = $entity->getDescricao();
+        }
+        return $array;
+    }
 }

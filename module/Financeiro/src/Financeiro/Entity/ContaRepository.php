@@ -17,4 +17,15 @@ class ContaRepository extends EntityRepository{
         }
         return $array;
     }
+    public function selecao() {
+        $auth = new AuthenticationService;
+        $auth->setStorage(new Session("Financeiro"));
+        $contas = $this->findBy(array('user'=>$auth->getIdentity()->getId()),array());
+        $array = array();
+        $array[""] = "Selecione um item";
+        foreach ($contas as $conta ){
+            $array[$conta->getId()] = $conta->getDescricao();
+        }
+        return $array;
+    }
 }

@@ -46,7 +46,9 @@ class LancamentosController extends AbstractCrudController
         $repository = $this->getEM()->getRepository($this->entity);
         $entity = $repository->find($this->params()->fromRoute('id', 0));
         if($this->params()->fromRoute('id', 0)){
-            $form->setData((new ClassMethods())->extract($entity));
+            $array = (new ClassMethods())->extract($entity);
+            $array["vencimento"] = $array["vencimento"]->format('Y-m-d');
+            $form->setData($array);
         }
         if($request->isPost()){
             $form->setData($request->getPost());

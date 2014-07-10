@@ -17,4 +17,15 @@ class FavorecidoRepository extends EntityRepository{
         }
         return $array;
     }
+    public function selecao() {
+        $auth = new AuthenticationService;
+        $auth->setStorage(new Session("Financeiro"));
+        $favorecidos = $this->findBy(array('user'=>$auth->getIdentity()->getId()),array());
+        $array = array();
+        $array[""] = "Selecione um item";
+        foreach ($favorecidos as $favorecido ){
+            $array[$favorecido->getId()] = $favorecido->getDescricao();
+        }
+        return $array;
+    }
 }

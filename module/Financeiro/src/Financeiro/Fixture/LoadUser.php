@@ -54,6 +54,12 @@ class LoadUser extends AbstractFixture {
         $manager->persist($favorecido);
         
         $cartao = new Cartao;
+        $cartao->setDescricao("Não")
+                ->setVencimento("0")
+                ->setUser($user);
+        $manager->persist($cartao);
+        
+        $cartao = new Cartao;
         $cartao->setDescricao("Mastercard")
                 ->setVencimento("18")
                 ->setUser($user);
