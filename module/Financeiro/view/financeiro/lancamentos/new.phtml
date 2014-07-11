@@ -1,3 +1,6 @@
+<?php
+$protocolo = (strpos(strtolower(filter_input(INPUT_SERVER, 'SERVER_PROTOCOL')), 'https') === false) ? 'http' : 'https';
+?>
 <script type="text/javascript">
 
     function exibeCartao() {
@@ -19,6 +22,36 @@
             document.getElementById('PAR1').style.display = 'none';
         }
     }
+    $(document).ready(function() {
+        $("select[name=centrocusto]").change(function() {
+            $("select[name=cartegoria]").html('<option value="">Carregando...</option>');
+            $.post("<?php echo $protocolo . '://' . filter_input(INPUT_SERVER, 'HTTP_HOST') . $this->url('Financeiro', array('controller' => 'cartegoria', 'action' => 'listcartegorias')) ?>",
+                    {centrocusto: $(this).val()},
+            function(valor) {
+                if(valor === ""){
+                    $("select[name=cartegoria]").html('<option value="">Aguardando Centro de custo</option>'); 
+                }else{
+                    $("select[name=cartegoria]").html(valor);
+                }
+            }
+            );
+        });
+    });
+    $(document).ready(function() {
+        $("select[name=centrocusto]").after(function() {
+            $("select[name=cartegoria]").html('<option value="">Carregando...</option>');
+            $.post("<?php echo $protocolo . '://' . filter_input(INPUT_SERVER, 'HTTP_HOST') . $this->url('FinanceiroAdmin', array('controller' => 'cartegoria', 'action' => 'listcartegorias')) ?>",
+                    {centrocusto: $(this).val()},
+            function(valor) {
+                if(valor === ""){
+                    $("select[name=cartegoria]").html('<option value="">Aguardando Centro de custo</option>'); 
+                }else{
+                    $("select[name=cartegoria]").html(valor);
+                }
+            }
+            );
+        });
+    });
 </script>
 <h3>Nova Despesa | Receita</h3>
 <br />

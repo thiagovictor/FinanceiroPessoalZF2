@@ -1,0 +1,14 @@
+<?php if(!$this->idcartegoria and $this->idcentrocusto) :?>
+    <?php if(!empty($this->lista)) :?>    
+        <option value=""><?php echo htmlentities('Selecione a Cartegoria') ?></option> 
+    <?php else : ?>
+        <option value=""><?php echo htmlentities('(Vazio)  Adicione uma Cartegoria') ?></option>
+    <?php endif; ?>
+<?php endif;?>
+<?php foreach ($this->lista as $lista): ?>
+    <?php if($idCartegoria == $lista->getId()) :?>
+        <option value="<?php echo $lista->getId() ?>" selected="selected"><?php echo htmlentities($lista->getDescricao()) ?></option>
+    <?php else :?>
+        <option value="<?php echo $lista->getId() ?>"><?php echo htmlentities($lista->getDescricao()) ?></option>
+    <?php endif;?>
+<?php endforeach;

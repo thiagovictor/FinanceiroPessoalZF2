@@ -25,6 +25,23 @@ class CartegoriaController extends AbstractCrudController
         
     }
     
+    public function listcartegoriasAction() {
+        $repo = $this->getEM()->getRepository($this->entity);
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $id = $request->getPost()["centrocusto"];
+            $idCartegorias = $request->getPost()["cartegoria"];
+        } else {
+            $id = "";
+            $idCartegorias = "";
+        }
+        $lista = $repo->findBy(array('centrocusto' => $id), array('descricao' => 'ASC'));
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(true);
+        $viewModel->setVariables(array('lista' => $lista,'idcartegoria'=>$idCartegorias, 'idcentrocusto'=> $id));
+        return $viewModel;
+    }
+    
     public function newAction()
     {   
         $form = $this->getServiceLocator()->get($this->form);
