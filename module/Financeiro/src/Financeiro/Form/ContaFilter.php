@@ -23,15 +23,35 @@ class ContaFilter extends InputFilter{
                 )
             )
         ));
+        
+        /*
+        Funcionando
+        $validatorFloat = new \Zend\I18n\Validator\Float(array('locale' => 'pt_br'));
+        $validatorFloat->setMessage("Campo deve ser Float", \Zend\I18n\Validator\Float::NOT_FLOAT);
         $this->add(array(
-           'name' => 'saldo',
+            'name' => 'saldo',
+            'required' => true,
+            'validators' => array($validatorFloat)
+        ));*/
+
+        $this->add(array(
+            'name' => 'saldo',
             'required' => true,
             'validators' => array(
                 array(
                     'name' => 'Float',
                     'options'=>array(
-                        'messages' => array('notFloat'=>'Saldo deve estar no Formato 0.000,00'),
-                        'min'=>0,
+                        'locale'=>'pt_br',
+                        'messages' => array(
+                            'floatInvalid'=>'Tipo de dado inválido',
+                            'notFloat'=>'O valor deve ser numérico tipo modeda. ex. 1.500,00',
+                            ),
+                    )
+                ),
+                array(
+                    'name' => 'NotEmpty',
+                    'options'=>array(
+                        'messages' => array('isEmpty'=>'Valor não pode estar em branco'),
                     )
                 )
             )

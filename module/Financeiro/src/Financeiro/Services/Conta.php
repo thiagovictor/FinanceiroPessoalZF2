@@ -3,6 +3,7 @@
 namespace Financeiro\Services;
 
 use Doctrine\ORM\EntityManager;
+use Zend\Stdlib\Hydrator\ClassMethods;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session;
 
@@ -18,7 +19,16 @@ class Conta extends AbstractService{
         $auth->setStorage(new Session("Financeiro")); 
         $user = $this->entityManager->getReference('Financeiro\Entity\User', $auth->getIdentity()->getId());
         $data['user'] = $user;
+        $data['saldo'] = str_replace(',','.',str_replace('.', '', $data['saldo']));
         $entity = new $this->entity($data);                                                 
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
+        return $entity;
+    }
+    public function update(array $data){
+        $reference = $this->entityManager->getReference($this->entity, $data[$this->nameId]);
+        $data['saldo'] = str_replace(',','.',str_replace('.', '', $data['saldo']));
+        $entity = (new ClassMethods)->hydrate($data, $reference);
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
         return $entity;

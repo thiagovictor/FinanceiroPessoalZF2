@@ -277,3 +277,7 @@ Stack trace:
 [10-Jul-2014 19:27:04 America/Sao_Paulo] PHP Catchable fatal error:  Object of class DateTime could not be converted to string in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\lancamentos\index.phtml on line 19
 [10-Jul-2014 19:28:56 America/Sao_Paulo] PHP Fatal error:  Call to a member function format() on a non-object in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\lancamentos\index.phtml on line 19
 [10-Jul-2014 19:40:43 America/Sao_Paulo] PHP Fatal error:  Call to undefined method Financeiro\Entity\Lancamentos::getBoleto() in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\lancamentos\index.phtml on line 34
+[11-Jul-2014 12:20:19 America/Sao_Paulo] PHP Notice:  Undefined variable: idCartegoria in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\cartegoria\listcartegorias.phtml on line 9
+[11-Jul-2014 12:23:15 America/Sao_Paulo] PHP Notice:  Undefined variable: idCartegoria in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\cartegoria\listcartegorias.phtml on line 9
+[11-Jul-2014 12:23:33 America/Sao_Paulo] PHP Notice:  Undefined variable: idCartegoria in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\cartegoria\listcartegorias.phtml on line 9
+[11-Jul-2014 15:18:06 America/Sao_Paulo] PHP Notice:  Undefined variable: idCartegoria in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\cartegoria\listcartegorias.phtml on line 9
