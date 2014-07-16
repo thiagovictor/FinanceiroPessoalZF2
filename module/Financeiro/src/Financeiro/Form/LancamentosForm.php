@@ -15,9 +15,10 @@ class LancamentosForm extends Form{
     protected $cartao;
     protected $tipo;
     protected $options;
+    protected $tipo_registro;
 
 
-    public function __construct(array $options = null, $name = null) {
+    public function __construct(array $options = null, $name = 'Lancamentos') {
         parent::__construct($name);
         
         $this->centrocusto = new Select();
@@ -27,12 +28,11 @@ class LancamentosForm extends Form{
         $this->favorecido = new Select();
         $this->cartao = new Select();
         $this->tipo = new Select();
+        $this->tipo_registro = new Select();
         $this->options = $options;
         
-        $this->params();
-    }
-    public function params(){
         $this->setAttribute('method', 'post');
+        $this->setInputFilter(new LancamentosFilter());
         $this->setName('Lancamentos');
         
         $this->add(array(
@@ -126,6 +126,10 @@ class LancamentosForm extends Form{
                 'placeholder' => 'Entre com o documento'
             )
         ));
+        
+        $this->tipo_registro->setName('tipo_registro')
+                ->setOptions(array('value_options'=>array("on"=>"DEBITO","off"=>"RECEITA")));
+        $this->add($this->tipo_registro);
         
         $this->centrocusto->setName('centrocusto')
                        ->setOptions(array('value_options'=>$this->options['centrocusto']));

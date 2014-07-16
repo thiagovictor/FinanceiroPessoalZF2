@@ -101,10 +101,7 @@ $form->prepare();
             <td>
                 <div class="input-prepend input-append">
                     <span class="add-on">Lancar como</span>
-                    <select class="span2" name="tipo_registro" id="tipo_registro1">
-                        <option value="on">DEBITO</option>
-                        <option value="off">RECEITA</option>
-                    </select>
+                    <?php echo $this->formRow($form->get('tipo_registro')); ?>
                 </div>
             </td>
         </tr>
@@ -191,5 +188,3 @@ $form->prepare();
 
 <?php echo $this->formSubmit($form->get('submit')); ?>
 <?php echo $this->form()->closeTag(); 
-
-

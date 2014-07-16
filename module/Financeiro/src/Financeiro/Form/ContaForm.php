@@ -15,7 +15,7 @@ class ContaForm extends Form{
     public function params(){
         $this->setAttribute('method', 'post');
         $this->setInputFilter(new ContaFilter);
-        $this->setName('CentroCusto');
+        $this->setName('Conta');
         
         $this->add(array(
            'name' =>'id',
