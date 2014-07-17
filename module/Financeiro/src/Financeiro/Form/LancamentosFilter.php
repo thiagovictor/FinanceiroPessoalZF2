@@ -20,10 +20,11 @@ class LancamentosFilter extends \Zend\InputFilter\InputFilter {
         $this->add($valor);
         
         $descricao = new \Zend\InputFilter\Input("descricao");
-//        $descricao->getFilterChain()
-//                ->attach($stringTrim)
-//                ->attach($stripTags);
         $descricao->setRequired(true)
+                ->getFilterChain()
+                ->attach($stringTrim)
+                ->attach($stripTags);
+        $descricao
                 ->getValidatorChain()
                 ->attach($validadorEmpty);
         $this->add($descricao);

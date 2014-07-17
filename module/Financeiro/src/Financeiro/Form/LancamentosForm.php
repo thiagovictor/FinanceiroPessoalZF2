@@ -51,10 +51,8 @@ class LancamentosForm extends Form{
         ));
         
         $this->add(array(
-           'name' => 'descricao',
-            'options' => array(
-                'type' => 'text',
-            ),
+            'type' => 'Zend\Form\Element\Text',
+            'name' => 'descricao',
             'attributes' => array(
                 'id' => 'descricao',
                 'placeholder' => 'Entre com o nome'
@@ -128,7 +126,7 @@ class LancamentosForm extends Form{
         ));
         
         $this->tipo_registro->setName('tipo_registro')
-                ->setOptions(array('value_options'=>array("on"=>"DEBITO","off"=>"RECEITA")));
+                ->setOptions(array('value_options'=>array("on"=>"DESPESA","off"=>"RECEITA")));
         $this->add($this->tipo_registro);
         
         $this->centrocusto->setName('centrocusto')

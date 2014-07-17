@@ -54,16 +54,13 @@
                                         <a href="<?php echo $this->url('Financeiro', array('controller' => 'cartegoria')); ?>">Cartegoria</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'centrocusto')); ?>">Centro de Custo</a>
+                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'centrocusto')); ?>">Centros de Custo/Receita</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo $this->url('Financeiro', array('controller' => 'contas')); ?>">Conta</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'favorecido')); ?>">Favorecido/Pagador</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'lancamentos')); ?>">Lancamentos</a>
+                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'favorecido')); ?>">Cliente/Fornecedor</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo $this->url('Financeiro', array('controller' => 'ativo')); ?>">Status (Admin)</a>
@@ -88,7 +85,14 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Finanças<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="<?php echo $this->url('Financeiro', array('controller' => 'lancamentos')); ?>">Movimentos</a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href="<?php echo $this->url('FinanceiroAdmin', array('controller' => 'auth', 'action' => 'logout')); ?>">Sair</a>          
                             </li>
