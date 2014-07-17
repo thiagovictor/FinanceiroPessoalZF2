@@ -14,11 +14,15 @@ class Lancamentos extends AbstractService {
         $this->entity = 'Financeiro\Entity\Lancamentos';
         $this->nameId = 'id';
     }
-
+    
+    public function ajustarDate($date) {
+        $s = explode('/', $date);
+        return $s[2]."-".$s[1]."-".$s[0];
+    }
     public function inserir(array $data) {
         $auth = new AuthenticationService;
         $auth->setStorage(new Session("Financeiro"));
-        $data["vencimento"] = new \DateTime($data["vencimento"]);
+        $data["vencimento"] = new \DateTime($this->ajustarDate($data["vencimento"]));
         $data['centrocusto'] = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
         $data['cartegoria'] = $this->entityManager->getReference('Financeiro\Entity\Cartegoria', $data['cartegoria']);
         $data['periodo'] = $this->entityManager->getReference('Financeiro\Entity\Periodo', $data['periodo']);
@@ -51,7 +55,8 @@ class Lancamentos extends AbstractService {
 
     public function update(array $data) {
         $reference = $this->entityManager->getReference($this->entity, $data['id']);
-        $data["vencimento"] = new \DateTime($data["vencimento"]);
+        
+        $data["vencimento"] = new \DateTime($this->ajustarDate($data["vencimento"]));
         $data['centrocusto'] = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
         $data['cartegoria'] = $this->entityManager->getReference('Financeiro\Entity\Cartegoria', $data['cartegoria']);
         $data['periodo'] = $this->entityManager->getReference('Financeiro\Entity\Periodo', $data['periodo']);
@@ -97,10 +102,9 @@ class Lancamentos extends AbstractService {
             $array["tipo_registro"] = "on";
             $array["valor"] = substr($array["valor"], 1);
         }
-        $array["vencimento"] = $array["vencimento"]->format('Y-m-d');
+        $array["vencimento"] = $array["vencimento"]->format('d/m/Y');
         
         return $array;
         
     }
-
 }

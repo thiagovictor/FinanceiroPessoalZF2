@@ -29,8 +29,8 @@
                 }
             ?>
             <tr>
-                <td><?php if($lista->getVencimento() instanceof \DateTime){echo $lista->getVencimento()->format("d-m-Y");}?></td>
-                <td><?php if($lista->getPagamento() instanceof \DateTime){echo $lista->getPagamento()->format("d-m-Y");}?></td>
+                <td><?php if($lista->getVencimento() instanceof \DateTime){echo $lista->getVencimento()->format("d/m/Y");}?></td>
+                <td><?php if($lista->getPagamento() instanceof \DateTime){echo $lista->getPagamento()->format("d/m/Y");}?></td>
                 <td><?php echo $lista->getDescricao();?></td>
                 <td><?php echo $lista->getDocumento();?></td>
                 <td><a style="color: <?php echo $cor; ?>">R$&nbsp;<?php echo number_format($lista->getValor(), 2, ',', '.');?></a></td>
