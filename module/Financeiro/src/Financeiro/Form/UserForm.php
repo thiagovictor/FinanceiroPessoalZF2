@@ -63,17 +63,6 @@ class UserForm extends Form{
         ));
         
         $this->add(array(
-           'name' => 'salt',
-            'options' => array(
-                'type' => 'text',
-            ),
-            'attributes' => array(
-                'id' => 'salt',
-                'placeholder' => 'Entre com o salt'
-            )
-        ));
-        
-        $this->add(array(
            'name' => 'telefone',
             'options' => array(
                 'type' => 'text',
