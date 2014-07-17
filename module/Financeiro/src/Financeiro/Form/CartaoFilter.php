@@ -13,12 +13,14 @@ class CartaoFilter extends InputFilter{
         $StripTags = new StripTags();
         $StringTrim = new StringTrim();
         $NotEmpty = new NotEmpty();
+        $StringLength= new \Zend\Validator\StringLength();
+        $StringLength->setMax(25);
         $NotEmpty->setMessage("Nome do Cartão não pode estar em branco", NotEmpty::IS_EMPTY);
         $this->add(array(
            'name' => 'descricao',
             'required' => true,
             'filters' => array($StringTrim, $StripTags),
-            'validators' => array($NotEmpty),
+            'validators' => array($NotEmpty,$StringLength),
         ));
         
         $this->add(array(

@@ -17,8 +17,9 @@ class CentrocustoFilter extends InputFilter{
             'validators' => array(
                 array(
                     'name' => 'NotEmpty',
-                    'options'=>array(
-                        'messages' => array('isEmpty'=>'Nome do Centro de Custo não pode estar em branco'),
+                    'name' => 'StringLength',
+                    'options' => array(
+                        'max' => 25,
                     )
                 )
             )

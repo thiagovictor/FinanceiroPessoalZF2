@@ -17,8 +17,9 @@ class PeriodoFilter extends InputFilter{
             'validators' => array(
                 array(
                     'name' => 'NotEmpty',
+                    'name' => 'StringLength',
                     'options'=>array(
-                        'messages' => array('isEmpty'=>'Nome do Periodo não pode estar em branco'),
+                        'max' => 25
                     )
                 )
             )

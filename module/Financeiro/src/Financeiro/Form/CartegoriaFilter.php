@@ -17,9 +17,10 @@ class CartegoriaFilter extends InputFilter{
             'validators' => array(
                 array(
                     'name' => 'NotEmpty',
+                    'name' =>'StringLength',
                     'options'=>array(
-                        'messages' => array('isEmpty'=>'Nome da cartegoria não pode estar em branco'),
-                    )
+                        'max'=> 25,
+                    ),
                 )
             )
         ));

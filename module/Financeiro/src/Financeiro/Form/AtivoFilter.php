@@ -6,7 +6,8 @@ namespace Financeiro\Form;
 use Zend\InputFilter\InputFilter;
 use Zend\Filter\StringTrim,
     Zend\Filter\StripTags;
-use Zend\Validator\NotEmpty;
+use Zend\Validator\NotEmpty,
+    Zend\Validator\StringLength;
 
 class AtivoFilter extends InputFilter{
     public function __construct() {
@@ -29,11 +30,13 @@ class AtivoFilter extends InputFilter{
         $StringTrim = new StringTrim();
         $NotEmpty = new NotEmpty();
         $NotEmpty->setMessage("Nome do Status não pode estar em branco", NotEmpty::IS_EMPTY);
+        $StringLength= new StringLength();
+        $StringLength->setMax(25);
         $this->add(array(
             'name' => 'nome',
             'required' => true,
             'filters' => array($StripTags,$StringTrim),
-            'validators' => array($NotEmpty),
+            'validators' => array($NotEmpty,$StringLength),
         ));
     }
     

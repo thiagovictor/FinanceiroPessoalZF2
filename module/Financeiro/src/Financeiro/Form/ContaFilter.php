@@ -17,8 +17,9 @@ class ContaFilter extends InputFilter{
             'validators' => array(
                 array(
                     'name' => 'NotEmpty',
-                    'options'=>array(
-                        'messages' => array('isEmpty'=>'Descrição da Conta não pode estar em branco'),
+                    'name'=>'StringLength',
+                    'options' => array(
+                        'max' => 50,
                     )
                 )
             )
@@ -45,7 +46,7 @@ class ContaFilter extends InputFilter{
                         'messages' => array(
                             'floatInvalid'=>'Tipo de dado inválido',
                             'notFloat'=>'O valor deve ser numérico tipo modeda. ex. 1.500,00',
-                            ),
+                        ),
                     )
                 ),
                 array(

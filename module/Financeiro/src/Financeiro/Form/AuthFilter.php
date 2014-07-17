@@ -5,38 +5,39 @@ namespace Financeiro\Form;
 
 use Zend\InputFilter\InputFilter;
 
-class TipoFilter extends InputFilter{
+class AuthFilter extends InputFilter{
     public function __construct() {
         $this->add(array(
-           'name' => 'descricao',
+            'name' => 'email',
             'required' => true,
             'filters' => array(
-                array('name'=>'StripTags'),
-                array('name'=>'StringTrim')
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim')
             ),
             'validators' => array(
                 array(
                     'name' => 'NotEmpty',
+                    'name' => 'EmailAddress',
                     'name' => 'StringLength',
-                    'options'=>array(
-                        'max' => 25,
+                    'options' => array(
+                        'max'=> 100,
                     )
                 )
-            )
+            ),
         ));
-        
         $this->add(array(
-           'name' => 'javascript',
-            'required' => false,
+            'name' => 'password',
+            'required' => true,
             'validators' => array(
                 array(
                     'name' => 'StringLength',
-                    'options'=>array(
-                        'max' => 200,
+                    'options' => array(
+                        'max'=> 25,
                     )
                 )
-            )
+            ),
         ));
     }
-    
 }
+
+

@@ -15,6 +15,7 @@ class AuthForm extends Form{
         $this->params();
     }
     public function params(){
+        $this->setInputFilter(new AuthFilter());
         $this->setAttribute('method', 'post');
         $this->setName('Login');
 
