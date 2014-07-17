@@ -23,7 +23,7 @@ class AcoesController extends AbstractCrudController {
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 $service = $this->getServiceLocator()->get($this->service);
-                $service->inserir($request->getPost()->toArray());
+                $service->inserir($form->getData());
                 return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
             }
         }
@@ -59,7 +59,7 @@ class AcoesController extends AbstractCrudController {
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 $service = $this->getServiceLocator()->get($this->service);
-                $service->update($request->getPost()->toArray());
+                $service->update($form->getData());
                 return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
             }
         }

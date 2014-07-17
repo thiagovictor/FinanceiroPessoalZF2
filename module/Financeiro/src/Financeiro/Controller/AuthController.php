@@ -19,7 +19,7 @@ class AuthController extends AbstractActionController {
             
             $form->setData($request->getPost());
             if($form->isValid()){
-                $data = $request->getPost()->toArray();
+                $data = $form->getData();
                 $auth = new AuthenticationService();
                 $sessionStorage = new Session('Financeiro');
                 $auth->setStorage($sessionStorage);
