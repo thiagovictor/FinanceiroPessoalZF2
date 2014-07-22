@@ -39,10 +39,9 @@ $protocolo = (strpos(strtolower(filter_input(INPUT_SERVER, 'SERVER_PROTOCOL')), 
     });
     $(document).ready(function() {
         $("select[name=centrocusto]").after(function() {
-            $("select[name=cartegoria]").html('<option value="">Carregando...</option>');
-            $.post("<?php echo $protocolo . '://' . filter_input(INPUT_SERVER, 'HTTP_HOST') . $this->url('FinanceiroAdmin', array('controller' => 'cartegoria', 'action' => 'listcartegorias')) ?>",
-                    {cartegoria: $(this).val(),
-                     centrocusto: $("select[name=centrocusto]").val()},
+            $.post("<?php echo $protocolo . '://' . filter_input(INPUT_SERVER, 'HTTP_HOST') . $this->url('Financeiro', array('controller' => 'cartegoria', 'action' => 'listcartegorias')) ?>",
+                    {centrocusto: $(this).val(),
+                     cartegoria: $("select[name=cartegoria]").val()},
             function(valor) {
                 if(valor === ""){
                     $("select[name=cartegoria]").html('<option value="">Aguardando Centro de custo</option>'); 
