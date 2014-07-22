@@ -13,7 +13,7 @@ class LancamentosRepository extends EntityRepository{
                     'dateBaseFim'=>$container->baseDate."-31",
                     'user' => $container->user->getId()
                 ))
-                ->orderBy('p.vencimento', 'ASC')
+                ->orderBy('p.pagamento,p.vencimento', 'ASC')
                 ->getQuery();
         return $query->getResult();
     }
