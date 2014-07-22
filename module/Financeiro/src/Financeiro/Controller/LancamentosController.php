@@ -3,8 +3,6 @@
 namespace Financeiro\Controller;
 
 use Zend\View\Model\ViewModel;
-use Zend\Authentication\AuthenticationService,
-    Zend\Authentication\Storage\Session;
 use Zend\Stdlib\Hydrator\ClassMethods;
 use Zend\Paginator\Paginator,
  Zend\Paginator\Adapter\ArrayAdapter;
@@ -12,13 +10,7 @@ use Zend\Paginator\Paginator,
 class LancamentosController extends AbstractCrudController {
 
     public function __construct() {
-        $auth = new AuthenticationService;
-        $auth->setStorage(new Session("Financeiro"));
-        if ($auth->hasIdentity()) {
-            $this->where = array('user' => $auth->getIdentity()->getId());
-        } else {
-            $this->where = array('user' => 0);
-        }
+
         $this->entity = 'Financeiro\Entity\Lancamentos';
         $this->route = 'Financeiro';
         $this->service = 'Financeiro\Services\Lancamentos';
@@ -28,21 +20,8 @@ class LancamentosController extends AbstractCrudController {
     
     public function indexAction()
     {
-        $container = new \Zend\Session\Container("Financeiro");
         $repo = $this->getEM()->getRepository($this->entity);
-        $query = $repo->createQueryBuilder('p')
-                ->where('(p.vencimento >= :dateBaseIni and p.vencimento <= :dateBaseFim) or (p.vencimento < :dateBaseIni and p.pagamento is null) or (p.pagamento >= :dateBaseIni and p.pagamento <= :dateBaseFim) and p.user = :user')
-                ->setParameters(array(
-                    'dateBaseIni'=>$container->baseDate."-01",
-                    'dateBaseFim'=>$container->baseDate."-31",
-                    'user' => $container->user->getId()
-                ))
-                ->orderBy('p.vencimento', 'ASC')
-                ->getQuery();
-
-//        print_r($query->getSQL());
-//        print_r($container->baseDate."-01");
-        $lista = $query->getResult();
+        $lista = $repo->lancamentosGeralMes();
         $count = 12;
         $page = $this->params()->fromRoute('page');
         $paginator = new Paginator(new ArrayAdapter($lista));
