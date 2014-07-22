@@ -28,7 +28,10 @@ class AuthController extends AbstractActionController {
                        ->setPassword($data['password']);
                 $result = $auth->authenticate($authAdapter);
                 if($result->isValid()){
-                    $sessionStorage->write($auth->getIdentity()['user'], null);
+                    $container = new \Zend\Session\Container("Financeiro");
+                    $container->user = $auth->getIdentity()['user'];
+                    $container->baseDate = date("Y-m");
+                    $sessionStorage->write($auth->getIdentity()['user']);
                     return $this->redirect()->toRoute('Financeiro' , array('controller'=>'user'));
                 }else{
                     $error = true;

@@ -6,6 +6,8 @@ use Zend\View\Model\ViewModel;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session;
 use Zend\Stdlib\Hydrator\ClassMethods;
+use Zend\Paginator\Paginator,
+ Zend\Paginator\Adapter\ArrayAdapter;
 
 class LancamentosController extends AbstractCrudController {
 
@@ -23,7 +25,32 @@ class LancamentosController extends AbstractCrudController {
         $this->controller = 'lancamentos';
         $this->form = 'Financeiro\Form\LancamentosForm';
     }
+    
+    public function indexAction()
+    {
+        $container = new \Zend\Session\Container("Financeiro");
+        $repo = $this->getEM()->getRepository($this->entity);
+        $query = $repo->createQueryBuilder('p')
+                ->where('(p.vencimento >= :dateBaseIni and p.vencimento <= :dateBaseFim) or (p.vencimento < :dateBaseIni and p.pagamento is null) or (p.pagamento >= :dateBaseIni and p.pagamento <= :dateBaseFim) and p.user = :user')
+                ->setParameters(array(
+                    'dateBaseIni'=>$container->baseDate."-01",
+                    'dateBaseFim'=>$container->baseDate."-31",
+                    'user' => $container->user->getId()
+                ))
+                ->orderBy('p.vencimento', 'ASC')
+                ->getQuery();
 
+//        print_r($query->getSQL());
+//        print_r($container->baseDate."-01");
+        $lista = $query->getResult();
+        $count = 12;
+        $page = $this->params()->fromRoute('page');
+        $paginator = new Paginator(new ArrayAdapter($lista));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setDefaultItemCountPerPage($count);
+        return new ViewModel(array('lista' => $paginator, 'page'=>$page));
+    }
+    
     public function newAction() {
         $form = $this->getServiceLocator()->get($this->form);
         $request = $this->getRequest();
