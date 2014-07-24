@@ -2,8 +2,6 @@
 
 namespace Financeiro\Controller;
 
-
-
 class AtivoController extends AbstractCrudController
 {
     public function __construct() {

@@ -3,7 +3,6 @@
 namespace Financeiro\Controller;
 
 use Zend\View\Model\ViewModel;
-use Zend\Stdlib\Hydrator\ClassMethods;
 
 class AcoesController extends AbstractCrudController {
 
@@ -13,21 +12,15 @@ class AcoesController extends AbstractCrudController {
         $this->service = 'Financeiro\Services\Acoes';
         $this->controller = 'acoes';
         $this->form = 'Financeiro\Form\AcoesForm';
-        $this->orderby = array('controlador' => 'ASC');
     }
 
-    public function newAction() {
-        $form = $this->getServiceLocator()->get($this->form);
-        $request = $this->getRequest();
-        if ($request->isPost()) {
-            $form->setData($request->getPost());
-            if ($form->isValid()) {
-                $service = $this->getServiceLocator()->get($this->service);
-                $service->inserir($form->getData());
-                return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
-            }
-        }
-        return new ViewModel(array('form' => $form));
+    public function getLista() {
+        $repo = $this->getEM()->getRepository($this->entity);
+        return $repo->findBy(array(), array('controlador' => 'ASC'));
+    }
+
+    public function getForm() {
+        return $this->getServiceLocator()->get($this->form);
     }
 
     public function listacoesAction() {
@@ -43,27 +36,8 @@ class AcoesController extends AbstractCrudController {
         $lista = $repo->findBy(array('controlador' => $id), array('descricao' => 'ASC'));
         $viewModel = new ViewModel();
         $viewModel->setTerminal(true);
-        $viewModel->setVariables(array('lista' => $lista,'idAcoes'=>$idAcoes));
+        $viewModel->setVariables(array('lista' => $lista, 'idAcoes' => $idAcoes));
         return $viewModel;
-    }
-
-    public function editAction() {
-        $form = $this->getServiceLocator()->get($this->form);
-        $request = $this->getRequest();
-        $repository = $this->getEM()->getRepository($this->entity);
-        $entity = $repository->find($this->params()->fromRoute('id', 0));
-        if ($this->params()->fromRoute('id', 0)) {
-            $form->setData((new ClassMethods())->extract($entity));
-        }
-        if ($request->isPost()) {
-            $form->setData($request->getPost());
-            if ($form->isValid()) {
-                $service = $this->getServiceLocator()->get($this->service);
-                $service->update($form->getData());
-                return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
-            }
-        }
-        return new ViewModel(array('form' => $form));
     }
 
 }

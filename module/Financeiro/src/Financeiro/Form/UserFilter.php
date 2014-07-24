@@ -47,7 +47,7 @@ class UserFilter extends InputFilter{
         ));
         $this->add(array(
             'name' => 'password',
-            'required' => true,
+            'required' => false,
             'validators' => array(
                 array(
                     'name' => 'StringLength',

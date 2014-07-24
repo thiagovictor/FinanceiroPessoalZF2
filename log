@@ -384,3 +384,4 @@ Stack trace:
 [17-Jul-2014 20:23:59 America/Sao_Paulo] PHP Notice:  Undefined variable: idCartegoria in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\cartegoria\listcartegorias.phtml on line 9
 [17-Jul-2014 20:24:10 America/Sao_Paulo] PHP Notice:  Undefined variable: idCartegoria in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\cartegoria\listcartegorias.phtml on line 9
 [17-Jul-2014 20:24:10 America/Sao_Paulo] PHP Notice:  Undefined variable: idCartegoria in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\view\financeiro\cartegoria\listcartegorias.phtml on line 9
+[24-Jul-2014 20:15:59 America/Sao_Paulo] PHP Notice:  Undefined variable: entityForm in C:\php\www\FinanceiroPessoalZF2\module\Financeiro\src\Financeiro\Services\Conta.php on line 40

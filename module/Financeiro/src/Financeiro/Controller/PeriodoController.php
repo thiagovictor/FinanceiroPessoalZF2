@@ -2,10 +2,8 @@
 
 namespace Financeiro\Controller;
 
+class PeriodoController extends AbstractCrudController {
 
-
-class PeriodoController extends AbstractCrudController
-{
     public function __construct() {
         $this->entity = 'Financeiro\Entity\Periodo';
         $this->route = 'FinanceiroAdmin';
@@ -13,4 +11,5 @@ class PeriodoController extends AbstractCrudController
         $this->controller = 'periodos';
         $this->form = 'Financeiro\Form\PeriodoForm';
     }
+
 }

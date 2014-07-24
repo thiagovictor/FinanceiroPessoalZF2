@@ -36,4 +36,7 @@ abstract class AbstractService {
            return $id;
        }
     }
+    public function ajustar($array) {
+        return $array;
+    }
 }
