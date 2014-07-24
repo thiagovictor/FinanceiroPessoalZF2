@@ -2,9 +2,6 @@
 
 namespace Financeiro\Controller;
 
-use Zend\View\Model\ViewModel;
-use Zend\Stdlib\Hydrator\ClassMethods;
-
 class ContaController extends AbstractCrudController {
 
     public function __construct() {
