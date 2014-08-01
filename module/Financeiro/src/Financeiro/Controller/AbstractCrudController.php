@@ -20,6 +20,7 @@ abstract class AbstractCrudController extends AbstractActionController {
     protected $form;
     protected $controller;
     protected $route;
+    
 
     public function getLista() {
         $repo = $this->getEM()->getRepository($this->entity);
@@ -42,7 +43,7 @@ abstract class AbstractCrudController extends AbstractActionController {
         $auth = new \Zend\Authentication\AuthenticationService();
         return $auth->setStorage($this->getSession()); 
     }
-
+    
     public function indexAction() {
         $lista = $this->getLista();
         $count = 12;
@@ -66,17 +67,27 @@ abstract class AbstractCrudController extends AbstractActionController {
         }
         return new ViewModel(array('form' => $form));
     }
-
+    
     public function editAction() {
         $form = $this->getForm();
         $service = $this->getService();      
         $request = $this->getRequest();
-        $repository = $this->getEM()->getRepository($this->entity);
-        $entity = $repository->find($this->params()->fromRoute('id', 0));
-        if ($this->params()->fromRoute('id', 0)) {
-            $form->setData($service->ajustar((new ClassMethods())->extract($entity)));
+        $id = $this->params()->fromRoute('id', 0);
+        
+        if ($id) {
+            if($service->validarDono($id)){
+                $repository = $this->getEM()->getRepository($this->entity);
+                $entity = $repository->find($id);
+                $form->setData($service->ajustar((new ClassMethods())->extract($entity)));
+            }else{
+                return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
+            }
         }
         if ($request->isPost()) {
+            $post = $request->getPost();
+            if(!$service->validarDono($post["id"])){
+                return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
+            }
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 $service->update($form->getData());
@@ -88,9 +99,8 @@ abstract class AbstractCrudController extends AbstractActionController {
 
     public function deleteAction() {
         $service = $this->getServiceLocator()->get($this->service);
-        if ($service->delete($this->params()->fromRoute('id', 0))) {
-            return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
-        }
+        $service->delete($this->params()->fromRoute('id', 0));
+        return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
     }
 
     public function getEM() {

@@ -13,6 +13,7 @@ class Lancamentos extends AbstractService {
         parent::__construct($entityManager);
         $this->entity = 'Financeiro\Entity\Lancamentos';
         $this->nameId = 'id';
+        $this->validarDonoEntidade = true;
     }
     
     public function ajustarDate($date) {
