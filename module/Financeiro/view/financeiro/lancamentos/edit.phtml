@@ -10,6 +10,11 @@ $protocolo = (strpos(strtolower(filter_input(INPUT_SERVER, 'SERVER_PROTOCOL')), 
             document.getElementById('CAR1').style.display = 'none';
         }
     }
+    $(document).ready(function() {
+        if($("select[name=cartao]").val()!==0){
+            document.getElementById('CAR1').style.display = '';
+        }
+    });
     function exibeTipo() {
         if(document.getElementById('tipo_id').value === '2'){
             document.getElementById('PER1').style.display = '';
@@ -171,6 +176,14 @@ $form->prepare();
                     <a id="CAR1" style="display:none">
                         <?php echo $this->formRow($form->get('cartao')); ?>
                     </a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-prepend input-append">
+                    <span class="add-on">Mês Competência</span>
+                    <?php echo $this->formRow($form->get('competencia')); ?>
                 </div>
             </td>
         </tr>

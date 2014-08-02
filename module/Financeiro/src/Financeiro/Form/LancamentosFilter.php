@@ -23,6 +23,12 @@ class LancamentosFilter extends \Zend\InputFilter\InputFilter {
                 ->attach($validadorEmpty);
         $this->add($valor);
         /*
+         * Validação do valor
+         */
+        $competencia = new \Zend\InputFilter\Input("competencia");
+        $competencia->setRequired(true);
+        $this->add($competencia);
+        /*
          * Validação da descrição
          */
         $descricao = new \Zend\InputFilter\Input("descricao");

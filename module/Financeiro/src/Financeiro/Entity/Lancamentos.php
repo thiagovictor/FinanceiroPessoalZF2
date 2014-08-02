@@ -186,6 +186,13 @@ class Lancamentos
      */
     private $cartao;
     
+     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="competencia", type="date", nullable=true)
+     */
+    private $competencia;
+    
     public function __construct(array $options= array()) {
         (new ClassMethods())->hydrate($options, $this);
     }
@@ -378,4 +385,15 @@ class Lancamentos
         $this->cartao = $cartao;
         return $this;
     }
+    
+    public function getCompetencia() {
+        return $this->competencia;
+    }
+
+    public function setCompetencia(\DateTime $competencia) {
+        $this->competencia = $competencia;
+        return $this;
+    }
+
+
 }

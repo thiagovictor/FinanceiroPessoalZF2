@@ -20,6 +20,14 @@ class Lancamentos extends AbstractService {
         $s = explode('/', $date);
         return $s[2]."-".$s[1]."-".$s[0];
     }
+    
+    public function ajustarMes($date) {
+        if($date instanceof \DateTime){
+            return $date->format("Y-m")."-01";
+        }
+        $s = explode('/', $date);
+        return $s[1]."-".$s[0]."-01";
+    }
     public function inserir(array $data) {
         $auth = new AuthenticationService;
         $auth->setStorage(new Session("Financeiro"));
@@ -48,6 +56,7 @@ class Lancamentos extends AbstractService {
                 $data["pagamento"] = new \DateTime("now");
             }
         }
+        $data["competencia"] = new \DateTime($this->ajustarMes($data["competencia"]));
         $entity = new $this->entity($data);
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
@@ -55,8 +64,8 @@ class Lancamentos extends AbstractService {
     }
 
     public function update(array $data) {
+        unset($data["user_id"]);
         $reference = $this->entityManager->getReference($this->entity, $data['id']);
-        
         $data["vencimento"] = new \DateTime($this->ajustarDate($data["vencimento"]));
         $data['centrocusto'] = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
         $data['cartegoria'] = $this->entityManager->getReference('Financeiro\Entity\Cartegoria', $data['cartegoria']);
@@ -88,7 +97,7 @@ class Lancamentos extends AbstractService {
                 $data["pagamento"] = new \DateTime("now");
             }
         }
-
+        $data["competencia"] = new \DateTime($this->ajustarMes($data["competencia"]));
         $entity = (new ClassMethods())->hydrate($data, $reference);
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
@@ -104,6 +113,8 @@ class Lancamentos extends AbstractService {
             $array["valor"] = substr($array["valor"], 1);
         }
         $array["vencimento"] = $array["vencimento"]->format('d/m/Y');
+        $array["competencia"] = $array["competencia"]->format('m/Y');
+        
         
         return $array;
         

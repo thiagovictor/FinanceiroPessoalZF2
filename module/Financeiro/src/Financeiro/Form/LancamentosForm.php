@@ -125,6 +125,19 @@ class LancamentosForm extends Form{
             )
         ));
         
+        $date = new \DateTime("now");
+        $this->add(array(
+           'name' => 'competencia',
+            'options' => array(
+                'type' => 'text',
+            ),
+            'attributes' => array(
+                'id' => 'conpetencia',
+                'placeholder' => 'Mês de competência',
+                'value' => $date->format("m/Y")
+            )
+        ));
+        
         $this->tipo_registro->setName('tipo_registro')
                 ->setOptions(array('value_options'=>array("on"=>"DESPESA","off"=>"RECEITA")));
         $this->add($this->tipo_registro);

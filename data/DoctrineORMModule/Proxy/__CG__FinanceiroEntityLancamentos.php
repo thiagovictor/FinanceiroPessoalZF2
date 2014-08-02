@@ -64,10 +64,10 @@ class Lancamentos extends \Financeiro\Entity\Lancamentos implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'id', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'valor', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'descricao', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'pagamento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'vencimento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'parcelas', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'arquivoBoleto', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'arquivoComprovante', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'status', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'idparcela', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'idrecorrente', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'transf', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'documento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'tipo', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'user', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'periodo', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'cartegoria', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'conta', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'favorecido', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'centrocusto', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'cartao');
+            return array('__isInitialized__', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'id', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'valor', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'descricao', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'pagamento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'vencimento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'parcelas', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'arquivoBoleto', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'arquivoComprovante', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'status', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'idparcela', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'idrecorrente', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'transf', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'documento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'tipo', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'user', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'periodo', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'cartegoria', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'conta', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'favorecido', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'centrocusto', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'cartao', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'competencia');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'id', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'valor', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'descricao', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'pagamento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'vencimento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'parcelas', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'arquivoBoleto', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'arquivoComprovante', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'status', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'idparcela', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'idrecorrente', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'transf', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'documento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'tipo', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'user', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'periodo', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'cartegoria', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'conta', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'favorecido', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'centrocusto', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'cartao');
+        return array('__isInitialized__', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'id', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'valor', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'descricao', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'pagamento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'vencimento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'parcelas', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'arquivoBoleto', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'arquivoComprovante', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'status', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'idparcela', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'idrecorrente', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'transf', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'documento', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'tipo', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'user', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'periodo', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'cartegoria', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'conta', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'favorecido', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'centrocusto', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'cartao', '' . "\0" . 'Financeiro\\Entity\\Lancamentos' . "\0" . 'competencia');
     }
 
     /**
@@ -637,6 +637,28 @@ class Lancamentos extends \Financeiro\Entity\Lancamentos implements \Doctrine\OR
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCartao', array($cartao));
 
         return parent::setCartao($cartao);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCompetencia()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompetencia', array());
+
+        return parent::getCompetencia();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCompetencia(\DateTime $competencia)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompetencia', array($competencia));
+
+        return parent::setCompetencia($competencia);
     }
 
 }
