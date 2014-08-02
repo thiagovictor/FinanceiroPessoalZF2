@@ -11,6 +11,7 @@ class Centrocusto extends AbstractService{
         parent::__construct($entityManager);
         $this->entity = 'Financeiro\Entity\Centrocusto';
         $this->nameId = 'id';
+        $this->validarDonoEntidade = true;
     }
     
     public function inserir(array $data) {
