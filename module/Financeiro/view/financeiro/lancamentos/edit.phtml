@@ -11,7 +11,8 @@ $protocolo = (strpos(strtolower(filter_input(INPUT_SERVER, 'SERVER_PROTOCOL')), 
         }
     }
     $(document).ready(function() {
-        if($("select[name=cartao]").val()!==0){
+        if($("select[name=cartao]").val()!== '0'){
+            $("#checa_cartao").attr("checked",true);
             document.getElementById('CAR1').style.display = '';
         }
     });
@@ -172,7 +173,7 @@ $form->prepare();
         <tr>
             <td colspan="3">
                 <div class="input-prepend input-append">
-                    <span class="add-on">Lançar no Cartão de credito?&nbsp;<input type="checkbox" onchange='exibeCartao()' name="checa_cartao"></span>
+                    <span class="add-on">Lançar no Cartão de credito?&nbsp;<input type="checkbox" id="checa_cartao" onchange='exibeCartao()' name="checa_cartao"></span>
                     <a id="CAR1" style="display:none">
                         <?php echo $this->formRow($form->get('cartao')); ?>
                     </a>
