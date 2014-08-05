@@ -12,6 +12,7 @@ class LancamentosFilter extends \Zend\InputFilter\InputFilter {
         $stripTags = new \Zend\Filter\StripTags();
         $stringTrim = new \Zend\Filter\StringTrim();
         $date = new \Zend\Validator\Date(array('format'=>'d/m/Y'));
+        $mes_competencia = new \Financeiro\Validator\MesCompetencia();
         
         /*
          * Validação do valor
@@ -26,7 +27,9 @@ class LancamentosFilter extends \Zend\InputFilter\InputFilter {
          * Validação do valor
          */
         $competencia = new \Zend\InputFilter\Input("competencia");
-        $competencia->setRequired(true);
+        $competencia->setRequired(true)
+                ->getValidatorChain()
+                ->attach($mes_competencia);
         $this->add($competencia);
         /*
          * Validação da descrição
