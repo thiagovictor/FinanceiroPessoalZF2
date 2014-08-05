@@ -18,6 +18,7 @@ $form->prepare();
     <?php echo $this->formRow($form->get('javascript'))."<br /><br />";?>
 </div>
 <?php echo $this->formSubmit($form->get('submit'));?>
+&nbsp;&nbsp;<a href="<?php echo $this->url('FinanceiroAdmin',array('controller' => 'tipos')); ?>" class="btn btn-danger">Cancelar</a>
 <?php echo $this->form()->closeTag();?>
 
 

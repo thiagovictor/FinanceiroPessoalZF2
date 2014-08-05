@@ -88,6 +88,7 @@ class LoadUser extends AbstractFixture {
                 ->setTipo($tipo)
                 ->setUser($user)
                 ->setValor(10.25)
+                ->setCompetencia(new \DateTime("2014-05-25"))
                 ->setVencimento(new \DateTime("now"));
         $manager->persist($lancamento);
         $manager->flush();

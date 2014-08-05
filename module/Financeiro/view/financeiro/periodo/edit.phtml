@@ -16,5 +16,6 @@ $form->prepare();
     <?php echo $this->formRow($form->get('descricao'))."<br /><br />";?>
 </div>
 <?php echo $this->formSubmit($form->get('submit'));?>
+&nbsp;&nbsp;<a href="<?php echo $this->url('FinanceiroAdmin',array('controller' => 'periodos')); ?>" class="btn btn-danger">Cancelar</a>
 <?php echo $this->form()->closeTag();?>
 

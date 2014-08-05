@@ -3,7 +3,7 @@
 
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('Financeiro',array('controller'=>'user','action' => 'new')));
+$form->setAttribute('action', $this->url('FinanceiroAdmin',array('controller'=>'user','action' => 'new')));
 $form->prepare();
 ?>
 
@@ -35,6 +35,7 @@ $form->prepare();
 </div>
 
 <?php echo $this->formSubmit($form->get('submit'));?>
+&nbsp;&nbsp;<a href="<?php echo $this->url('FinanceiroAdmin',array('controller' => 'user')); ?>" class="btn btn-danger">Cancelar</a>
 <?php echo $this->form()->closeTag();?>
 
 
