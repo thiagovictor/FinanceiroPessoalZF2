@@ -5,8 +5,8 @@ namespace Financeiro\Form;
 use Zend\Form\Form;
 use Zend\Form\Element\Select;
 
-class LancamentosForm extends Form{
-    
+class LancamentosForm extends Form {
+
     protected $centrocusto;
     protected $periodo;
     protected $cartegoria;
@@ -17,10 +17,9 @@ class LancamentosForm extends Form{
     protected $options;
     protected $tipo_registro;
 
-
     public function __construct(array $options = null, $name = 'Lancamentos') {
         parent::__construct($name);
-        
+
         $this->centrocusto = new Select();
         $this->periodo = new Select();
         $this->cartegoria = new Select();
@@ -30,26 +29,25 @@ class LancamentosForm extends Form{
         $this->tipo = new Select();
         $this->tipo_registro = new Select();
         $this->options = $options;
-        
+
         $this->setAttribute('method', 'post');
         $this->setInputFilter(new LancamentosFilter());
         $this->setName('Lancamentos');
-        
+
         $this->add(array(
-           'name' =>'id',
-            'options' => array(
-                'type' => 'hidden',
-            ),
-           
-        ));
-        
-        $this->add(array(
-           'name' =>'user_id',
+            'name' => 'id',
             'options' => array(
                 'type' => 'hidden',
             ),
         ));
-        
+
+        $this->add(array(
+            'name' => 'user_id',
+            'options' => array(
+                'type' => 'hidden',
+            ),
+        ));
+
         $this->add(array(
             'type' => 'Zend\Form\Element\Text',
             'name' => 'descricao',
@@ -58,9 +56,9 @@ class LancamentosForm extends Form{
                 'placeholder' => 'Entre com o nome'
             )
         ));
-        
+
         $this->add(array(
-           'name' => 'valor',
+            'name' => 'valor',
             'options' => array(
                 'type' => 'text',
             ),
@@ -69,9 +67,9 @@ class LancamentosForm extends Form{
                 'placeholder' => 'Entre com o valor'
             )
         ));
-        
+
         $this->add(array(
-           'name' => 'vencimento',
+            'name' => 'vencimento',
             'options' => array(
                 'type' => 'text',
             ),
@@ -80,9 +78,9 @@ class LancamentosForm extends Form{
                 'placeholder' => 'Entre com o vencimento'
             )
         ));
-        
+
         $this->add(array(
-           'name' => 'pagamento',
+            'name' => 'pagamento',
             'options' => array(
                 'type' => 'text',
             ),
@@ -91,9 +89,9 @@ class LancamentosForm extends Form{
                 'placeholder' => 'Entre com o pagamento'
             )
         ));
-        
+
         $this->add(array(
-           'name' => 'parcelas',
+            'name' => 'parcelas',
             'options' => array(
                 'type' => 'text',
             ),
@@ -102,7 +100,7 @@ class LancamentosForm extends Form{
                 'placeholder' => 'Entre com o numero de parcelas'
             )
         ));
-        
+
         $this->add(array(
             'type' => 'Zend\Form\Element\Checkbox',
             'name' => 'status',
@@ -113,9 +111,9 @@ class LancamentosForm extends Form{
                 'unchecked_value' => '0'
             )
         ));
-        
+
         $this->add(array(
-           'name' => 'documento',
+            'name' => 'documento',
             'options' => array(
                 'type' => 'text',
             ),
@@ -125,9 +123,17 @@ class LancamentosForm extends Form{
             )
         ));
         
+         $this->add(array(
+            'type' => 'Zend\Form\Element\File',
+            'name' => 'arquivo_boleto',
+            'attributes' => array(
+                'id' => 'arquivo_boleto',
+            )
+        ));
+          
         $date = new \DateTime("now");
         $this->add(array(
-           'name' => 'competencia',
+            'name' => 'competencia',
             'options' => array(
                 'type' => 'text',
             ),
@@ -137,44 +143,44 @@ class LancamentosForm extends Form{
                 'value' => $date->format("m/Y")
             )
         ));
-        
+
         $this->tipo_registro->setName('tipo_registro')
-                ->setOptions(array('value_options'=>array("on"=>"DESPESA","off"=>"RECEITA")));
+                ->setOptions(array('value_options' => array("on" => "DESPESA", "off" => "RECEITA")));
         $this->add($this->tipo_registro);
-        
+
         $this->centrocusto->setName('centrocusto')
-                       ->setOptions(array('value_options'=>$this->options['centrocusto']));
+                ->setOptions(array('value_options' => $this->options['centrocusto']));
         $this->add($this->centrocusto);
-        
+
         $this->cartegoria->setName('cartegoria')
-                       ->setOptions(array('value_options'=>$this->options['cartegoria']));
+                ->setOptions(array('value_options' => $this->options['cartegoria']));
         $this->add($this->cartegoria);
-        
+
         $this->periodo->setName('periodo')
-                       ->setOptions(array('value_options'=>$this->options['periodo']));
+                ->setOptions(array('value_options' => $this->options['periodo']));
         $this->add($this->periodo);
-        
+
         $this->conta->setName('conta')
-                       ->setOptions(array('value_options'=>$this->options['conta']));
+                ->setOptions(array('value_options' => $this->options['conta']));
         $this->add($this->conta);
-        
+
         $this->favorecido->setName('favorecido')
-                       ->setOptions(array('value_options'=>$this->options['favorecido']));
+                ->setOptions(array('value_options' => $this->options['favorecido']));
         $this->add($this->favorecido);
-        
+
         $this->cartao->setName('cartao')
-                       ->setOptions(array('value_options'=>$this->options['cartao']));
+                ->setOptions(array('value_options' => $this->options['cartao']));
         $this->add($this->cartao);
-        
+
         $this->tipo->setName('tipo')
-                       ->setOptions(array('value_options'=>$this->options['tipo']))
-                        ->setAttribute("onchange", 'exibeTipo()')
-                ->setAttribute("id","tipo_id");
+                ->setOptions(array('value_options' => $this->options['tipo']))
+                ->setAttribute("onchange", 'exibeTipo()')
+                ->setAttribute("id", "tipo_id");
         $this->add($this->tipo);
-        
-        
+
+
         $this->add(array(
-           'name' => 'submit',
+            'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
                 'value' => 'Salvar',
@@ -182,4 +188,5 @@ class LancamentosForm extends Form{
             )
         ));
     }
+
 }

@@ -20,30 +20,29 @@ abstract class AbstractCrudController extends AbstractActionController {
     protected $form;
     protected $controller;
     protected $route;
-    
 
     public function getLista() {
         $repo = $this->getEM()->getRepository($this->entity);
         return $repo->findAll();
     }
-    
+
     public function getForm() {
         return new $this->form();
     }
-    
+
     public function getService() {
-        return $this->getServiceLocator()->get($this->service); 
+        return $this->getServiceLocator()->get($this->service);
     }
-    
+
     public function getSession() {
         return new \Zend\Authentication\Storage\Session("Financeiro");
     }
-    
+
     public function getAuthentication() {
         $auth = new \Zend\Authentication\AuthenticationService();
-        return $auth->setStorage($this->getSession()); 
+        return $auth->setStorage($this->getSession());
     }
-    
+
     public function indexAction() {
         $lista = $this->getLista();
         $count = 12;
@@ -58,7 +57,17 @@ abstract class AbstractCrudController extends AbstractActionController {
         $form = $this->getForm();
         $request = $this->getRequest();
         if ($request->isPost()) {
-            $form->setData($request->getPost());
+            /*
+             * 
+             */
+            $post = array_merge_recursive(
+                    $request->getPost()->toArray(),
+                    $request->getFiles()->toArray()
+            );
+            /*
+             * 
+             */
+            $form->setData($post);
             if ($form->isValid()) {
                 $service = $this->getServiceLocator()->get($this->service);
                 $service->inserir($form->getData());
@@ -67,25 +76,25 @@ abstract class AbstractCrudController extends AbstractActionController {
         }
         return new ViewModel(array('form' => $form));
     }
-    
+
     public function editAction() {
         $form = $this->getForm();
-        $service = $this->getService();      
+        $service = $this->getService();
         $request = $this->getRequest();
         $id = $this->params()->fromRoute('id', 0);
-        
+
         if ($id) {
-            if($service->validarDono($id)){
+            if ($service->validarDono($id)) {
                 $repository = $this->getEM()->getRepository($this->entity);
                 $entity = $repository->find($id);
                 $form->setData($service->ajustar((new ClassMethods())->extract($entity)));
-            }else{
+            } else {
                 return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
             }
         }
         if ($request->isPost()) {
             $post = $request->getPost();
-            if(!$service->validarDono($post["id"])){
+            if (!$service->validarDono($post["id"])) {
                 return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
             }
             $form->setData($request->getPost());

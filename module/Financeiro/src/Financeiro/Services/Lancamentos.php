@@ -32,6 +32,14 @@ class Lancamentos extends AbstractService {
         $auth = new AuthenticationService;
         $auth->setStorage(new Session("Financeiro"));
         $data["vencimento"] = new \DateTime($this->ajustarDate($data["vencimento"]));
+        /*
+         * 
+         */
+        copy($data["arquivo_boleto"]["tmp_name"],"data/files/".$data["arquivo_boleto"]["name"] );
+        $data["arquivo_boleto"] = "data/files/".$data["arquivo_boleto"]["name"];
+        /*
+         * 
+         */
         $data['centrocusto'] = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
         $data['cartegoria'] = $this->entityManager->getReference('Financeiro\Entity\Cartegoria', $data['cartegoria']);
         $data['periodo'] = $this->entityManager->getReference('Financeiro\Entity\Periodo', $data['periodo']);
