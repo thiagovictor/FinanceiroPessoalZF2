@@ -57,16 +57,10 @@ abstract class AbstractCrudController extends AbstractActionController {
         $form = $this->getForm();
         $request = $this->getRequest();
         if ($request->isPost()) {
-            /*
-             * 
-             */
             $post = array_merge_recursive(
                     $request->getPost()->toArray(),
                     $request->getFiles()->toArray()
             );
-            /*
-             * 
-             */
             $form->setData($post);
             if ($form->isValid()) {
                 $service = $this->getServiceLocator()->get($this->service);

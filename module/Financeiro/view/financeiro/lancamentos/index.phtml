@@ -38,7 +38,10 @@
                 <td><?php echo $lista->getCartegoria()->getDescricao();?></td>
                 <td><?php echo $lista->getConta()->getDescricao();?></td>
                 <td><?php echo $lista->getFavorecido()->getDescricao();?></td>
-                <td><?php echo $lista->getArquivoBoleto();?></td>
+                <td><?php if($lista->getArquivoBoleto()):?>
+                    <img src="<?php echo $this->basePath('img/boleto.png') ?>" alt="Editar lançamento"/>
+                <?php endif;?>
+                </td>
                 <td><?php echo $lista->getArquivoComprovante();?></td>
                 <td>
                     <a href="<?php echo $this->url('Financeiro-edit',array ('controller' => 'lancamentos', 'action' => 'edit', 'id' => $lista->getId()));?>"><img src="<?php echo $this->basePath('img/alterar.png') ?>" alt="Editar lançamento"/></a>&nbsp;&nbsp;&nbsp;

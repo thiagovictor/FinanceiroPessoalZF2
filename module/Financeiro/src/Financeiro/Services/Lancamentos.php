@@ -15,31 +15,42 @@ class Lancamentos extends AbstractService {
         $this->nameId = 'id';
         $this->validarDonoEntidade = true;
     }
-    
+
     public function ajustarDate($date) {
         $s = explode('/', $date);
-        return $s[2]."-".$s[1]."-".$s[0];
+        return $s[2] . "-" . $s[1] . "-" . $s[0];
     }
-    
+
     public function ajustarMes($date) {
-        if($date instanceof \DateTime){
-            return $date->format("Y-m")."-01";
+        if ($date instanceof \DateTime) {
+            return $date->format("Y-m") . "-01";
         }
         $s = explode('/', $date);
-        return $s[1]."-".$s[0]."-01";
+        return $s[1] . "-" . $s[0] . "-01";
     }
+
+    public function moveFile(array $data, $id) {
+        if(!isset($data["tmp_name"])){
+            return NULL;
+        }
+        if (!empty($data["tmp_name"])) {
+            if (!is_dir("data/files/{$id}")) {
+                mkdir("data/files/{$id}");
+            }
+            $nome = time()."_".$data["name"];
+            if(copy($data["tmp_name"], "data/files/{$id}/" . $nome)){
+                return "data/files/{$id}/" . $nome;
+            }
+            return NULL;
+        }
+        return NULL;
+    }
+
     public function inserir(array $data) {
         $auth = new AuthenticationService;
         $auth->setStorage(new Session("Financeiro"));
         $data["vencimento"] = new \DateTime($this->ajustarDate($data["vencimento"]));
-        /*
-         * 
-         */
-        copy($data["arquivo_boleto"]["tmp_name"],"data/files/".$data["arquivo_boleto"]["name"] );
-        $data["arquivo_boleto"] = "data/files/".$data["arquivo_boleto"]["name"];
-        /*
-         * 
-         */
+        $data["arquivo_boleto"] = $this->moveFile($data["arquivo_boleto"], $auth->getIdentity()->getId());
         $data['centrocusto'] = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
         $data['cartegoria'] = $this->entityManager->getReference('Financeiro\Entity\Cartegoria', $data['cartegoria']);
         $data['periodo'] = $this->entityManager->getReference('Financeiro\Entity\Periodo', $data['periodo']);
@@ -114,7 +125,7 @@ class Lancamentos extends AbstractService {
 
     public function ajustar($array) {
         $array["valor"] = number_format($array["valor"], 2, ',', '.');
-        
+
         $array["tipo_registro"] = "off";
         if ($array["valor"] < 0) {
             $array["tipo_registro"] = "on";
@@ -122,9 +133,9 @@ class Lancamentos extends AbstractService {
         }
         $array["vencimento"] = $array["vencimento"]->format('d/m/Y');
         $array["competencia"] = $array["competencia"]->format('m/Y');
-        
-        
+
+
         return $array;
-        
     }
+
 }
