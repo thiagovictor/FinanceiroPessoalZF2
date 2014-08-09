@@ -122,15 +122,23 @@ class LancamentosForm extends Form {
                 'placeholder' => 'Entre com o documento'
             )
         ));
-        
-         $this->add(array(
+
+        $this->add(array(
             'type' => 'Zend\Form\Element\File',
             'name' => 'arquivo_boleto',
             'attributes' => array(
                 'id' => 'arquivo_boleto',
             )
         ));
-          
+
+        $this->add(array(
+            'type' => 'Zend\Form\Element\File',
+            'name' => 'arquivo_comprovante',
+            'attributes' => array(
+                'id' => 'arquivo_comprovante',
+            )
+        ));
+
         $date = new \DateTime("now");
         $this->add(array(
             'name' => 'competencia',

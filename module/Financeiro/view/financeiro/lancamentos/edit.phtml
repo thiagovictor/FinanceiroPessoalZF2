@@ -191,7 +191,7 @@ $form->prepare();
         <tr>
             <td colspan="3">
                 <div class="input-prepend input-append">
-                    <input name="boleto" id="boleto" type="file">
+                    <?php echo $this->formRow($form->get('arquivo_boleto')); ?>
                     <span class="add-on">boleto</span>
                 </div>
             </td>
@@ -199,7 +199,7 @@ $form->prepare();
         <tr>
             <td colspan="3">
                 <div class="input-prepend input-append">
-                    <input name="comp" id="comp" type="file">
+                    <?php echo $this->formRow($form->get('arquivo_comprovante')); ?>
                     <span class="add-on">Comprovante</span>
                 </div>
             </td>

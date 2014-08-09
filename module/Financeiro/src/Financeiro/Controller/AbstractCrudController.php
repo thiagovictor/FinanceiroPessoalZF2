@@ -87,17 +87,52 @@ abstract class AbstractCrudController extends AbstractActionController {
             }
         }
         if ($request->isPost()) {
-            $post = $request->getPost();
+            $post = array_merge_recursive(
+                    $request->getPost()->toArray(),
+                    $request->getFiles()->toArray()
+            );
             if (!$service->validarDono($post["id"])) {
                 return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
             }
-            $form->setData($request->getPost());
+            $form->setData($post);
             if ($form->isValid()) {
                 $service->update($form->getData());
                 return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
             }
         }
         return new ViewModel(array('form' => $form));
+    }
+    
+    public function boletoAction() {
+        $service = $this->getService();
+        $id = $this->params()->fromRoute('id', 0);
+        if ($id) {
+            if ($service->validarDono($id)) {
+                $repository = $this->getEM()->getRepository($this->entity);
+                $entity = $repository->find($id);
+                $id = "data/files/{$this->getAuthentication()->getIdentity()->getId()}/".$entity->getArquivoBoleto();
+            }else {
+                return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
+            }
+        }
+        
+        return (new ViewModel())->setTerminal(true)->setVariables(array("file"=>$id));
+    }
+    
+    public function comprovanteAction() {
+        $service = $this->getService();
+        $id = $this->params()->fromRoute('id', 0);
+        if ($id) {
+            if ($service->validarDono($id)) {
+                $repository = $this->getEM()->getRepository($this->entity);
+                $entity = $repository->find($id);
+                $id = "data/files/{$this->getAuthentication()->getIdentity()->getId()}/".$entity->getArquivoComprovante();
+            }else {
+                return $this->redirect()->toRoute($this->route, array('controller' => $this->controller));
+            }
+        }
+        
+        return (new ViewModel())->setTerminal(true)->setVariables(array("file"=>$id));
     }
 
     public function deleteAction() {

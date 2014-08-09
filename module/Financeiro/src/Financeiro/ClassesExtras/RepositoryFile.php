@@ -1,5 +1,7 @@
 <?php
 
+namespace Financeiro\ClassesExtras;
+
 class RepositoryFile {
 
     protected $filename;

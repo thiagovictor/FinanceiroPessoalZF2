@@ -29,28 +29,41 @@ class Lancamentos extends AbstractService {
         return $s[1] . "-" . $s[0] . "-01";
     }
 
-    public function moveFile(array $data, $id) {
-        if(!isset($data["tmp_name"])){
+    public function moveFile(array $data, $id, $type = false) {
+        if (!isset($data["tmp_name"])) {
             return NULL;
         }
         if (!empty($data["tmp_name"])) {
             if (!is_dir("data/files/{$id}")) {
                 mkdir("data/files/{$id}");
             }
-            $nome = time()."_".$data["name"];
-            if(copy($data["tmp_name"], "data/files/{$id}/" . $nome)){
-                return "data/files/{$id}/" . $nome;
+            $nome = time() . "_" . $data["name"];
+            if($type){
+                $nome = "c_".$nome;
+            }
+            if (copy($data["tmp_name"], "data/files/{$id}/" . $nome)) {
+                return $nome;
             }
             return NULL;
         }
         return NULL;
     }
 
+    public function getSession() {
+        return new \Zend\Authentication\Storage\Session("Financeiro");
+    }
+
+    public function getAuthentication() {
+        $auth = new \Zend\Authentication\AuthenticationService();
+        return $auth->setStorage($this->getSession());
+    }
+
     public function inserir(array $data) {
         $auth = new AuthenticationService;
         $auth->setStorage(new Session("Financeiro"));
         $data["vencimento"] = new \DateTime($this->ajustarDate($data["vencimento"]));
-        $data["arquivo_boleto"] = $this->moveFile($data["arquivo_boleto"], $auth->getIdentity()->getId());
+        $data["arquivo_boleto"] = $this->moveFile($data["arquivo_boleto"], $this->getAuthentication()->getIdentity()->getId());
+        $data["arquivo_comprovante"] = $this->moveFile($data["arquivo_comprovante"], $this->getAuthentication()->getIdentity()->getId(), TRUE);
         $data['centrocusto'] = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
         $data['cartegoria'] = $this->entityManager->getReference('Financeiro\Entity\Cartegoria', $data['cartegoria']);
         $data['periodo'] = $this->entityManager->getReference('Financeiro\Entity\Periodo', $data['periodo']);
@@ -86,6 +99,24 @@ class Lancamentos extends AbstractService {
         unset($data["user_id"]);
         $reference = $this->entityManager->getReference($this->entity, $data['id']);
         $data["vencimento"] = new \DateTime($this->ajustarDate($data["vencimento"]));
+        $arquivoBoleto = $this->moveFile($data["arquivo_boleto"], $this->getAuthentication()->getIdentity()->getId());
+        if ($arquivoBoleto) {
+            if ($reference->getArquivoBoleto()) {
+                unlink("data/files/" . $this->getAuthentication()->getIdentity()->getId() . "/" . $reference->getArquivoBoleto());
+            }
+            $data["arquivo_boleto"] = $arquivoBoleto;
+        } else {
+            unset($data["arquivo_boleto"]);
+        }
+         $arquivoComprovante = $this->moveFile($data["arquivo_comprovante"], $this->getAuthentication()->getIdentity()->getId(),TRUE);
+        if ($arquivoComprovante) {
+            if ($reference->getArquivoComprovante()) {
+                unlink("data/files/" . $this->getAuthentication()->getIdentity()->getId() . "/" . $reference->getArquivoComprovante());
+            }
+            $data["arquivo_comprovante"] = $arquivoComprovante;
+        } else {
+            unset($data["arquivo_comprovante"]);
+        }
         $data['centrocusto'] = $this->entityManager->getReference('Financeiro\Entity\Centrocusto', $data['centrocusto']);
         $data['cartegoria'] = $this->entityManager->getReference('Financeiro\Entity\Cartegoria', $data['cartegoria']);
         $data['periodo'] = $this->entityManager->getReference('Financeiro\Entity\Periodo', $data['periodo']);
