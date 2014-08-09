@@ -34,6 +34,9 @@ class Lancamentos extends AbstractService {
             return NULL;
         }
         if (!empty($data["tmp_name"])) {
+            if (!is_dir("data/files")) {
+                mkdir("data/files");
+            }
             if (!is_dir("data/files/{$id}")) {
                 mkdir("data/files/{$id}");
             }
