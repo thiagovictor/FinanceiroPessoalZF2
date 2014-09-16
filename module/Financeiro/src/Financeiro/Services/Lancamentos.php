@@ -41,8 +41,8 @@ class Lancamentos extends AbstractService {
                 mkdir("data/files/{$id}");
             }
             $nome = time() . "_" . $data["name"];
-            if($type){
-                $nome = "c_".$nome;
+            if ($type) {
+                $nome = "c_" . $nome;
             }
             if (copy($data["tmp_name"], "data/files/{$id}/" . $nome)) {
                 return $nome;
@@ -111,7 +111,7 @@ class Lancamentos extends AbstractService {
         } else {
             unset($data["arquivo_boleto"]);
         }
-         $arquivoComprovante = $this->moveFile($data["arquivo_comprovante"], $this->getAuthentication()->getIdentity()->getId(),TRUE);
+        $arquivoComprovante = $this->moveFile($data["arquivo_comprovante"], $this->getAuthentication()->getIdentity()->getId(), TRUE);
         if ($arquivoComprovante) {
             if ($reference->getArquivoComprovante()) {
                 unlink("data/files/" . $this->getAuthentication()->getIdentity()->getId() . "/" . $reference->getArquivoComprovante());
@@ -170,6 +170,29 @@ class Lancamentos extends AbstractService {
 
 
         return $array;
+    }
+
+    public function apagaFiles($arquivo) {
+        unlink("data/files/" . $this->getAuthentication()->getIdentity()->getId() . "/" . $arquivo);
+    }
+
+    public function removeAnexos($entity) {
+        if (NULL != $entity->getArquivoBoleto() and $entity->getArquivoBoleto() != '') {
+            $this->apagaFiles($entity->getArquivoBoleto());
+        }
+        if (NULL != $entity->getArquivoComprovante() and $entity->getArquivoComprovante() != '') {
+            $this->apagaFiles($entity->getArquivoComprovante());
+        }
+    }
+
+    public function delete($id) {
+        $entity = $this->validarDono($id);
+        if ($entity) {
+            $this->removeAnexos($entity);
+            $this->entityManager->remove($entity);
+            $this->entityManager->flush();
+            return $id;
+        }
     }
 
 }
