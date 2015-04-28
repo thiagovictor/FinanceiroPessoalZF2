@@ -26,7 +26,14 @@ class UserRepository extends EntityRepository {
             return false;
         }
     }
-
+    
+    public function findById($id) {
+        $user = $this->findOneById($id);
+        if ($user) {
+            return $user;
+        }
+        return false;
+    }
     
 
 }

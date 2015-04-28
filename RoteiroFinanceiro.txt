@@ -1,0 +1,36 @@
+Tabelas
+###Resumo###
+CREATE TABLE `infos876_finance01`.`resumo` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_user` INT NOT NULL,
+  `competencia` DATE NOT NULL,
+  `despesa` DECIMAL(15,2) NOT NULL,
+  `receita` DECIMAL(15,2) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_User_Resumo_idx` (`id_user` ASC),
+  CONSTRAINT `FK_User_Resumo`
+    FOREIGN KEY (`id_user`)
+    REFERENCES `infos876_finance01`.`user` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE NO ACTION);
+
+###fechamento###
+CREATE TABLE `infos876_finance01`.`fechamento` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_user` INT NOT NULL,
+  `id_conta` INT(10) UNSIGNED NOT NULL,
+  `saldo` DECIMAL(15,2) NOT NULL,
+  `competencia` DATE NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_User_fechamento_idx` (`id_user` ASC),
+  INDEX `FK_User_Conta_idx` (`id_conta` ASC),
+  CONSTRAINT `FK_User_fechamento`
+    FOREIGN KEY (`id_user`)
+    REFERENCES `infos876_finance01`.`user` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `FK_User_Conta`
+    FOREIGN KEY (`id_conta`)
+    REFERENCES `infos876_finance01`.`conta` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT);

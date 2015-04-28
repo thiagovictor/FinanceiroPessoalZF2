@@ -6,6 +6,7 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Financeiro\Services\Centrocusto;
 use Financeiro\Services\Cartegoria;
+use Financeiro\Services\Resumo;
 use Financeiro\Services\Ativo;
 use Financeiro\Services\User;
 use Financeiro\Services\Acoes;
@@ -82,6 +83,9 @@ class Module
                 },
                 'Financeiro\Services\Cartegoria' => function($service){
                     return new Cartegoria($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Financeiro\Services\Resumo' => function($service){
+                    return new Resumo($service->get('Doctrine\ORM\EntityManager'));
                 },
                 'Financeiro\Services\Ativo' => function($service){
                     return new Ativo($service->get('Doctrine\ORM\EntityManager'));

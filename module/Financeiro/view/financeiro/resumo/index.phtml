@@ -1,0 +1,5 @@
+<?php
+foreach ($this->lista as $resumo) {
+    echo $resumo->getReceita();
+}
+echo $this->paginationControl($this->lista,'Sliding','paginator');

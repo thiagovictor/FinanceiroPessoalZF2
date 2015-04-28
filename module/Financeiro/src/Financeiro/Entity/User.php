@@ -159,4 +159,7 @@ class User
         return $this;
     }
     
+    public function __toString() {
+        return (string)var_dump($this);
+    }  
 }
